@@ -1,1 +1,2 @@
 void splitEingabe();
+int prepareEingabe();

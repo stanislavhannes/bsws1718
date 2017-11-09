@@ -8,3 +8,14 @@ progHUE01: 	progHUE01.c
 
 %.o: 		%.c
 			$(CC) $(CFLAGS) -o $@ -c $<
+
+depend.mak: progHUE01.c
+			gcc -MM $^ > $@  #Schreibt Lokale abhaengigkeiten in depend.mak
+
+-include depend.mak  
+
+dist-clean: clean
+			rm -f progHUE01 depend.mak
+
+clean :		
+			rm -f *.o

@@ -1,21 +1,21 @@
 CFLAGS= -m32 -g -Wall -ansi -pedantic -std=c99
 CC = gcc
 
-all: 		progHUE01
+all: 		readAndAnalyze
 
-progHUE01: 	progHUE01.c
+readAndAnalyze: 	readAndAnalyze.c
 			$(CC) $(CFLAGS) -o $@ $^ 
 
 %.o: 		%.c
 			$(CC) $(CFLAGS) -o $@ -c $<
 
-depend.mak: progHUE01.c
+depend.mak: readAndAnalyze.c
 			gcc -MM $^ > $@  #Schreibt Lokale abhaengigkeiten in depend.mak
 
 -include depend.mak  
 
 dist-clean: clean
-			rm -f progHUE01 depend.mak
+			rm -f readAndAnalyze depend.mak
 
 clean :		
 			rm -f *.o

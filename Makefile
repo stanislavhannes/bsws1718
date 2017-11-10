@@ -1,9 +1,9 @@
 CFLAGS= -m32 -g -Wall -ansi -pedantic -std=c99
 CC = gcc
 
-all: 		readAndAnalyze
+all: 		hu1
 
-readAndAnalyze: 	readAndAnalyze.c
+hu1: 		readAndAnalyze.c
 			$(CC) $(CFLAGS) -o $@ $^ 
 
 %.o: 		%.c

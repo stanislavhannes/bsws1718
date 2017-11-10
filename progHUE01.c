@@ -40,6 +40,7 @@ int main() {
 			i++;
 			tempbefehle[i] = strtok(NULL, delimiter);
 		}
+		printf("%d\n", i);
 
 		for (int j = 0; j < i; j++) {
 			char delimiterTwo[] = " ";
@@ -48,10 +49,12 @@ int main() {
 
 			temp = strtok(tempbefehle[j], delimiterTwo);
 			befehle[j].programmname = temp;
+			printf("%d\n", j);
 
 			while(temp != NULL && k < 19) {
 				temp = strtok(NULL, delimiterTwo);
 				befehle[j].argumente[k] = temp;
+				printf("%d\n", k);
 				k++;
 			}
 		}

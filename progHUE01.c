@@ -4,74 +4,74 @@
 
 #include "progHUE01.h"
 
-char eingabe[500];
+char input[500];
 
 typedef struct {
-	char *programmname;
-	char *argumente[19];
-} Befehl;
+	char *progname;
+	char *arguments[19];
+} Command;
 
-Befehl befehle[10];
-
-// am Wochenende:
-// Kontrolle kritischer Eingaben, zB a b; ; c
-// eventuell Optimierung von strtok
-
-// Zeichen am Ende des Strings, welches durch die Eingabe-Taste geschrieben
-// wird nach der Eingabe, aus der Eingabe (eingabe) entfernen
-
-// Überprüfen von i, j und k in den Schleifen
+Command commands[10];
 
 int main() {
 	while(1) {
 
 		printf("> ");
 
-		if(fgets(eingabe, sizeof(eingabe), stdin) == NULL) {exit(0);}
+		if(fgets(input, sizeof(input), stdin) == NULL) {exit(0);}
 
+		// remove '\n' from input
+		int n = 0;
+		while (input[n] != '\0') {
+			if (input[n] == '\n') {input[n] = '\0';}
+			n++;
+		}
 
-		char *tempbefehle[10];
+		// store progname and the arguments inside commands
+		char *tempcommands[10];
 		char delimiter[] = ";";
 		int i = 0;
 
-		tempbefehle[i] = strtok(eingabe, delimiter);
+		tempcommands[i] = strtok(input, delimiter);
 
-		while(tempbefehle[i] != NULL && i < 10) {
+		while(tempcommands[i] != NULL && i < 10) {
 			i++;
-			tempbefehle[i] = strtok(NULL, delimiter);
+			tempcommands[i] = strtok(NULL, delimiter);
 		}
-		printf("%d\n", i);
 
 		for (int j = 0; j < i; j++) {
 			char delimiterTwo[] = " ";
 			char *temp;
 			int k = 0;
 
-			temp = strtok(tempbefehle[j], delimiterTwo);
-			befehle[j].programmname = temp;
-			printf("%d\n", j);
+			temp = strtok(tempcommands[j], delimiterTwo);
+			commands[j].progname = temp;
 
 			while(temp != NULL && k < 19) {
 				temp = strtok(NULL, delimiterTwo);
-				befehle[j].argumente[k] = temp;
-				printf("%d\n", k);
+				commands[j].arguments[k] = temp;
 				k++;
 			}
 		}
 
-		// schreibt die befehle auf der Konsole
+		// log the prog and the arguments to the console
 		test();
+
+		// set commands and input to NULL
+		memset(input, 0, sizeof input);
+		memset(commands, 0, sizeof commands);
 	}
 
 	return 0;
 }
 
+// arguments are labeld with a ':' just for the console
 void test() {
 	for (int i=0; i < 10; i++) {
-		if (befehle[i].programmname != NULL) {printf("%s\n", befehle[i].programmname);}
+		if (commands[i].progname != NULL) {printf("%s\n", commands[i].progname);}
 
 		for (int j=0; j < 19; j++) {
-			if (befehle[i].argumente[j] != NULL) {printf("%s\n", befehle[i].argumente[j]);}
+			if (commands[i].arguments[j] != NULL) {printf(":%s\n", commands[i].arguments[j]);}
 		}
 	}
 }
@@ -79,10 +79,10 @@ void test() {
 /*
 		Beachte!
 
-		2) Die Eingabezeile besteht aus beliebig vielen "Befehlen" (maximal 10,
+		2) Die Eingabezeile besteht aus beliebig vielen "Commanden" (maximal 10,
 		moeglicherweise auch keinem), die jeweils durch ein Semikolon voneinander getrennt sind.
 
-		3) Ein Befehl besteht aus "Worten" (maximal 20, moeglicherweise auch keinem):
+		3) Ein Command besteht aus "Worten" (maximal 20, moeglicherweise auch keinem):
 		ein Programmname, gefolgt von bis zu 19 Argumenten, die jeweils durch ein oder
 		mehrere Leerzeichen voneinander getrennt sind.
 */

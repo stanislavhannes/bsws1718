@@ -17,7 +17,7 @@ Befehl befehle[10];
 // Kontrolle kritischer Eingaben, zB a b; ; c
 // eventuell Optimierung von strtok
 
-// Leereichen am Ende des Strings, welches durch die Eingabe-Taste geschrieben
+// Zeichen am Ende des Strings, welches durch die Eingabe-Taste geschrieben
 // wird nach der Eingabe, aus der Eingabe (eingabe) entfernen
 
 // Überprüfen von i, j und k in den Schleifen

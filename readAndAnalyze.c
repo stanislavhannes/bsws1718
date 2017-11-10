@@ -2,6 +2,9 @@
 #include<stdlib.h>
 
 #include "readAndAnalyze.h"
+#include "makeProcess.h"
+
+
 
 char *input = NULL; /* eingabe */
 size_t length;
@@ -63,3 +66,6 @@ void splitInput() { /*splitEingabe*/
 		}
 	}
 }
+
+
+

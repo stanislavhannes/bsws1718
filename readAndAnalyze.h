@@ -1,1 +1,1 @@
-void splitInput();
+void test();

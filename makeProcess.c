@@ -3,74 +3,57 @@
 #include <sys/types.h>
 #include <stdio.h>
 #include <string.h>
+#include <sys/times.h>
+
 #include "makeProcess.h"
 
 void createProcess(Command *commands) {
 
-	pid_t pid;
-
+	pid_t child_pid, wpid;
+	int status;
+	static struct tms st_cpu;
 
 	for (int i=0; i < 10; i++) {
 
 		if (commands[i].progName != NULL) {
 
-			pid = fork();
+			child_pid = fork();
 
-			switch (pid) {
+			switch (child_pid) {
 				case -1:
-		        /* Wird ein negativer Wert zurückgegeben, ist ein Fehler aufgetreten */
+
 				perror("fork error");
 				exit(1);
 
 				case 0:
-
-				/* Kindprozess
-				* wenn fork() eine 0 zurückgibt, befinden wir uns im Kindprozess
-				*/
-				
-				
-				printf("%s\n", commands[i].progName);
 				printf ("Kindprozess: %d (PID: %d)\n", i, getpid());
 
 				commands[i].pid = getpid();
 				execvp(commands[i].progName, commands[i].arguments);
-
-			
+				commands[i].timestamp = times(&st_cpu);
 
 				exit (0);
-
-		            /*setsignals*/
-
-		            /* notfalls raus 
-		            if (umlenkungen(aktuellesKommando))
-		                exit(1); */
-
-		            /* Fuer den ersten Pipeline-Teilnehmer nur Ausgabe umlenken 
-		            dup2(pipefd[1], 1);
-		            closeAll(pipefd, pipefdcount);
-
-		            do_execvp(0, aktuellesKommando->u.einfach.worte);*/
-
-				default: 
-		        /* Elternprozess
-		       * Gibt fork() einen Wert größer 0 zurück, befinden wir uns im Elternprozess
-		       * in pid steht die ID des Kindprozesses
-		       * getpid() gibt die eigene PID zurück
-		       */
-				for (i=0; i < 10; i++) {
-					printf ("Elternprozess: %d (PID: %d)\n", i, getpid());
-					sleep (1);
-				}
 			}
 		}
 	}
-} 
 
-void do_execvp(int argc, char **args) {
-	execvp(*args, args);
-	perror("exec-Fehler");
-		    /*fprintf(stderr, "bei Aufruf von \"%s\"\n", *args);*/
-		    /* proclist = removeFromProcessList(proclist, getProcess(proclist, getpid())); */
+	// Vaterprozess wartet hier auf das Kind
+	// wait(): on success, returns the process ID of the terminated child;
+  // on error???, -1 is returned.
 
-	exit(1);
+	// ^^ on error oder auch success, morgen
+
+	while ((wpid = wait(&status)) > 0) {
+		printf("test, wpid: %d\n", wpid);
+		// eventuell (noch zu testen...):
+		//
+		// solange sich der Vater-Prozess im wait befindet wird die PID vom Kindprozess
+		// in wpid gespeichert - und solange muss hier die Zeit mit wpid im Objekt
+		// verändert werden
+		//
+		// morgen
+		//
+	}
+	
+	printf("%d\n", wpid);
 }

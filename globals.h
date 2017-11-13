@@ -2,9 +2,13 @@
 #define _GLOBALS_H_
 
 typedef struct {
+
 	char *progName;
 	char *arguments[19];
 	int pid;
+
+	clock_t timestamp;
+	
 } Command;
 
 

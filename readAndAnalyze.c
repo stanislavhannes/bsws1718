@@ -1,16 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/types.h>
 
 #include "readAndAnalyze.h"
 #include "makeProcess.h"
 #include "globals.h"
 
 char input[500];
-
-
 Command *commands;
 
+pid_t wpid;
+int status;
 
 int main() {
 
@@ -49,8 +50,9 @@ int main() {
 
 			temp = strtok(tempCommands[j], delimiterTwo);
 			commands[j].progName = temp;
+			commands[j].arguments[k++] = temp;
 
-			while(temp != NULL && k < 19) {
+			while(temp != NULL && k < 20) {
 				temp = strtok(NULL, delimiterTwo);
 				commands[j].arguments[k] = temp;
 				k++;
@@ -70,11 +72,11 @@ int main() {
 
 // arguments are labeld with a ':' just for the console
 void test() {
-	
+
 	for (int i=0; i < 10; i++) {
 		if (commands[i].progName != NULL) {
 			printf("%s\n", commands[i].progName);
-			
+
 		}
 
 		for (int j=0; j < 19; j++) {

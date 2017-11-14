@@ -7,12 +7,16 @@ typedef struct {
 	char *arguments[19];
 	int pid;
 
-	clock_t timestamp;
-	
+	int executionError;
+
+	time_t timestampCommand;
+	double time;
+
 } Command;
 
-
 extern Command *commands;
+
+time_t timestamp;
 
 
 #endif /* _GLOBALS_H_ */

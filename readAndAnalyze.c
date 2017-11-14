@@ -61,6 +61,7 @@ int main() {
 
 		// log the prog and the arguments to the console
 		test();
+		createProcess(commands);
 
 		// set commands and input to NULL
 		memset(input, 0, sizeof (input));
@@ -85,18 +86,4 @@ void test() {
 			}
 		}
 	}
-
-
-	createProcess(commands);
 }
-
-/*
-		Beachte!
-
-		2) Die Eingabezeile besteht aus beliebig vielen "Commanden" (maximal 10,
-		moeglicherweise auch keinem), die jeweils durch ein Semikolon voneinander getrennt sind.
-
-		3) Ein Command besteht aus "Worten" (maximal 20, moeglicherweise auch keinem):
-		ein Programmname, gefolgt von bis zu 19 Argumenten, die jeweils durch ein oder
-		mehrere Leerzeichen voneinander getrennt sind.
-*/

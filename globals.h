@@ -9,14 +9,14 @@ typedef struct {
 
 	int executionError;
 
-	time_t timestampCommand;
-	double time;
+	clock_t timestampCommand;
+	clock_t time;
 
 } Command;
 
 extern Command *commands;
 
-time_t timestamp;
+clock_t timestamp;
 
 
 #endif /* _GLOBALS_H_ */

@@ -9,21 +9,54 @@
 
 #include "makeProcess.h"
 
-
+//TODO: allgemeine Fehlerbehandlung
 void createProcess(Command *commands) {
 
-	pid_t child_pid, wpid;
-	int status;
-	struct tms cutime1;
-	//cutime2;
+	pid_t wpid;
+	int status, n;
+	struct tms cutime;
+	clock_t cutimeHelpVar;
 	int numberofCommands = getNumberOfCommands(commands);
-	// Anzahl der commands in n speichern durch eine neue Funktion
+
+	doFork(numberofCommands, commands);
+
+	// wait for childs and calculate the child user time
+	n = numberofCommands;
+	cutimeHelpVar = 0;
+
+	times(&cutime);
+
+	while (n > 0) {
+	  wpid = wait(&status); // TODO: status in commands speichern
+
+		times(&cutime);
+
+		for (int i = 0; i < numberofCommands; i++) {
+			if (commands[i].pid == wpid && status == 0) {
+				commands[i].time = cutime.tms_cutime - cutimeHelpVar;
+				break;
+			} //else if (status == 0) { //TODO: allgemeine Fehlerbehandlung
+				//commands[i].time = -1;
+			//}
+		}
+
+		cutimeHelpVar = cutime.tms_cutime;
+		n--;
+	}
+
+	cutimeHelpVar = 0;
+
+	printCommands(commands, numberofCommands);
+
+}
+
+void doFork(int numberofCommands, Command *commands) {
+	pid_t child_pid;
+	int a;
 
 	for (int i=0; i < numberofCommands; i++) {
 
-			child_pid = fork();
-
-			switch (child_pid) {
+			switch (child_pid = fork()) {
 
 				case -1:
 
@@ -31,58 +64,31 @@ void createProcess(Command *commands) {
 					exit(1);
 
 				case 0:
+					a = 0;
+
+					while (a < 100000000) {a++;}
 
 					printf ("Kindprozess: %d (PID: %d)\n", i, getpid());
 
-					commands[i].pid = getpid();
-					commands[i].executionError = 0;
-
 					execvp(commands[i].progName, commands[i].arguments);
-
 				// status_execvp should be -1 if execvp get an error
 				// execvp only returns when an error occurs
 				// We only reach this point as a result of a failure from execvp
 				// exit(status_execvp);
+					exit(1);
+
+				default:
+					commands[i].pid = child_pid;
 		}
 	}
-
-	times(&cutime1);
-
-	printf("Test start_tms.tms_utime = %f\n\n",  (double)cutime1.tms_utime);
-  printf("Test start_tms.tms_cutime = %f\n\n", (double)cutime1.tms_cutime);
-  printf("Test start_tms.tms_stime = %f\n\n",  (double)cutime1.tms_stime);
-  printf("Test start_tms.tms_cstime = %f\n\n",  (double)cutime1.tms_cstime);
-
-	int n = numberofCommands;
-
-	while (n > 0) {
-	  wpid = wait(&status);
-
-	  printf("Test start_tms.tms_cutime = %f\n\n", (double)cutime1.tms_cutime);
-	  printf("Child with PID %ld exited with status 0x%x.\n", (long)wpid, status);
-	  n--;
-	}
-
-	// printf("%jd\n", (intmax_t)timestamp);
-
-	//calcChildUserTime(commands, numberofCommands);
-	//printCommands(commands, numberofCommands);
-
 }
 
-// TODO: calculates the user time per child
-void calcChildUserTime(Command *commands, int numberofCommands) {
-	for (int i=0; i < numberofCommands; i++) {
-			commands[i].time = timestamp - commands[i].timestampCommand;
-	}
-}
-
-// TODO: logs the user time per command to the console
+// logs the user time per command to the console
 void printCommands(Command *commands, int numberofCommands) {
 	for (int i=0; i < numberofCommands; i++) {
 
 			if (commands[i].executionError == 0) {
-				//printf("%s: user time = %f\n", commands[i].progName, commands[i].time);
+				printf("%s: user time = %lu\n", commands[i].progName, commands[i].time);
 			}
 
 			if (commands[i].executionError == -1) {

@@ -5,14 +5,21 @@ typedef struct {
 
 	char *progName;
 	char *arguments[19];
-	int pid;
+	pid_t pid;
 
 	int executionError;
-
-	clock_t timestampCommand;
 	clock_t time;
 
 } Command;
+
+typedef struct {
+
+	int pid;
+	clock_t time;
+
+} TimeList;
+
+
 
 extern Command *commands;
 

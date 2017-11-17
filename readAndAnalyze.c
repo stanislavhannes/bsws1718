@@ -10,9 +10,7 @@
 char input[500];
 Command *commands;
 
-pid_t wpid;
-int status;
-
+//TODO: allgemeine Fehlerbehandlung
 int main() {
 
 	commands = calloc(10, sizeof(Command));
@@ -60,7 +58,7 @@ int main() {
 		}
 
 		// log the prog and the arguments to the console
-		test();
+		// test();
 		createProcess(commands);
 
 		// set commands and input to NULL
@@ -72,7 +70,7 @@ int main() {
 }
 
 // arguments are labeld with a ':' just for the console
-void test() {
+void test2() {
 
 	for (int i=0; i < 10; i++) {
 		if (commands[i].progName != NULL) {

@@ -28,15 +28,18 @@ void createProcess(Command *commands) {
 
 	while (n > 0) {
 	  wpid = wait(&status); // TODO: status in commands speichern
+		printf("status: %d\n", status);
+		printf("wpid: %d\n", wpid);
+
 
 		times(&cutime);
 
 		for (int i = 0; i < numberofCommands; i++) {
-			if (commands[i].pid == wpid && status == 0) {
+			if (commands[i].pid == wpid && WIFEXITED(status)) {
 				commands[i].time = cutime.tms_cutime - cutimeHelpVar;
 				commands[i].status = status;
 				break;
-			} else if (status != 0) { //TODO: allgemeine Fehlerbehandlung
+			} else { //TODO: allgemeine Fehlerbehandlung
 					commands[i].status = status;
 			}
 		}

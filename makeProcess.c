@@ -6,8 +6,11 @@
 #include <sys/times.h>
 #include <time.h>
 #include <sys/wait.h>
+#include <signal.h>
 
 #include "makeProcess.h"
+
+pid_t parentPid;
 
 //TODO: allgemeine Fehlerbehandlung
 void createProcess(Command *commands) {
@@ -17,6 +20,10 @@ void createProcess(Command *commands) {
 	struct tms cutime;
 	clock_t cutimeHelpVar;
 	int numberofCommands = getNumberOfCommands(commands);
+	parentPid = getpid();
+
+	signal(SIGINT, handlerSigint);
+	
 
 	doFork(numberofCommands, commands);
 
@@ -28,6 +35,8 @@ void createProcess(Command *commands) {
 
 	while (n > 0) {
 	  wpid = wait(&status); // TODO: status in commands speichern
+	  printf("wpid: %d \n", wpid);
+	  printf("status: %d \n", status); 
 
 		times(&cutime);
 
@@ -65,6 +74,7 @@ void doFork(int numberofCommands, Command *commands) {
 					exit(1);
 
 				case 0:
+					
 					a = 0;
 
 					while (a < 100000000) {a++;}
@@ -107,4 +117,18 @@ int getNumberOfCommands(Command *commands) {
 		}
 	}
 	return n;
+}
+
+void handlerSigint (int sig){
+	int pid;
+
+   if(sig != SIGINT)
+
+      return;
+
+   else if((pid = getpid()) != parentPid){
+   		printf("exit failure\n");
+         exit (EXIT_FAILURE);
+
+   }
 }

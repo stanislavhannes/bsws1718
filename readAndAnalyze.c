@@ -28,6 +28,13 @@ int main() {
 			n++;
 		}
 
+		// remove quotation marks from input
+		n = 0;
+		while (input[n] != '\0') {
+			if (input[n] == '\"') {input[n] = ' ';}
+			n++;
+		}
+
 		// store progname and the arguments inside commands
 		char *tempCommands[10];
 		char delimiter[] = ";";
@@ -48,17 +55,24 @@ int main() {
 
 			temp = strtok(tempCommands[j], delimiterTwo);
 			commands[j].progName = temp;
-			commands[j].arguments[k++] = temp;
+			commands[j].arguments[k] = temp;
+
+			k++;
 
 			while(temp != NULL && k < 20) {
 				temp = strtok(NULL, delimiterTwo);
 				commands[j].arguments[k] = temp;
 				k++;
 			}
+			if (k == 20) {
+				commands[j].arguments[20] = NULL;
+			} else {
+				commands[j].arguments[k] = NULL;
+			}
 		}
 
 		// log the prog and the arguments to the console
-		// test();
+		test2();
 		createProcess(commands);
 
 		// set commands and input to NULL

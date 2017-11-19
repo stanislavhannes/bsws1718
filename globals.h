@@ -4,7 +4,7 @@
 typedef struct {
 
 	char *progName;
-	char *arguments[19];
+	char *arguments[21];
 	pid_t pid;
 
 	int status;

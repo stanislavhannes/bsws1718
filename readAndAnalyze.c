@@ -1,21 +1,20 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+#include <sys/types.h>
 
 #include "readAndAnalyze.h"
 #include "makeProcess.h"
-
+#include "globals.h"
 
 char input[500];
+Command *commands;
 
-typedef struct {
-	char *progName;
-	char *arguments[19];
-} Command;
-
-Command commands[10];
-
+//TODO: allgemeine Fehlerbehandlung
 int main() {
+
+	commands = calloc(10, sizeof(Command));
+
 	while(1) {
 
 		printf("> ");
@@ -34,6 +33,7 @@ int main() {
 		char delimiter[] = ";";
 		int i = 0;
 
+
 		tempCommands[i] = strtok(input, delimiter);
 
 		while(tempCommands[i] != NULL && i < 10) {
@@ -48,8 +48,9 @@ int main() {
 
 			temp = strtok(tempCommands[j], delimiterTwo);
 			commands[j].progName = temp;
+			commands[j].arguments[k++] = temp;
 
-			while(temp != NULL && k < 19) {
+			while(temp != NULL && k < 20) {
 				temp = strtok(NULL, delimiterTwo);
 				commands[j].arguments[k] = temp;
 				k++;
@@ -57,34 +58,30 @@ int main() {
 		}
 
 		// log the prog and the arguments to the console
-		test();
+		// test();
+		createProcess(commands);
 
 		// set commands and input to NULL
-		memset(input, 0, sizeof input);
-		memset(commands, 0, sizeof commands);
+		memset(input, 0, sizeof (input));
+		memset(commands, 0, sizeof(Command) * 10);
 	}
 
 	return 0;
 }
 
 // arguments are labeld with a ':' just for the console
-void test() {
+void test2() {
+
 	for (int i=0; i < 10; i++) {
-		if (commands[i].progName != NULL) {printf("%s\n", commands[i].progName);}
+		if (commands[i].progName != NULL) {
+			printf("%s\n", commands[i].progName);
+
+		}
 
 		for (int j=0; j < 19; j++) {
-			if (commands[i].arguments[j] != NULL) {printf(":%s\n", commands[i].arguments[j]);}
+			if (commands[i].arguments[j] != NULL) {
+				printf(":%s\n", commands[i].arguments[j]);
+			}
 		}
 	}
 }
-
-/*
-		Beachte!
-
-		2) Die Eingabezeile besteht aus beliebig vielen "Commanden" (maximal 10,
-		moeglicherweise auch keinem), die jeweils durch ein Semikolon voneinander getrennt sind.
-
-		3) Ein Command besteht aus "Worten" (maximal 20, moeglicherweise auch keinem):
-		ein Programmname, gefolgt von bis zu 19 Argumenten, die jeweils durch ein oder
-		mehrere Leerzeichen voneinander getrennt sind.
-*/

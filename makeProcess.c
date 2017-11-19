@@ -1,51 +1,110 @@
+#include <unistd.h>
+#include <stdlib.h>
 #include <sys/types.h>
+#include <stdio.h>
+#include <string.h>
+#include <sys/times.h>
+#include <time.h>
+#include <sys/wait.h>
 
-void createProcess() {
+#include "makeProcess.h"
 
+//TODO: allgemeine Fehlerbehandlung
+void createProcess(Command *commands) {
 
-  pid_t *pids;
+	pid_t wpid;
+	int status, n;
+	struct tms cutime;
+	clock_t cutimeHelpVar;
+	int numberofCommands = getNumberOfCommands(commands);
 
-  pids = malloc(sizeof(pid_t) * 1);
+	doFork(numberofCommands, commands);
 
-    int i = 0;
-		switch (pids[i] = fork()) {
-        case -1:
-        /* Wird ein negativer Wert zurückgegeben, ist ein Fehler aufgetreten */
-            perror("fork error");
-            exit(1);
+	// wait for childs and calculate the child user time
+	n = numberofCommands;
+	cutimeHelpVar = 0;
 
-        case 0:
-        /* Kindprozess
-       * wenn fork() eine 0 zurückgibt, befinden wir uns im Kindprozess
-       */
+	times(&cutime);
 
-            /*setsignals*/
+	while (n > 0) {
+	  wpid = wait(&status); // TODO: status in commands speichern
 
-            /* notfalls raus 
-            if (umlenkungen(aktuellesKommando))
-                exit(1); */
+		times(&cutime);
 
-            /* Fuer den ersten Pipeline-Teilnehmer nur Ausgabe umlenken 
-            dup2(pipefd[1], 1);
-            closeAll(pipefd, pipefdcount);
+		for (int i = 0; i < numberofCommands; i++) {
+			if (commands[i].pid == wpid && status == 0) {
+				commands[i].time = cutime.tms_cutime - cutimeHelpVar;
+				commands[i].status = status;
+				break;
+			} else if (status != 0) { //TODO: allgemeine Fehlerbehandlung
+					commands[i].status = status;
+			}
+		}
 
-            do_execvp(0, aktuellesKommando->u.einfach.worte);*/
+		cutimeHelpVar = cutime.tms_cutime;
+		n--;
+	}
 
-        default: 
-        break;
-        /* Elternprozess
-       * Gibt fork() einen Wert größer 0 zurück, befinden wir uns im Elternprozess
-       * in pid steht die ID des Kindprozesses
-       * getpid() gibt die eigene PID zurück
-       */
-    	}
-} 
+	cutimeHelpVar = 0;
 
-void do_execvp(int argc, char **args) {
-    execvp(*args, args);
-    perror("exec-Fehler");
-    /*fprintf(stderr, "bei Aufruf von \"%s\"\n", *args);*/
-    /* proclist = removeFromProcessList(proclist, getProcess(proclist, getpid())); */
+	printCommands(commands, numberofCommands);
 
-    exit(1);
+}
+
+void doFork(int numberofCommands, Command *commands) {
+	pid_t child_pid;
+	int a;
+
+	for (int i=0; i < numberofCommands; i++) {
+
+			switch (child_pid = fork()) {
+
+				case -1:
+
+					perror("fork error");
+					exit(1);
+
+				case 0:
+					a = 0;
+
+					while (a < 100000000) {a++;}
+
+					printf ("Kindprozess: %d (PID: %d)\n", i, getpid());
+
+					execvp(commands[i].progName, commands[i].arguments);
+				// status_execvp should be -1 if execvp get an error
+				// execvp only returns when an error occurs
+				// We only reach this point as a result of a failure from execvp
+				// exit(status_execvp);
+					exit(1);
+
+				default:
+					commands[i].pid = child_pid;
+		}
+	}
+}
+
+// logs the user time per command to the console
+void printCommands(Command *commands, int numberofCommands) {
+	for (int i=0; i < numberofCommands; i++) {
+
+			if (commands[i].status == 0) {
+				printf("%s: user time = %lu\n", commands[i].progName, commands[i].time);
+			}
+
+			if (commands[i].status != 0) {
+				printf("%s: [execution error]\n", commands[i].progName);
+			}
+
+	}
+}
+
+int getNumberOfCommands(Command *commands) {
+	int n = 0;
+	for (int i=0; i < 10; i++) {
+		if (commands[i].progName != NULL) {
+			n++;
+		}
+	}
+	return n;
 }

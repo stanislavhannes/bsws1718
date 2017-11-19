@@ -1,2 +1,6 @@
-void createProcess();
-void do_execvp(int argc, char **args);
+#include "globals.h"
+
+void createProcess(Command *commands);
+void doFork(int numberofCommands, Command *commands);
+void printCommands(Command *commands, int numberofCommands);
+int getNumberOfCommands(Command *commands);

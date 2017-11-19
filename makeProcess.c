@@ -30,17 +30,21 @@ void createProcess(Command *commands) {
 	  wpid = wait(&status); // TODO: status in commands speichern
 		printf("status: %d\n", status);
 		printf("wpid: %d\n", wpid);
-
+		printf("WIFEXITED(status): %d\n", WIFEXITED(status));
 
 		times(&cutime);
 
+		// also ls ; grep => beides Execution error weil in status
+
 		for (int i = 0; i < numberofCommands; i++) {
-			if (commands[i].pid == wpid && WIFEXITED(status)) {
-				commands[i].time = cutime.tms_cutime - cutimeHelpVar;
-				commands[i].status = status;
-				break;
-			} else { //TODO: allgemeine Fehlerbehandlung
+			if (commands[i].pid == wpid) {
+					if (status == 0) {
+					commands[i].time = cutime.tms_cutime - cutimeHelpVar;
 					commands[i].status = status;
+					break;
+				} else { //TODO: allgemeine Fehlerbehandlung
+					commands[i].status = status;
+				}
 			}
 		}
 

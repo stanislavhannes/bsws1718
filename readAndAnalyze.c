@@ -3,7 +3,6 @@
 #include <string.h>
 #include <sys/types.h>
 
-#include "readAndAnalyze.h"
 #include "makeProcess.h"
 #include "globals.h"
 
@@ -71,8 +70,6 @@ int main() {
 			}
 		}
 
-		// log the prog and the arguments to the console
-		test2();
 		createProcess(commands);
 
 		// set commands and input to NULL
@@ -81,21 +78,4 @@ int main() {
 	}
 
 	return 0;
-}
-
-// arguments are labeld with a ':' just for the console
-void test2() {
-
-	for (int i=0; i < 10; i++) {
-		if (commands[i].progName != NULL) {
-			printf("%s\n", commands[i].progName);
-
-		}
-
-		for (int j=0; j < 19; j++) {
-			if (commands[i].arguments[j] != NULL) {
-				printf(":%s\n", commands[i].arguments[j]);
-			}
-		}
-	}
 }

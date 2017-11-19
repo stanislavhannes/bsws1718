@@ -34,10 +34,11 @@ void createProcess(Command *commands) {
 		for (int i = 0; i < numberofCommands; i++) {
 			if (commands[i].pid == wpid && status == 0) {
 				commands[i].time = cutime.tms_cutime - cutimeHelpVar;
+				commands[i].status = status;
 				break;
-			} //else if (status == 0) { //TODO: allgemeine Fehlerbehandlung
-				//commands[i].time = -1;
-			//}
+			} else if (status != 0) { //TODO: allgemeine Fehlerbehandlung
+					commands[i].status = status;
+			}
 		}
 
 		cutimeHelpVar = cutime.tms_cutime;
@@ -87,11 +88,11 @@ void doFork(int numberofCommands, Command *commands) {
 void printCommands(Command *commands, int numberofCommands) {
 	for (int i=0; i < numberofCommands; i++) {
 
-			if (commands[i].executionError == 0) {
+			if (commands[i].status == 0) {
 				printf("%s: user time = %lu\n", commands[i].progName, commands[i].time);
 			}
 
-			if (commands[i].executionError == -1) {
+			if (commands[i].status != 0) {
 				printf("%s: [execution error]\n", commands[i].progName);
 			}
 

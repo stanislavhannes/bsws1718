@@ -28,13 +28,8 @@ void createProcess(Command *commands) {
 
 	while (n > 0) {
 	  wpid = wait(&status); // TODO: status in commands speichern
-		printf("status: %d\n", status);
-		printf("wpid: %d\n", wpid);
-		printf("WIFEXITED(status): %d\n", WIFEXITED(status));
 
 		times(&cutime);
-
-		// also ls ; grep => beides Execution error weil in status
 
 		for (int i = 0; i < numberofCommands; i++) {
 			if (commands[i].pid == wpid) {
@@ -74,10 +69,6 @@ void doFork(int numberofCommands, Command *commands) {
 				case 0:
 					a = 0;
 
-					while (a < 100000000) {a++;}
-
-					printf ("Kindprozess: %d (PID: %d)\n", i, getpid());
-
 					execvp(commands[i].progName, commands[i].arguments);
 				// status_execvp should be -1 if execvp get an error
 				// execvp only returns when an error occurs
@@ -93,10 +84,13 @@ void doFork(int numberofCommands, Command *commands) {
 
 // logs the user time per command to the console
 void printCommands(Command *commands, int numberofCommands) {
+	int sum = 0;
+
 	for (int i=0; i < numberofCommands; i++) {
 
 			if (commands[i].status == 0) {
 				printf("%s: user time = %lu\n", commands[i].progName, commands[i].time);
+				sum += commands[i].time;
 			}
 
 			if (commands[i].status != 0) {
@@ -104,6 +98,8 @@ void printCommands(Command *commands, int numberofCommands) {
 			}
 
 	}
+
+	printf("sum of user times = %d\n", sum);
 }
 
 int getNumberOfCommands(Command *commands) {

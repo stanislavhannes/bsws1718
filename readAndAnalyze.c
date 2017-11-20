@@ -6,6 +6,8 @@
 #include "makeProcess.h"
 #include "globals.h"
 
+// void test(Command *commands);
+
 char input[500];
 Command *commands;
 
@@ -63,19 +65,34 @@ int main() {
 				commands[j].arguments[k] = temp;
 				k++;
 			}
-			if (k == 20) {
-				commands[j].arguments[20] = NULL;
-			} else {
-				commands[j].arguments[k] = NULL;
-			}
+
+			// end with NULL
+			commands[j].arguments[k] = NULL;
 		}
+
+		// test(commands);
 
 		createProcess(commands);
 
 		// set commands and input to NULL
+
 		memset(commands, 0, sizeof(Command) * 10);
 		strcpy(input, "");
 	}
 
 	return 0;
 }
+
+/*Wenn ein Befehl gaenzlich leer ist (also nicht einmal einen Programmnamen
+enthaelt), wird er ignoriert. Wenn eine Eingabezeile gaenzlich leer ist
+(also keinen einzigen Befehl enthaelt), wird sie ignoriert. */
+
+/*void test(Command *commands) {
+	for (int i = 0; i < 10; i++) {
+		printf("i: %d\n", i);
+		printf("name: %s\n", commands[i].progName);
+		for (int j = 0; j < 21; j++) {
+			printf(":%s\n", commands[i].arguments[j]);
+		}
+	}
+}*/

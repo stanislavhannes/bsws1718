@@ -35,12 +35,21 @@ void createProcess(Command *commands) {
 		for (int i=0; i < 10; i++) {
 			if (commands[i].progName != NULL) {
 				if (commands[i].pid == wpid) {
-						if (status == 0) {
+					if (status == 0) {
 						commands[i].time = cutime.tms_cutime - cutimeHelpVar;
-						commands[i].status = status;
+						commands[i].status = 0;
 						break;
-					} else { //TODO: allgemeine Fehlerbehandlung
-						commands[i].status = status;
+					} else {
+							if (WIFEXITED(status)) { // WIFSIGNALED
+							commands[i].status = -1;
+							break;
+						} if (WIFSIGNALED(status)) {
+							commands[i].status = -1;
+							break;
+						} else {
+							commands[i].status = -1;
+							break;
+						}
 					}
 				}
 			}

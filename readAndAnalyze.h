@@ -1,1 +1,1 @@
-void test2();
+void handlerSigint (int sig);

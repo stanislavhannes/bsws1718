@@ -4,11 +4,12 @@
 typedef struct {
 
 	char *progName;
-	char *arguments[19];
+	char *arguments[21];
 	pid_t pid;
 
 	int status;
-	clock_t time;
+	//clock_t time;
+	clockid_t time;
 
 } Command;
 

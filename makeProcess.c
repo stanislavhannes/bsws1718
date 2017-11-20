@@ -20,8 +20,8 @@ void createProcess(Command *commands) {
 	clock_t cutimeHelpVar;
 	int numberofCommands = getNumberOfCommands(commands);
 
+	doFork(commands);
 
-	doFork(numberofCommands, commands);
 
 	// wait for childs and calculate the child user time
 	n = numberofCommands;
@@ -34,14 +34,26 @@ void createProcess(Command *commands) {
 
 		times(&cutime);
 
-		for (int i = 0; i < numberofCommands; i++) {
-			if (commands[i].pid == wpid) {
+		for (int i=0; i < 10; i++) {
+			if (commands[i].progName != NULL) {
+				if (commands[i].pid == wpid) {
 					if (status == 0) {
-					commands[i].time = cutime.tms_cutime - cutimeHelpVar;
-					commands[i].status = status;
-					break;
-				} else { //TODO: allgemeine Fehlerbehandlung
-					commands[i].status = status;
+						commands[i].time = cutime.tms_cutime - cutimeHelpVar;
+						commands[i].status = 0;
+						break;
+					} else {
+						
+						if (WIFEXITED(status)) { // WIFSIGNALED
+							commands[i].status = -1;
+							break;
+						} if (WIFSIGNALED(status)) {
+							commands[i].status = -1;
+							break;
+						} else {
+							commands[i].status = -1;
+							break;
+						}
+					}
 				}
 			}
 		}
@@ -52,14 +64,15 @@ void createProcess(Command *commands) {
 
 	cutimeHelpVar = 0;
 
-	printCommands(commands, numberofCommands);
+	printCommands(commands);
 
 }
 
-void doFork(int numberofCommands, Command *commands) {
+void doFork(Command *commands) {
 	pid_t child_pid;
 
-	for (int i=0; i < numberofCommands; i++) {
+	for (int i=0; i < 10; i++) {
+		if (commands[i].progName != NULL) {
 
 			switch (child_pid = fork()) {
 
@@ -79,15 +92,19 @@ void doFork(int numberofCommands, Command *commands) {
 
 				default:
 					commands[i].pid = child_pid;
+			}
 		}
 	}
 }
 
 // logs the user time per command to the console
-void printCommands(Command *commands, int numberofCommands) {
+void printCommands(Command *commands) {
 	int sum = 0;
+	int temp = 0;
 
-	for (int i=0; i < numberofCommands; i++) {
+	for (int i=0; i < 10; i++) {
+		if (commands[i].progName != NULL) {
+			temp++;
 
 			if (commands[i].status == 0) {
 				//printf("%s: user time = %lu\n", commands[i].progName, commands[i].time);
@@ -98,10 +115,10 @@ void printCommands(Command *commands, int numberofCommands) {
 			if (commands[i].status != 0) {
 				printf("%s: [execution error]\n", commands[i].progName);
 			}
+		}
 
 	}
-
-	printf("sum of user times = %d\n", sum);
+	if (temp > 0) { printf("sum of user times = %d\n", sum); }
 }
 
 int getNumberOfCommands(Command *commands) {

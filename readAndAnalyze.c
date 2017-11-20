@@ -8,6 +8,8 @@
 #include "globals.h"
 #include "readAndAnalyze.h"
 
+// void test(Command *commands);
+
 char input[500];
 Command *commands;
 int end = 1;
@@ -67,22 +69,24 @@ int main() {
 				commands[j].arguments[k] = temp;
 				k++;
 			}
-			if (k == 20) {
-				commands[j].arguments[20] = NULL;
-			} else {
-				commands[j].arguments[k] = NULL;
-			}
+
+			// end with NULL
+			commands[j].arguments[k] = NULL;
 		}
+
+		// test(commands);
 
 		createProcess(commands);
 
 		// set commands and input to NULL
+
 		memset(commands, 0, sizeof(Command) * 10);
 		strcpy(input, "");
 	}
 
 	return 0;
 }
+
 
 void handlerSigint (int sig){
 
@@ -94,3 +98,4 @@ void handlerSigint (int sig){
    		end = 0;
    }
 }
+

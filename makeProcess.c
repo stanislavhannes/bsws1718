@@ -55,7 +55,6 @@ void createProcess(Command *commands) {
 
 void doFork(int numberofCommands, Command *commands) {
 	pid_t child_pid;
-	int a;
 
 	for (int i=0; i < numberofCommands; i++) {
 
@@ -67,7 +66,6 @@ void doFork(int numberofCommands, Command *commands) {
 					exit(1);
 
 				case 0:
-					a = 0;
 
 					execvp(commands[i].progName, commands[i].arguments);
 				// status_execvp should be -1 if execvp get an error

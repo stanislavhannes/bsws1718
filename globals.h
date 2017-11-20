@@ -8,7 +8,8 @@ typedef struct {
 	pid_t pid;
 
 	int status;
-	clock_t time;
+	//clock_t time;
+	clockid_t time;
 
 } Command;
 

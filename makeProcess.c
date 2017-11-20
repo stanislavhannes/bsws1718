@@ -89,7 +89,8 @@ void printCommands(Command *commands, int numberofCommands) {
 	for (int i=0; i < numberofCommands; i++) {
 
 			if (commands[i].status == 0) {
-				printf("%s: user time = %lu\n", commands[i].progName, commands[i].time);
+				//printf("%s: user time = %lu\n", commands[i].progName, commands[i].time);
+				printf("%s: user time = %i\n", commands[i].progName, commands[i].time);
 				sum += commands[i].time;
 			}
 

@@ -73,8 +73,8 @@ int main() {
 		createProcess(commands);
 
 		// set commands and input to NULL
-		memset(input, 0, sizeof (input));
 		memset(commands, 0, sizeof(Command) * 10);
+		strcpy(input, "");
 	}
 
 	return 0;

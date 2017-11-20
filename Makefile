@@ -1,4 +1,4 @@
-CFLAGS= -m32 -g -Wall -ansi -pedantic -std=c99
+CFLAGS= -g -Wall -ansi -pedantic -std=c99
 CC = gcc
 CSOURCES= readAndAnalyze.c makeProcess.c
 

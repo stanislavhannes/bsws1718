@@ -13,6 +13,8 @@ typedef struct {
 
 } Command;
 
+extern pid_t parentPid;
+
 extern Command *commands;
 
 

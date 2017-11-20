@@ -2,21 +2,25 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/types.h>
+#include <signal.h>
 
 #include "makeProcess.h"
 #include "globals.h"
+#include "readAndAnalyze.h"
 
 // void test(Command *commands);
 
 char input[500];
 Command *commands;
+int end = 1;
 
 //TODO: allgemeine Fehlerbehandlung
 int main() {
 
+	signal(SIGINT, handlerSigint);
 	commands = calloc(10, sizeof(Command));
 
-	while(1) {
+	while(end) {
 
 		printf("> ");
 
@@ -83,16 +87,15 @@ int main() {
 	return 0;
 }
 
-/*Wenn ein Befehl gaenzlich leer ist (also nicht einmal einen Programmnamen
-enthaelt), wird er ignoriert. Wenn eine Eingabezeile gaenzlich leer ist
-(also keinen einzigen Befehl enthaelt), wird sie ignoriert. */
 
-/*void test(Command *commands) {
-	for (int i = 0; i < 10; i++) {
-		printf("i: %d\n", i);
-		printf("name: %s\n", commands[i].progName);
-		for (int j = 0; j < 21; j++) {
-			printf(":%s\n", commands[i].arguments[j]);
-		}
-	}
-}*/
+void handlerSigint (int sig){
+
+   	if(sig != SIGINT)
+
+      return;
+
+  	else {
+   		end = 0;
+   }
+}
+

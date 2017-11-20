@@ -6,7 +6,7 @@
 #include "makeProcess.h"
 #include "globals.h"
 
-void test(Command *commands);
+// void test(Command *commands);
 
 char input[500];
 Command *commands;
@@ -70,7 +70,7 @@ int main() {
 			commands[j].arguments[k] = NULL;
 		}
 
-		test(commands);
+		// test(commands);
 
 		createProcess(commands);
 
@@ -86,7 +86,7 @@ int main() {
 enthaelt), wird er ignoriert. Wenn eine Eingabezeile gaenzlich leer ist
 (also keinen einzigen Befehl enthaelt), wird sie ignoriert. */
 
-void test(Command *commands) {
+/*void test(Command *commands) {
 	for (int i = 0; i < 10; i++) {
 		printf("i: %d\n", i);
 		printf("name: %s\n", commands[i].progName);
@@ -94,4 +94,4 @@ void test(Command *commands) {
 			printf(":%s\n", commands[i].arguments[j]);
 		}
 	}
-}
+}*/

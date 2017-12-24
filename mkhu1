@@ -1,3 +1,0 @@
-#!/bin/sh
-#gcc -g -Wall -ansi -pedantic -std=c99 -o hu1 readAndAnalyze.c makeProcess.c
-make

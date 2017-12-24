@@ -1,1 +1,0 @@
-void handlerSigint (int sig);

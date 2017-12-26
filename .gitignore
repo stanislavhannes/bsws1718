@@ -53,3 +53,5 @@ dkms.conf
 
 hu1
 depend.maks
+disk.img
+shfs

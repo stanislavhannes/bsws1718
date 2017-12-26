@@ -9,6 +9,8 @@
 #include <stdarg.h>
 #include <time.h>
 
+#include "shfs.h"
+
 
 #define SECTOR_SIZE	512	/* disk sector size in bytes */
 #define BLOCK_SIZE	4096	/* disk block size in bytes */
@@ -41,12 +43,15 @@
 #define IOWRITE		000002	/* other's write permission */
 #define IOEXEC		000001	/* other's execute permission */
 
-
 typedef unsigned int EOS32_ino_t;
 typedef unsigned int EOS32_daddr_t;
 typedef unsigned int EOS32_off_t;
 typedef int EOS32_time_t;
 
+FILE *freelist;
+FILE *inodelist;
+EOS32_daddr_t linkblock;
+// gcc -Wall -o shfs shfs.c
 
 void error(char *fmt, ...) {
   va_list ap;
@@ -63,9 +68,7 @@ void error(char *fmt, ...) {
 unsigned int fsStart;		/* file system start sector */
 
 
-void readBlock(FILE *disk,
-               EOS32_daddr_t blockNum,
-               unsigned char *blockBuffer) {
+void readBlock(FILE *disk, EOS32_daddr_t blockNum, unsigned char *blockBuffer) {
   fseek(disk, fsStart * SECTOR_SIZE + blockNum * BLOCK_SIZE, SEEK_SET);
   if (fread(blockBuffer, BLOCK_SIZE, 1, disk) != 1) {
     error("cannot read block %lu (0x%lX)", blockNum, blockNum);
@@ -147,84 +150,35 @@ void rawBlock(unsigned char *p) {
 
 
 void superBlock(unsigned char *p) {
-  unsigned int magic;
-  EOS32_daddr_t fsize;
-  EOS32_daddr_t isize;
-  EOS32_daddr_t freeblks;
-  EOS32_ino_t freeinos;
-  unsigned int ninode;
-  EOS32_ino_t ino;
+
   unsigned int nfree;
   EOS32_daddr_t free;
-  EOS32_time_t tim;
-  char *dat;
-  unsigned char flag;
   int i;
 
-  checkBatch(0);
-  magic = get4Bytes(p);
   p += 4;
-  printf("magic number = %u (0x%08X)\n", magic, magic);
-  if (checkBatch(1)) return;
-  fsize = get4Bytes(p);
   p += 4;
-  printf("file system size = %u (0x%X) blocks\n", fsize, fsize);
-  if (checkBatch(1)) return;
-  isize = get4Bytes(p);
   p += 4;
-  printf("inode list size  = %u (0x%X) blocks\n", isize, isize);
-  if (checkBatch(1)) return;
-  freeblks = get4Bytes(p);
   p += 4;
-  printf("free blocks = %u (0x%X)\n", freeblks, freeblks);
-  if (checkBatch(1)) return;
-  freeinos = get4Bytes(p);
   p += 4;
-  printf("free inodes = %u (0x%X)\n", freeinos, freeinos);
-  if (checkBatch(1)) return;
-  ninode = get4Bytes(p);
   p += 4;
-  printf("number of entries in free inode list = %u (0x%X)\n", ninode, ninode);
-  if (checkBatch(1)) return;
-  for (i = 0; i < NICINOD; i++) {
-    ino = get4Bytes(p);
-    p += 4;
-    if (i < ninode) {
-      printf("  free inode[%3d] = %u (0x%X)\n", i, ino, ino);
-      if (checkBatch(1)) return;
-    }
-  }
+
+  // for (i = 0; i < NICINOD; i++) { p += 4; }
+  p = p + (NICINOD * 4);
+
   nfree = get4Bytes(p);
   p += 4;
-  printf("number of entries in free block list = %u (0x%X)\n", nfree, nfree);
   if (checkBatch(1)) return;
   for (i = 0; i < NICFREE; i++) {
     free = get4Bytes(p);
     p += 4;
-    if (i < nfree) {
-      printf("  %s block[%3d] = %u (0x%X)\n",
-             i == 0 ? "link" : "free", i, free, free);
-      if (checkBatch(1)) return;
-    }
+    if (i == 0) {
+      linkblock = free;
+    } else {
+        if (i < nfree) {
+          fprintf(freelist, "%u\n", free);
+        }
+      }
   }
-  tim = get4Bytes(p);
-  p += 4;
-  dat = ctime((time_t *) &tim);
-  dat[strlen(dat) - 1] = '\0';
-  printf("last super block update = %d (%s)\n", tim, dat);
-  if (checkBatch(1)) return;
-  flag = *p++;
-  printf("free list locked flag = %d\n", (int) flag);
-  if (checkBatch(1)) return;
-  flag = *p++;
-  printf("inode list locked flag = %d\n", (int) flag);
-  if (checkBatch(1)) return;
-  flag = *p++;
-  printf("super block modified flag = %d\n", (int) flag);
-  if (checkBatch(1)) return;
-  flag = *p++;
-  printf("fs mounted read-only flag = %d\n", (int) flag);
-  if (checkBatch(1)) return;
 }
 
 
@@ -239,117 +193,117 @@ void inodeBlock(unsigned char *p) {
   EOS32_daddr_t addr;
   int i, j;
 
-  checkBatch(0);
+  //checkBatch(0);
   for (i = 0; i < INOPB; i++) {
-    printf("inode %d:", i);
+    fprintf(inodelist, "inode %d:", i);
     mode = get4Bytes(p);
     p += 4;
     if (mode != 0) {
-      printf("  type/mode = 0x%08X = ", mode);
+      fprintf(inodelist, "  type/mode = 0x%08X = ", mode);
       if ((mode & IFMT) == IFREG) {
-        printf("-");
+        fprintf(inodelist, "-");
       } else
       if ((mode & IFMT) == IFDIR) {
-        printf("d");
+        fprintf(inodelist, "d");
       } else
       if ((mode & IFMT) == IFCHR) {
-        printf("c");
+        fprintf(inodelist, "c");
       } else
       if ((mode & IFMT) == IFBLK) {
-        printf("b");
+        fprintf(inodelist, "b");
       } else {
-        printf("?");
+        fprintf(inodelist, "?");
       }
-      printf("%c", mode & IUREAD  ? 'r' : '-');
-      printf("%c", mode & IUWRITE ? 'w' : '-');
-      printf("%c", mode & IUEXEC  ? 'x' : '-');
-      printf("%c", mode & IGREAD  ? 'r' : '-');
-      printf("%c", mode & IGWRITE ? 'w' : '-');
-      printf("%c", mode & IGEXEC  ? 'x' : '-');
-      printf("%c", mode & IOREAD  ? 'r' : '-');
-      printf("%c", mode & IOWRITE ? 'w' : '-');
-      printf("%c", mode & IOEXEC  ? 'x' : '-');
+      fprintf(inodelist, "%c", mode & IUREAD  ? 'r' : '-');
+      fprintf(inodelist, "%c", mode & IUWRITE ? 'w' : '-');
+      fprintf(inodelist, "%c", mode & IUEXEC  ? 'x' : '-');
+      fprintf(inodelist, "%c", mode & IGREAD  ? 'r' : '-');
+      fprintf(inodelist, "%c", mode & IGWRITE ? 'w' : '-');
+      fprintf(inodelist, "%c", mode & IGEXEC  ? 'x' : '-');
+      fprintf(inodelist, "%c", mode & IOREAD  ? 'r' : '-');
+      fprintf(inodelist, "%c", mode & IOWRITE ? 'w' : '-');
+      fprintf(inodelist, "%c", mode & IOEXEC  ? 'x' : '-');
       if (mode & ISUID) {
-        printf(", set uid");
+        fprintf(inodelist, ", set uid");
       }
       if (mode & ISGID) {
-        printf(", set gid");
+        fprintf(inodelist, ", set gid");
       }
       if (mode & ISVTX) {
-        printf(", save text");
+        fprintf(inodelist, ", save text");
       }
     } else {
-      printf("  <free>");
+      fprintf(inodelist, "  <free>");
     }
-    printf("\n");
-    if (checkBatch(1)) return;
+    fprintf(inodelist, "\n");
+    // if (checkBatch(1)) return;
     nlink = get4Bytes(p);
     p += 4;
     if (mode != 0) {
-      printf("  nlnk = %u (0x%08X)\n", nlink, nlink);
-      if (checkBatch(1)) return;
+      fprintf(inodelist, "  nlnk = %u (0x%08X)\n", nlink, nlink);
+      //if (checkBatch(1)) return;
     }
     uid = get4Bytes(p);
     p += 4;
     if (mode != 0) {
-      printf("  uid  = %u (0x%08X)\n", uid, uid);
-      if (checkBatch(1)) return;
+      fprintf(inodelist, "  uid  = %u (0x%08X)\n", uid, uid);
+      //if (checkBatch(1)) return;
     }
     gid = get4Bytes(p);
     p += 4;
     if (mode != 0) {
-      printf("  gid  = %u (0x%08X)\n", gid, gid);
-      if (checkBatch(1)) return;
+      fprintf(inodelist, "  gid  = %u (0x%08X)\n", gid, gid);
+      //if (checkBatch(1)) return;
     }
     tim = get4Bytes(p);
     p += 4;
     dat = ctime((time_t *) &tim);
     dat[strlen(dat) - 1] = '\0';
     if (mode != 0) {
-      printf("  time inode created = %d (%s)\n", tim, dat);
-      if (checkBatch(1)) return;
+      fprintf(inodelist, "  time inode created = %d (%s)\n", tim, dat);
+      //if (checkBatch(1)) return;
     }
     tim = get4Bytes(p);
     p += 4;
     dat = ctime((time_t *) &tim);
     dat[strlen(dat) - 1] = '\0';
     if (mode != 0) {
-      printf("  time last modified = %d (%s)\n", tim, dat);
-      if (checkBatch(1)) return;
+      fprintf(inodelist, "  time last modified = %d (%s)\n", tim, dat);
+      //if (checkBatch(1)) return;
     }
     tim = get4Bytes(p);
     p += 4;
     dat = ctime((time_t *) &tim);
     dat[strlen(dat) - 1] = '\0';
     if (mode != 0) {
-      printf("  time last accessed = %d (%s)\n", tim, dat);
-      if (checkBatch(1)) return;
+      fprintf(inodelist, "  time last accessed = %d (%s)\n", tim, dat);
+      //if (checkBatch(1)) return;
     }
     size = get4Bytes(p);
     p += 4;
     if (mode != 0) {
-      printf("  size = %u (0x%X)\n", size, size);
-      if (checkBatch(1)) return;
+      fprintf(inodelist, "  size = %u (0x%X)\n", size, size);
+      //if (checkBatch(1)) return;
     }
     for (j = 0; j < 6; j++) {
       addr = get4Bytes(p);
       p += 4;
       if (mode != 0) {
-        printf("  direct block[%1d] = %u (0x%X)\n", j, addr, addr);
-        if (checkBatch(1)) return;
+        fprintf(inodelist, "  direct block[%1d] = %u (0x%X)\n", j, addr, addr);
+        //if (checkBatch(1)) return;
       }
     }
     addr = get4Bytes(p);
     p += 4;
     if (mode != 0) {
-      printf("  single indirect = %u (0x%X)\n", addr, addr);
-      if (checkBatch(1)) return;
+      fprintf(inodelist, "  single indirect = %u (0x%X)\n", addr, addr);
+      //if (checkBatch(1)) return;
     }
     addr = get4Bytes(p);
     p += 4;
     if (mode != 0) {
-      printf("  double indirect = %u (0x%X)\n", addr, addr);
-      if (checkBatch(1)) return;
+      fprintf(inodelist, "  double indirect = %u (0x%X)\n", addr, addr);
+      //if (checkBatch(1)) return;
     }
   }
 }
@@ -395,19 +349,19 @@ void freeBlock(unsigned char *p) {
   EOS32_daddr_t addr;
   int i;
 
-  checkBatch(0);
   nfree = get4Bytes(p);
   p += 4;
-  printf("nfree = %u (0x%X)\n", nfree, nfree);
-  if (checkBatch(1)) return;
+  // fprintf(freelist, "nfree = %u (0x%X)\n", nfree, nfree);
   for (i = 0; i < NICFREE; i++) {
     addr = get4Bytes(p);
     p += 4;
-    if (i < nfree) {
-      printf("  %s block[%3d] = %u (0x%X)\n",
-             i == 0 ? "link" : "free", i, addr, addr);
-      if (checkBatch(1)) return;
-    }
+    if (i == 0) {
+      linkblock = addr;
+    } else {
+        if (i < nfree) {
+          fprintf(freelist, "%u\n", addr);
+        }
+      }
   }
 }
 
@@ -511,10 +465,11 @@ int main(int argc, char *argv[]) {
   EOS32_daddr_t numBlocks;
   EOS32_daddr_t currBlock;
   unsigned char blockBuffer[BLOCK_SIZE];
-  char line[LINE_SIZE];
+  //char line[LINE_SIZE];
   int quit;
-  char *p;
-  unsigned int n;
+  int i;
+  //char *p;
+  //unsigned int n;
 
   if (argc != 3) {
     printf("Usage: %s <disk> <partition>\n", argv[0]);
@@ -562,11 +517,39 @@ int main(int argc, char *argv[]) {
   if (numBlocks < 2) {
     error("file system has less than 2 blocks");
   }
+
+  // start
   currBlock = 1;
   readBlock(disk, currBlock, blockBuffer);
   help();
   quit = 0;
-  while (!quit) {
+
+  // create freelist.txt
+  openFreelistTXT();
+  superBlock(blockBuffer);
+
+  while (linkblock != 0) {
+    currBlock = linkblock;
+    readBlock(disk, currBlock, blockBuffer);
+    freeBlock(blockBuffer);
+  }
+
+  // end of file (EOF == -1)
+  fprintf(freelist, "-1");
+
+
+  //create inodelist.txt
+  openInodelistTXT();
+
+  for (i=2; i < 26; i++) {
+    currBlock = i;
+    readBlock(disk, currBlock, blockBuffer);
+    inodeBlock(blockBuffer);
+  }
+
+
+
+  /*while (!quit) {
     printf("shfs [block %u (0x%X)] > ", currBlock, currBlock);
     fflush(stdout);
     if (fgets(line, LINE_SIZE, stdin) == NULL) {
@@ -652,7 +635,25 @@ int main(int argc, char *argv[]) {
         printf("Unknown command, type 'h' for help!\n");
         break;
     }
-  }
+  }*/
+  fclose(freelist);
   fclose(disk);
   return 0;
+}
+
+void openFreelistTXT() {
+
+  freelist = fopen("freelist.txt", "w");
+
+  if(freelist == NULL) {
+  	printf("Datei konnte nicht geoeffnet werden.\n");
+  }
+}
+
+void openInodelistTXT() {
+  inodelist = fopen("inodelist.txt", "w");
+
+  if(inodelist == NULL) {
+  	printf("Datei konnte nicht geoeffnet werden.\n");
+  }
 }

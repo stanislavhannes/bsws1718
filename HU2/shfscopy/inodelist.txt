@@ -1,0 +1,4446 @@
+inode 0:  type/mode = 0x00004000 = ----------
+  nlnk = 0 (0x00000000)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 0 (0x0)
+  direct block[0] = 0 (0x0)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 1:  type/mode = 0x000031ED = drwxr-xr-x
+  nlnk = 11 (0x0000000B)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430947 (Thu Nov 23 10:55:47 2017)
+  size = 768 (0x300)
+  direct block[0] = 26 (0x1A)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 2:  type/mode = 0x000041A4 = -rw-r--r--
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430884 (Thu Nov 23 10:54:44 2017)
+  size = 95 (0x5F)
+  direct block[0] = 27 (0x1B)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 3:  type/mode = 0x000031ED = drwxr-xr-x
+  nlnk = 2 (0x00000002)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511431049 (Thu Nov 23 10:57:29 2017)
+  size = 3328 (0xD00)
+  direct block[0] = 28 (0x1C)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 4:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 37936 (0x9430)
+  direct block[0] = 29 (0x1D)
+  direct block[1] = 30 (0x1E)
+  direct block[2] = 31 (0x1F)
+  direct block[3] = 32 (0x20)
+  direct block[4] = 33 (0x21)
+  direct block[5] = 34 (0x22)
+  single indirect = 35 (0x23)
+  double indirect = 0 (0x0)
+inode 5:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 53540 (0xD124)
+  direct block[0] = 40 (0x28)
+  direct block[1] = 41 (0x29)
+  direct block[2] = 42 (0x2A)
+  direct block[3] = 43 (0x2B)
+  direct block[4] = 44 (0x2C)
+  direct block[5] = 45 (0x2D)
+  single indirect = 46 (0x2E)
+  double indirect = 0 (0x0)
+inode 6:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430950 (Thu Nov 23 10:55:50 2017)
+  size = 29944 (0x74F8)
+  direct block[0] = 55 (0x37)
+  direct block[1] = 56 (0x38)
+  direct block[2] = 57 (0x39)
+  direct block[3] = 58 (0x3A)
+  direct block[4] = 59 (0x3B)
+  direct block[5] = 60 (0x3C)
+  single indirect = 61 (0x3D)
+  double indirect = 0 (0x0)
+inode 7:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 29636 (0x73C4)
+  direct block[0] = 64 (0x40)
+  direct block[1] = 65 (0x41)
+  direct block[2] = 66 (0x42)
+  direct block[3] = 67 (0x43)
+  direct block[4] = 68 (0x44)
+  direct block[5] = 69 (0x45)
+  single indirect = 70 (0x46)
+  double indirect = 0 (0x0)
+inode 8:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 30832 (0x7870)
+  direct block[0] = 73 (0x49)
+  direct block[1] = 74 (0x4A)
+  direct block[2] = 75 (0x4B)
+  direct block[3] = 76 (0x4C)
+  direct block[4] = 77 (0x4D)
+  direct block[5] = 78 (0x4E)
+  single indirect = 79 (0x4F)
+  double indirect = 0 (0x0)
+inode 9:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 29636 (0x73C4)
+  direct block[0] = 82 (0x52)
+  direct block[1] = 83 (0x53)
+  direct block[2] = 84 (0x54)
+  direct block[3] = 85 (0x55)
+  direct block[4] = 86 (0x56)
+  direct block[5] = 87 (0x57)
+  single indirect = 88 (0x58)
+  double indirect = 0 (0x0)
+inode 10:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 30044 (0x755C)
+  direct block[0] = 91 (0x5B)
+  direct block[1] = 92 (0x5C)
+  direct block[2] = 93 (0x5D)
+  direct block[3] = 94 (0x5E)
+  direct block[4] = 95 (0x5F)
+  direct block[5] = 96 (0x60)
+  single indirect = 97 (0x61)
+  double indirect = 0 (0x0)
+inode 11:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 30900 (0x78B4)
+  direct block[0] = 100 (0x64)
+  direct block[1] = 101 (0x65)
+  direct block[2] = 102 (0x66)
+  direct block[3] = 103 (0x67)
+  direct block[4] = 104 (0x68)
+  direct block[5] = 105 (0x69)
+  single indirect = 106 (0x6A)
+  double indirect = 0 (0x0)
+inode 12:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 30284 (0x764C)
+  direct block[0] = 109 (0x6D)
+  direct block[1] = 110 (0x6E)
+  direct block[2] = 111 (0x6F)
+  direct block[3] = 112 (0x70)
+  direct block[4] = 113 (0x71)
+  direct block[5] = 114 (0x72)
+  single indirect = 115 (0x73)
+  double indirect = 0 (0x0)
+inode 13:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 59424 (0xE820)
+  direct block[0] = 118 (0x76)
+  direct block[1] = 119 (0x77)
+  direct block[2] = 120 (0x78)
+  direct block[3] = 121 (0x79)
+  direct block[4] = 122 (0x7A)
+  direct block[5] = 123 (0x7B)
+  single indirect = 124 (0x7C)
+  double indirect = 0 (0x0)
+inode 14:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430887 (Thu Nov 23 10:54:47 2017)
+  size = 31404 (0x7AAC)
+  direct block[0] = 134 (0x86)
+  direct block[1] = 135 (0x87)
+  direct block[2] = 136 (0x88)
+  direct block[3] = 137 (0x89)
+  direct block[4] = 138 (0x8A)
+  direct block[5] = 139 (0x8B)
+  single indirect = 140 (0x8C)
+  double indirect = 0 (0x0)
+inode 15:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 31728 (0x7BF0)
+  direct block[0] = 143 (0x8F)
+  direct block[1] = 144 (0x90)
+  direct block[2] = 145 (0x91)
+  direct block[3] = 146 (0x92)
+  direct block[4] = 147 (0x93)
+  direct block[5] = 148 (0x94)
+  single indirect = 149 (0x95)
+  double indirect = 0 (0x0)
+inode 16:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 30140 (0x75BC)
+  direct block[0] = 152 (0x98)
+  direct block[1] = 153 (0x99)
+  direct block[2] = 154 (0x9A)
+  direct block[3] = 155 (0x9B)
+  direct block[4] = 156 (0x9C)
+  direct block[5] = 157 (0x9D)
+  single indirect = 158 (0x9E)
+  double indirect = 0 (0x0)
+inode 17:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 34304 (0x8600)
+  direct block[0] = 161 (0xA1)
+  direct block[1] = 162 (0xA2)
+  direct block[2] = 163 (0xA3)
+  direct block[3] = 164 (0xA4)
+  direct block[4] = 165 (0xA5)
+  direct block[5] = 166 (0xA6)
+  single indirect = 167 (0xA7)
+  double indirect = 0 (0x0)
+inode 18:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 31308 (0x7A4C)
+  direct block[0] = 171 (0xAB)
+  direct block[1] = 172 (0xAC)
+  direct block[2] = 173 (0xAD)
+  direct block[3] = 174 (0xAE)
+  direct block[4] = 175 (0xAF)
+  direct block[5] = 176 (0xB0)
+  single indirect = 177 (0xB1)
+  double indirect = 0 (0x0)
+inode 19:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 29524 (0x7354)
+  direct block[0] = 180 (0xB4)
+  direct block[1] = 181 (0xB5)
+  direct block[2] = 182 (0xB6)
+  direct block[3] = 183 (0xB7)
+  direct block[4] = 184 (0xB8)
+  direct block[5] = 185 (0xB9)
+  single indirect = 186 (0xBA)
+  double indirect = 0 (0x0)
+inode 20:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 48940 (0xBF2C)
+  direct block[0] = 189 (0xBD)
+  direct block[1] = 190 (0xBE)
+  direct block[2] = 191 (0xBF)
+  direct block[3] = 192 (0xC0)
+  direct block[4] = 193 (0xC1)
+  direct block[5] = 194 (0xC2)
+  single indirect = 195 (0xC3)
+  double indirect = 0 (0x0)
+inode 21:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 33936 (0x8490)
+  direct block[0] = 202 (0xCA)
+  direct block[1] = 203 (0xCB)
+  direct block[2] = 204 (0xCC)
+  direct block[3] = 205 (0xCD)
+  direct block[4] = 206 (0xCE)
+  direct block[5] = 207 (0xCF)
+  single indirect = 208 (0xD0)
+  double indirect = 0 (0x0)
+inode 22:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 34808 (0x87F8)
+  direct block[0] = 212 (0xD4)
+  direct block[1] = 213 (0xD5)
+  direct block[2] = 214 (0xD6)
+  direct block[3] = 215 (0xD7)
+  direct block[4] = 216 (0xD8)
+  direct block[5] = 217 (0xD9)
+  single indirect = 218 (0xDA)
+  double indirect = 0 (0x0)
+inode 23:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 92404 (0x168F4)
+  direct block[0] = 222 (0xDE)
+  direct block[1] = 223 (0xDF)
+  direct block[2] = 224 (0xE0)
+  direct block[3] = 225 (0xE1)
+  direct block[4] = 226 (0xE2)
+  direct block[5] = 227 (0xE3)
+  single indirect = 228 (0xE4)
+  double indirect = 0 (0x0)
+inode 24:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 29500 (0x733C)
+  direct block[0] = 246 (0xF6)
+  direct block[1] = 247 (0xF7)
+  direct block[2] = 248 (0xF8)
+  direct block[3] = 249 (0xF9)
+  direct block[4] = 250 (0xFA)
+  direct block[5] = 251 (0xFB)
+  single indirect = 252 (0xFC)
+  double indirect = 0 (0x0)
+inode 25:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 49116 (0xBFDC)
+  direct block[0] = 255 (0xFF)
+  direct block[1] = 256 (0x100)
+  direct block[2] = 257 (0x101)
+  direct block[3] = 258 (0x102)
+  direct block[4] = 259 (0x103)
+  direct block[5] = 260 (0x104)
+  single indirect = 261 (0x105)
+  double indirect = 0 (0x0)
+inode 26:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 46092 (0xB40C)
+  direct block[0] = 268 (0x10C)
+  direct block[1] = 269 (0x10D)
+  direct block[2] = 270 (0x10E)
+  direct block[3] = 271 (0x10F)
+  direct block[4] = 272 (0x110)
+  direct block[5] = 273 (0x111)
+  single indirect = 274 (0x112)
+  double indirect = 0 (0x0)
+inode 27:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 40488 (0x9E28)
+  direct block[0] = 281 (0x119)
+  direct block[1] = 282 (0x11A)
+  direct block[2] = 283 (0x11B)
+  direct block[3] = 284 (0x11C)
+  direct block[4] = 285 (0x11D)
+  direct block[5] = 286 (0x11E)
+  single indirect = 287 (0x11F)
+  double indirect = 0 (0x0)
+inode 28:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 29696 (0x7400)
+  direct block[0] = 292 (0x124)
+  direct block[1] = 293 (0x125)
+  direct block[2] = 294 (0x126)
+  direct block[3] = 295 (0x127)
+  direct block[4] = 296 (0x128)
+  direct block[5] = 297 (0x129)
+  single indirect = 298 (0x12A)
+  double indirect = 0 (0x0)
+inode 29:  type/mode = 0x000049ED = -rwxr-xr-x, set uid
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430913 (Thu Nov 23 10:55:13 2017)
+  size = 31404 (0x7AAC)
+  direct block[0] = 301 (0x12D)
+  direct block[1] = 302 (0x12E)
+  direct block[2] = 303 (0x12F)
+  direct block[3] = 304 (0x130)
+  direct block[4] = 305 (0x131)
+  direct block[5] = 306 (0x132)
+  single indirect = 307 (0x133)
+  double indirect = 0 (0x0)
+inode 30:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430917 (Thu Nov 23 10:55:17 2017)
+  size = 34292 (0x85F4)
+  direct block[0] = 310 (0x136)
+  direct block[1] = 311 (0x137)
+  direct block[2] = 312 (0x138)
+  direct block[3] = 313 (0x139)
+  direct block[4] = 314 (0x13A)
+  direct block[5] = 315 (0x13B)
+  single indirect = 316 (0x13C)
+  double indirect = 0 (0x0)
+inode 31:  type/mode = 0x000049ED = -rwxr-xr-x, set uid
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 30080 (0x7580)
+  direct block[0] = 320 (0x140)
+  direct block[1] = 321 (0x141)
+  direct block[2] = 322 (0x142)
+  direct block[3] = 323 (0x143)
+  direct block[4] = 324 (0x144)
+  direct block[5] = 325 (0x145)
+  single indirect = 326 (0x146)
+  double indirect = 0 (0x0)
+inode 32:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 38400 (0x9600)
+  direct block[0] = 329 (0x149)
+  direct block[1] = 330 (0x14A)
+  direct block[2] = 331 (0x14B)
+  direct block[3] = 332 (0x14C)
+  direct block[4] = 333 (0x14D)
+  direct block[5] = 334 (0x14E)
+  single indirect = 335 (0x14F)
+  double indirect = 0 (0x0)
+inode 33:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 29504 (0x7340)
+  direct block[0] = 340 (0x154)
+  direct block[1] = 341 (0x155)
+  direct block[2] = 342 (0x156)
+  direct block[3] = 343 (0x157)
+  direct block[4] = 344 (0x158)
+  direct block[5] = 345 (0x159)
+  single indirect = 346 (0x15A)
+  double indirect = 0 (0x0)
+inode 34:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 33184 (0x81A0)
+  direct block[0] = 349 (0x15D)
+  direct block[1] = 350 (0x15E)
+  direct block[2] = 351 (0x15F)
+  direct block[3] = 352 (0x160)
+  direct block[4] = 353 (0x161)
+  direct block[5] = 354 (0x162)
+  single indirect = 355 (0x163)
+  double indirect = 0 (0x0)
+inode 35:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430886 (Thu Nov 23 10:54:46 2017)
+  size = 29924 (0x74E4)
+  direct block[0] = 359 (0x167)
+  direct block[1] = 360 (0x168)
+  direct block[2] = 361 (0x169)
+  direct block[3] = 362 (0x16A)
+  direct block[4] = 363 (0x16B)
+  direct block[5] = 364 (0x16C)
+  single indirect = 365 (0x16D)
+  double indirect = 0 (0x0)
+inode 36:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 32516 (0x7F04)
+  direct block[0] = 368 (0x170)
+  direct block[1] = 369 (0x171)
+  direct block[2] = 370 (0x172)
+  direct block[3] = 371 (0x173)
+  direct block[4] = 372 (0x174)
+  direct block[5] = 373 (0x175)
+  single indirect = 374 (0x176)
+  double indirect = 0 (0x0)
+inode 37:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 32872 (0x8068)
+  direct block[0] = 377 (0x179)
+  direct block[1] = 378 (0x17A)
+  direct block[2] = 379 (0x17B)
+  direct block[3] = 380 (0x17C)
+  direct block[4] = 381 (0x17D)
+  direct block[5] = 382 (0x17E)
+  single indirect = 383 (0x17F)
+  double indirect = 0 (0x0)
+inode 38:  type/mode = 0x000049ED = -rwxr-xr-x, set uid
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 31240 (0x7A08)
+  direct block[0] = 387 (0x183)
+  direct block[1] = 388 (0x184)
+  direct block[2] = 389 (0x185)
+  direct block[3] = 390 (0x186)
+  direct block[4] = 391 (0x187)
+  direct block[5] = 392 (0x188)
+  single indirect = 393 (0x189)
+  double indirect = 0 (0x0)
+inode 39:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 34468 (0x86A4)
+  direct block[0] = 396 (0x18C)
+  direct block[1] = 397 (0x18D)
+  direct block[2] = 398 (0x18E)
+  direct block[3] = 399 (0x18F)
+  direct block[4] = 400 (0x190)
+  direct block[5] = 401 (0x191)
+  single indirect = 402 (0x192)
+  double indirect = 0 (0x0)
+inode 40:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 30320 (0x7670)
+  direct block[0] = 406 (0x196)
+  direct block[1] = 407 (0x197)
+  direct block[2] = 408 (0x198)
+  direct block[3] = 409 (0x199)
+  direct block[4] = 410 (0x19A)
+  direct block[5] = 411 (0x19B)
+  single indirect = 412 (0x19C)
+  double indirect = 0 (0x0)
+inode 41:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 642676 (0x9CE74)
+  direct block[0] = 415 (0x19F)
+  direct block[1] = 416 (0x1A0)
+  direct block[2] = 417 (0x1A1)
+  direct block[3] = 418 (0x1A2)
+  direct block[4] = 419 (0x1A3)
+  direct block[5] = 420 (0x1A4)
+  single indirect = 421 (0x1A5)
+  double indirect = 0 (0x0)
+inode 42:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430886 (Thu Nov 23 10:54:46 2017)
+  size = 31164 (0x79BC)
+  direct block[0] = 573 (0x23D)
+  direct block[1] = 574 (0x23E)
+  direct block[2] = 575 (0x23F)
+  direct block[3] = 576 (0x240)
+  direct block[4] = 577 (0x241)
+  direct block[5] = 578 (0x242)
+  single indirect = 579 (0x243)
+  double indirect = 0 (0x0)
+inode 43:  type/mode = 0x000049ED = -rwxr-xr-x, set uid
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 30748 (0x781C)
+  direct block[0] = 582 (0x246)
+  direct block[1] = 583 (0x247)
+  direct block[2] = 584 (0x248)
+  direct block[3] = 585 (0x249)
+  direct block[4] = 586 (0x24A)
+  direct block[5] = 587 (0x24B)
+  single indirect = 588 (0x24C)
+  double indirect = 0 (0x0)
+inode 44:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430917 (Thu Nov 23 10:55:17 2017)
+  size = 61728 (0xF120)
+  direct block[0] = 591 (0x24F)
+  direct block[1] = 592 (0x250)
+  direct block[2] = 593 (0x251)
+  direct block[3] = 594 (0x252)
+  direct block[4] = 595 (0x253)
+  direct block[5] = 596 (0x254)
+  single indirect = 597 (0x255)
+  double indirect = 0 (0x0)
+inode 45:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511431096 (Thu Nov 23 10:58:16 2017)
+  size = 36828 (0x8FDC)
+  direct block[0] = 608 (0x260)
+  direct block[1] = 609 (0x261)
+  direct block[2] = 610 (0x262)
+  direct block[3] = 611 (0x263)
+  direct block[4] = 612 (0x264)
+  direct block[5] = 613 (0x265)
+  single indirect = 614 (0x266)
+  double indirect = 0 (0x0)
+inode 46:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430771 (Thu Nov 23 10:52:51 2017)
+  size = 30336 (0x7680)
+  direct block[0] = 618 (0x26A)
+  direct block[1] = 619 (0x26B)
+  direct block[2] = 620 (0x26C)
+  direct block[3] = 621 (0x26D)
+  direct block[4] = 622 (0x26E)
+  direct block[5] = 623 (0x26F)
+  single indirect = 624 (0x270)
+  double indirect = 0 (0x0)
+inode 47:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 32472 (0x7ED8)
+  direct block[0] = 627 (0x273)
+  direct block[1] = 628 (0x274)
+  direct block[2] = 629 (0x275)
+  direct block[3] = 630 (0x276)
+  direct block[4] = 631 (0x277)
+  direct block[5] = 632 (0x278)
+  single indirect = 633 (0x279)
+  double indirect = 0 (0x0)
+inode 48:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 29136 (0x71D0)
+  direct block[0] = 636 (0x27C)
+  direct block[1] = 637 (0x27D)
+  direct block[2] = 638 (0x27E)
+  direct block[3] = 639 (0x27F)
+  direct block[4] = 640 (0x280)
+  direct block[5] = 641 (0x281)
+  single indirect = 642 (0x282)
+  double indirect = 0 (0x0)
+inode 49:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 29632 (0x73C0)
+  direct block[0] = 645 (0x285)
+  direct block[1] = 646 (0x286)
+  direct block[2] = 647 (0x287)
+  direct block[3] = 648 (0x288)
+  direct block[4] = 649 (0x289)
+  direct block[5] = 650 (0x28A)
+  single indirect = 651 (0x28B)
+  double indirect = 0 (0x0)
+inode 50:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 29724 (0x741C)
+  direct block[0] = 654 (0x28E)
+  direct block[1] = 655 (0x28F)
+  direct block[2] = 656 (0x290)
+  direct block[3] = 657 (0x291)
+  direct block[4] = 658 (0x292)
+  direct block[5] = 659 (0x293)
+  single indirect = 660 (0x294)
+  double indirect = 0 (0x0)
+inode 51:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430887 (Thu Nov 23 10:54:47 2017)
+  size = 29324 (0x728C)
+  direct block[0] = 663 (0x297)
+  direct block[1] = 664 (0x298)
+  direct block[2] = 665 (0x299)
+  direct block[3] = 666 (0x29A)
+  direct block[4] = 667 (0x29B)
+  direct block[5] = 668 (0x29C)
+  single indirect = 669 (0x29D)
+  double indirect = 0 (0x0)
+inode 52:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 30036 (0x7554)
+  direct block[0] = 672 (0x2A0)
+  direct block[1] = 673 (0x2A1)
+  direct block[2] = 674 (0x2A2)
+  direct block[3] = 675 (0x2A3)
+  direct block[4] = 676 (0x2A4)
+  direct block[5] = 677 (0x2A5)
+  single indirect = 678 (0x2A6)
+  double indirect = 0 (0x0)
+inode 53:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 29220 (0x7224)
+  direct block[0] = 681 (0x2A9)
+  direct block[1] = 682 (0x2AA)
+  direct block[2] = 683 (0x2AB)
+  direct block[3] = 684 (0x2AC)
+  direct block[4] = 685 (0x2AD)
+  direct block[5] = 686 (0x2AE)
+  single indirect = 687 (0x2AF)
+  double indirect = 0 (0x0)
+inode 54:  type/mode = 0x000031ED = drwxr-xr-x
+  nlnk = 2 (0x00000002)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511431150 (Thu Nov 23 10:59:10 2017)
+  size = 256 (0x100)
+  direct block[0] = 690 (0x2B2)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 55:  type/mode = 0x000041A4 = -rw-r--r--
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 89760 (0x15EA0)
+  direct block[0] = 691 (0x2B3)
+  direct block[1] = 692 (0x2B4)
+  direct block[2] = 693 (0x2B5)
+  direct block[3] = 694 (0x2B6)
+  direct block[4] = 695 (0x2B7)
+  direct block[5] = 696 (0x2B8)
+  single indirect = 697 (0x2B9)
+  double indirect = 0 (0x0)
+inode 56:  type/mode = 0x000041A4 = -rw-r--r--
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 23049 (0x5A09)
+  direct block[0] = 714 (0x2CA)
+  direct block[1] = 715 (0x2CB)
+  direct block[2] = 716 (0x2CC)
+  direct block[3] = 717 (0x2CD)
+  direct block[4] = 718 (0x2CE)
+  direct block[5] = 719 (0x2CF)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 57:  type/mode = 0x000031ED = drwxr-xr-x
+  nlnk = 2 (0x00000002)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430913 (Thu Nov 23 10:55:13 2017)
+  size = 1152 (0x480)
+  direct block[0] = 720 (0x2D0)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 58:  type/mode = 0x00002192 = crw--w--w-
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430977 (Thu Nov 23 10:56:17 2017)
+  time last modified = 1511430977 (Thu Nov 23 10:56:17 2017)
+  time last accessed = 1511430977 (Thu Nov 23 10:56:17 2017)
+  size = 0 (0x0)
+  direct block[0] = 0 (0x0)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 59:  type/mode = 0x00002180 = crw-------
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 0 (0x0)
+  direct block[0] = 524288 (0x80000)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 60:  type/mode = 0x00002180 = crw-------
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 0 (0x0)
+  direct block[0] = 524289 (0x80001)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 61:  type/mode = 0x000021B6 = crw-rw-rw-
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430885 (Thu Nov 23 10:54:45 2017)
+  size = 0 (0x0)
+  direct block[0] = 524290 (0x80002)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 62:  type/mode = 0x000011A4 = brw-r--r--
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 0 (0x0)
+  direct block[0] = 0 (0x0)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 63:  type/mode = 0x000011A4 = brw-r--r--
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 0 (0x0)
+  direct block[0] = 1 (0x1)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 0:  type/mode = 0x000011A4 = brw-r--r--
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 0 (0x0)
+  direct block[0] = 2 (0x2)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 1:  type/mode = 0x000011A4 = brw-r--r--
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 0 (0x0)
+  direct block[0] = 3 (0x3)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 2:  type/mode = 0x000011A4 = brw-r--r--
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 0 (0x0)
+  direct block[0] = 16 (0x10)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 3:  type/mode = 0x000011A4 = brw-r--r--
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 0 (0x0)
+  direct block[0] = 65536 (0x10000)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 4:  type/mode = 0x000011A4 = brw-r--r--
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 0 (0x0)
+  direct block[0] = 65537 (0x10001)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 5:  type/mode = 0x000011A4 = brw-r--r--
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 0 (0x0)
+  direct block[0] = 65538 (0x10002)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 6:  type/mode = 0x000011A4 = brw-r--r--
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 0 (0x0)
+  direct block[0] = 65539 (0x10003)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 7:  type/mode = 0x000011A4 = brw-r--r--
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 0 (0x0)
+  direct block[0] = 65552 (0x10010)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 8:  type/mode = 0x000011A4 = brw-r--r--
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 0 (0x0)
+  direct block[0] = 131072 (0x20000)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 9:  type/mode = 0x000011A4 = brw-r--r--
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 0 (0x0)
+  direct block[0] = 1 (0x1)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 10:  type/mode = 0x000031ED = drwxr-xr-x
+  nlnk = 2 (0x00000002)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430886 (Thu Nov 23 10:54:46 2017)
+  time last modified = 1511430886 (Thu Nov 23 10:54:46 2017)
+  time last accessed = 1511431226 (Thu Nov 23 11:00:26 2017)
+  size = 704 (0x2C0)
+  direct block[0] = 721 (0x2D1)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 11:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430887 (Thu Nov 23 10:54:47 2017)
+  size = 31816 (0x7C48)
+  direct block[0] = 722 (0x2D2)
+  direct block[1] = 723 (0x2D3)
+  direct block[2] = 724 (0x2D4)
+  direct block[3] = 725 (0x2D5)
+  direct block[4] = 726 (0x2D6)
+  direct block[5] = 727 (0x2D7)
+  single indirect = 728 (0x2D8)
+  double indirect = 0 (0x0)
+inode 12:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430891 (Thu Nov 23 10:54:51 2017)
+  size = 30908 (0x78BC)
+  direct block[0] = 731 (0x2DB)
+  direct block[1] = 732 (0x2DC)
+  direct block[2] = 733 (0x2DD)
+  direct block[3] = 734 (0x2DE)
+  direct block[4] = 735 (0x2DF)
+  direct block[5] = 736 (0x2E0)
+  single indirect = 737 (0x2E1)
+  double indirect = 0 (0x0)
+inode 13:  type/mode = 0x000041A4 = -rw-r--r--
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 31 (0x1F)
+  direct block[0] = 740 (0x2E4)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 14:  type/mode = 0x000041A4 = -rw-r--r--
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430910 (Thu Nov 23 10:55:10 2017)
+  size = 88 (0x58)
+  direct block[0] = 741 (0x2E5)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 15:  type/mode = 0x000041A4 = -rw-r--r--
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430887 (Thu Nov 23 10:54:47 2017)
+  size = 254 (0xFE)
+  direct block[0] = 742 (0x2E6)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 16:  type/mode = 0x000041A4 = -rw-r--r--
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430913 (Thu Nov 23 10:55:13 2017)
+  size = 10 (0xA)
+  direct block[0] = 743 (0x2E7)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 17:  type/mode = 0x000041A4 = -rw-r--r--
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430913 (Thu Nov 23 10:55:13 2017)
+  size = 21 (0x15)
+  direct block[0] = 744 (0x2E8)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 18:  type/mode = 0x000031ED = drwxr-xr-x
+  nlnk = 2 (0x00000002)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 128 (0x80)
+  direct block[0] = 745 (0x2E9)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 19:  type/mode = 0x000031ED = drwxr-xr-x
+  nlnk = 2 (0x00000002)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 128 (0x80)
+  direct block[0] = 746 (0x2EA)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 20:  type/mode = 0x000031FF = drwxrwxrwx
+  nlnk = 2 (0x00000002)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430886 (Thu Nov 23 10:54:46 2017)
+  size = 128 (0x80)
+  direct block[0] = 747 (0x2EB)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 21:  type/mode = 0x000031ED = drwxr-xr-x
+  nlnk = 6 (0x00000006)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 384 (0x180)
+  direct block[0] = 748 (0x2EC)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 22:  type/mode = 0x000031ED = drwxr-xr-x
+  nlnk = 2 (0x00000002)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 1216 (0x4C0)
+  direct block[0] = 749 (0x2ED)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 23:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 29400 (0x72D8)
+  direct block[0] = 750 (0x2EE)
+  direct block[1] = 751 (0x2EF)
+  direct block[2] = 752 (0x2F0)
+  direct block[3] = 753 (0x2F1)
+  direct block[4] = 754 (0x2F2)
+  direct block[5] = 755 (0x2F3)
+  single indirect = 756 (0x2F4)
+  double indirect = 0 (0x0)
+inode 24:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 29784 (0x7458)
+  direct block[0] = 759 (0x2F7)
+  direct block[1] = 760 (0x2F8)
+  direct block[2] = 761 (0x2F9)
+  direct block[3] = 762 (0x2FA)
+  direct block[4] = 763 (0x2FB)
+  direct block[5] = 764 (0x2FC)
+  single indirect = 765 (0x2FD)
+  double indirect = 0 (0x0)
+inode 25:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 33088 (0x8140)
+  direct block[0] = 768 (0x300)
+  direct block[1] = 769 (0x301)
+  direct block[2] = 770 (0x302)
+  direct block[3] = 771 (0x303)
+  direct block[4] = 772 (0x304)
+  direct block[5] = 773 (0x305)
+  single indirect = 774 (0x306)
+  double indirect = 0 (0x0)
+inode 26:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 29220 (0x7224)
+  direct block[0] = 778 (0x30A)
+  direct block[1] = 779 (0x30B)
+  direct block[2] = 780 (0x30C)
+  direct block[3] = 781 (0x30D)
+  direct block[4] = 782 (0x30E)
+  direct block[5] = 783 (0x30F)
+  single indirect = 784 (0x310)
+  double indirect = 0 (0x0)
+inode 27:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 30032 (0x7550)
+  direct block[0] = 787 (0x313)
+  direct block[1] = 788 (0x314)
+  direct block[2] = 789 (0x315)
+  direct block[3] = 790 (0x316)
+  direct block[4] = 791 (0x317)
+  direct block[5] = 792 (0x318)
+  single indirect = 793 (0x319)
+  double indirect = 0 (0x0)
+inode 28:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 29164 (0x71EC)
+  direct block[0] = 796 (0x31C)
+  direct block[1] = 797 (0x31D)
+  direct block[2] = 798 (0x31E)
+  direct block[3] = 799 (0x31F)
+  direct block[4] = 800 (0x320)
+  direct block[5] = 801 (0x321)
+  single indirect = 802 (0x322)
+  double indirect = 0 (0x0)
+inode 29:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 29192 (0x7208)
+  direct block[0] = 805 (0x325)
+  direct block[1] = 806 (0x326)
+  direct block[2] = 807 (0x327)
+  direct block[3] = 808 (0x328)
+  direct block[4] = 809 (0x329)
+  direct block[5] = 810 (0x32A)
+  single indirect = 811 (0x32B)
+  double indirect = 0 (0x0)
+inode 30:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 29532 (0x735C)
+  direct block[0] = 814 (0x32E)
+  direct block[1] = 815 (0x32F)
+  direct block[2] = 816 (0x330)
+  direct block[3] = 817 (0x331)
+  direct block[4] = 818 (0x332)
+  direct block[5] = 819 (0x333)
+  single indirect = 820 (0x334)
+  double indirect = 0 (0x0)
+inode 31:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 29316 (0x7284)
+  direct block[0] = 823 (0x337)
+  direct block[1] = 824 (0x338)
+  direct block[2] = 825 (0x339)
+  direct block[3] = 826 (0x33A)
+  direct block[4] = 827 (0x33B)
+  direct block[5] = 828 (0x33C)
+  single indirect = 829 (0x33D)
+  double indirect = 0 (0x0)
+inode 32:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 29288 (0x7268)
+  direct block[0] = 832 (0x340)
+  direct block[1] = 833 (0x341)
+  direct block[2] = 834 (0x342)
+  direct block[3] = 835 (0x343)
+  direct block[4] = 836 (0x344)
+  direct block[5] = 837 (0x345)
+  single indirect = 838 (0x346)
+  double indirect = 0 (0x0)
+inode 33:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 29116 (0x71BC)
+  direct block[0] = 841 (0x349)
+  direct block[1] = 842 (0x34A)
+  direct block[2] = 843 (0x34B)
+  direct block[3] = 844 (0x34C)
+  direct block[4] = 845 (0x34D)
+  direct block[5] = 846 (0x34E)
+  single indirect = 847 (0x34F)
+  double indirect = 0 (0x0)
+inode 34:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 29240 (0x7238)
+  direct block[0] = 850 (0x352)
+  direct block[1] = 851 (0x353)
+  direct block[2] = 852 (0x354)
+  direct block[3] = 853 (0x355)
+  direct block[4] = 854 (0x356)
+  direct block[5] = 855 (0x357)
+  single indirect = 856 (0x358)
+  double indirect = 0 (0x0)
+inode 35:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 29200 (0x7210)
+  direct block[0] = 859 (0x35B)
+  direct block[1] = 860 (0x35C)
+  direct block[2] = 861 (0x35D)
+  direct block[3] = 862 (0x35E)
+  direct block[4] = 863 (0x35F)
+  direct block[5] = 864 (0x360)
+  single indirect = 865 (0x361)
+  double indirect = 0 (0x0)
+inode 36:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 29228 (0x722C)
+  direct block[0] = 868 (0x364)
+  direct block[1] = 869 (0x365)
+  direct block[2] = 870 (0x366)
+  direct block[3] = 871 (0x367)
+  direct block[4] = 872 (0x368)
+  direct block[5] = 873 (0x369)
+  single indirect = 874 (0x36A)
+  double indirect = 0 (0x0)
+inode 37:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 29404 (0x72DC)
+  direct block[0] = 877 (0x36D)
+  direct block[1] = 878 (0x36E)
+  direct block[2] = 879 (0x36F)
+  direct block[3] = 880 (0x370)
+  direct block[4] = 881 (0x371)
+  direct block[5] = 882 (0x372)
+  single indirect = 883 (0x373)
+  double indirect = 0 (0x0)
+inode 38:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 30184 (0x75E8)
+  direct block[0] = 886 (0x376)
+  direct block[1] = 887 (0x377)
+  direct block[2] = 888 (0x378)
+  direct block[3] = 889 (0x379)
+  direct block[4] = 890 (0x37A)
+  direct block[5] = 891 (0x37B)
+  single indirect = 892 (0x37C)
+  double indirect = 0 (0x0)
+inode 39:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 29368 (0x72B8)
+  direct block[0] = 895 (0x37F)
+  direct block[1] = 896 (0x380)
+  direct block[2] = 897 (0x381)
+  direct block[3] = 898 (0x382)
+  direct block[4] = 899 (0x383)
+  direct block[5] = 900 (0x384)
+  single indirect = 901 (0x385)
+  double indirect = 0 (0x0)
+inode 40:  type/mode = 0x000031ED = drwxr-xr-x
+  nlnk = 2 (0x00000002)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 832 (0x340)
+  direct block[0] = 904 (0x388)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 41:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 29388 (0x72CC)
+  direct block[0] = 905 (0x389)
+  direct block[1] = 906 (0x38A)
+  direct block[2] = 907 (0x38B)
+  direct block[3] = 908 (0x38C)
+  direct block[4] = 909 (0x38D)
+  direct block[5] = 910 (0x38E)
+  single indirect = 911 (0x38F)
+  double indirect = 0 (0x0)
+inode 42:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 43784 (0xAB08)
+  direct block[0] = 914 (0x392)
+  direct block[1] = 915 (0x393)
+  direct block[2] = 916 (0x394)
+  direct block[3] = 917 (0x395)
+  direct block[4] = 918 (0x396)
+  direct block[5] = 919 (0x397)
+  single indirect = 920 (0x398)
+  double indirect = 0 (0x0)
+inode 43:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 30588 (0x777C)
+  direct block[0] = 926 (0x39E)
+  direct block[1] = 927 (0x39F)
+  direct block[2] = 928 (0x3A0)
+  direct block[3] = 929 (0x3A1)
+  direct block[4] = 930 (0x3A2)
+  direct block[5] = 931 (0x3A3)
+  single indirect = 932 (0x3A4)
+  double indirect = 0 (0x0)
+inode 44:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 29116 (0x71BC)
+  direct block[0] = 935 (0x3A7)
+  direct block[1] = 936 (0x3A8)
+  direct block[2] = 937 (0x3A9)
+  direct block[3] = 938 (0x3AA)
+  direct block[4] = 939 (0x3AB)
+  direct block[5] = 940 (0x3AC)
+  single indirect = 941 (0x3AD)
+  double indirect = 0 (0x0)
+inode 45:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 30376 (0x76A8)
+  direct block[0] = 944 (0x3B0)
+  direct block[1] = 945 (0x3B1)
+  direct block[2] = 946 (0x3B2)
+  direct block[3] = 947 (0x3B3)
+  direct block[4] = 948 (0x3B4)
+  direct block[5] = 949 (0x3B5)
+  single indirect = 950 (0x3B6)
+  double indirect = 0 (0x0)
+inode 46:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 29116 (0x71BC)
+  direct block[0] = 953 (0x3B9)
+  direct block[1] = 954 (0x3BA)
+  direct block[2] = 955 (0x3BB)
+  direct block[3] = 956 (0x3BC)
+  direct block[4] = 957 (0x3BD)
+  direct block[5] = 958 (0x3BE)
+  single indirect = 959 (0x3BF)
+  double indirect = 0 (0x0)
+inode 47:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 30164 (0x75D4)
+  direct block[0] = 962 (0x3C2)
+  direct block[1] = 963 (0x3C3)
+  direct block[2] = 964 (0x3C4)
+  direct block[3] = 965 (0x3C5)
+  direct block[4] = 966 (0x3C6)
+  direct block[5] = 967 (0x3C7)
+  single indirect = 968 (0x3C8)
+  double indirect = 0 (0x0)
+inode 48:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 31280 (0x7A30)
+  direct block[0] = 971 (0x3CB)
+  direct block[1] = 972 (0x3CC)
+  direct block[2] = 973 (0x3CD)
+  direct block[3] = 974 (0x3CE)
+  direct block[4] = 975 (0x3CF)
+  direct block[5] = 976 (0x3D0)
+  single indirect = 977 (0x3D1)
+  double indirect = 0 (0x0)
+inode 49:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 29116 (0x71BC)
+  direct block[0] = 980 (0x3D4)
+  direct block[1] = 981 (0x3D5)
+  direct block[2] = 982 (0x3D6)
+  direct block[3] = 983 (0x3D7)
+  direct block[4] = 984 (0x3D8)
+  direct block[5] = 985 (0x3D9)
+  single indirect = 986 (0x3DA)
+  double indirect = 0 (0x0)
+inode 50:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 29460 (0x7314)
+  direct block[0] = 989 (0x3DD)
+  direct block[1] = 990 (0x3DE)
+  direct block[2] = 991 (0x3DF)
+  direct block[3] = 992 (0x3E0)
+  direct block[4] = 993 (0x3E1)
+  direct block[5] = 994 (0x3E2)
+  single indirect = 995 (0x3E3)
+  double indirect = 0 (0x0)
+inode 51:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 29116 (0x71BC)
+  direct block[0] = 998 (0x3E6)
+  direct block[1] = 999 (0x3E7)
+  direct block[2] = 1000 (0x3E8)
+  direct block[3] = 1001 (0x3E9)
+  direct block[4] = 1002 (0x3EA)
+  direct block[5] = 1003 (0x3EB)
+  single indirect = 1004 (0x3EC)
+  double indirect = 0 (0x0)
+inode 52:  type/mode = 0x000031ED = drwxr-xr-x
+  nlnk = 2 (0x00000002)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 4288 (0x10C0)
+  direct block[0] = 1007 (0x3EF)
+  direct block[1] = 1070 (0x42E)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 53:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 56 (0x38)
+  direct block[0] = 1008 (0x3F0)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 54:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 44 (0x2C)
+  direct block[0] = 1009 (0x3F1)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 55:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 76 (0x4C)
+  direct block[0] = 1010 (0x3F2)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 56:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 200 (0xC8)
+  direct block[0] = 1011 (0x3F3)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 57:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 332 (0x14C)
+  direct block[0] = 1012 (0x3F4)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 58:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 96 (0x60)
+  direct block[0] = 1013 (0x3F5)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 59:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 96 (0x60)
+  direct block[0] = 1014 (0x3F6)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 60:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 76 (0x4C)
+  direct block[0] = 1015 (0x3F7)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 61:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 160 (0xA0)
+  direct block[0] = 1016 (0x3F8)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 62:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 104 (0x68)
+  direct block[0] = 1017 (0x3F9)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 63:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 144 (0x90)
+  direct block[0] = 1018 (0x3FA)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 0:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 52 (0x34)
+  direct block[0] = 1019 (0x3FB)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 1:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 116 (0x74)
+  direct block[0] = 1020 (0x3FC)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 2:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 52 (0x34)
+  direct block[0] = 1021 (0x3FD)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 3:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 104 (0x68)
+  direct block[0] = 1022 (0x3FE)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 4:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 88 (0x58)
+  direct block[0] = 1023 (0x3FF)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 5:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 92 (0x5C)
+  direct block[0] = 1024 (0x400)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 6:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 76 (0x4C)
+  direct block[0] = 1025 (0x401)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 7:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 144 (0x90)
+  direct block[0] = 1026 (0x402)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 8:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 344 (0x158)
+  direct block[0] = 1027 (0x403)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 9:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 52 (0x34)
+  direct block[0] = 1028 (0x404)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 10:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 240 (0xF0)
+  direct block[0] = 1029 (0x405)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 11:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 240 (0xF0)
+  direct block[0] = 1030 (0x406)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 12:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 64 (0x40)
+  direct block[0] = 1031 (0x407)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 13:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 64 (0x40)
+  direct block[0] = 1032 (0x408)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 14:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 64 (0x40)
+  direct block[0] = 1033 (0x409)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 15:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 68 (0x44)
+  direct block[0] = 1034 (0x40A)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 16:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 88 (0x58)
+  direct block[0] = 1035 (0x40B)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 17:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 176 (0xB0)
+  direct block[0] = 1036 (0x40C)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 18:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 104 (0x68)
+  direct block[0] = 1037 (0x40D)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 19:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 168 (0xA8)
+  direct block[0] = 1038 (0x40E)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 20:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 52 (0x34)
+  direct block[0] = 1039 (0x40F)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 21:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 52 (0x34)
+  direct block[0] = 1040 (0x410)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 22:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 116 (0x74)
+  direct block[0] = 1041 (0x411)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 23:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 56 (0x38)
+  direct block[0] = 1042 (0x412)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 24:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 76 (0x4C)
+  direct block[0] = 1043 (0x413)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 25:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 196 (0xC4)
+  direct block[0] = 1044 (0x414)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 26:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 84 (0x54)
+  direct block[0] = 1045 (0x415)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 27:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 52 (0x34)
+  direct block[0] = 1046 (0x416)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 28:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 52 (0x34)
+  direct block[0] = 1047 (0x417)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 29:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 52 (0x34)
+  direct block[0] = 1048 (0x418)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 30:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 232 (0xE8)
+  direct block[0] = 1049 (0x419)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 31:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 208 (0xD0)
+  direct block[0] = 1050 (0x41A)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 32:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 92 (0x5C)
+  direct block[0] = 1051 (0x41B)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 33:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 68 (0x44)
+  direct block[0] = 1052 (0x41C)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 34:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 52 (0x34)
+  direct block[0] = 1053 (0x41D)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 35:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 64 (0x40)
+  direct block[0] = 1054 (0x41E)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 36:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 64 (0x40)
+  direct block[0] = 1055 (0x41F)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 37:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 104 (0x68)
+  direct block[0] = 1056 (0x420)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 38:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 112 (0x70)
+  direct block[0] = 1057 (0x421)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 39:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 52 (0x34)
+  direct block[0] = 1058 (0x422)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 40:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 88 (0x58)
+  direct block[0] = 1059 (0x423)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 41:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 52 (0x34)
+  direct block[0] = 1060 (0x424)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 42:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 52 (0x34)
+  direct block[0] = 1061 (0x425)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 43:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 288 (0x120)
+  direct block[0] = 1062 (0x426)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 44:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 52 (0x34)
+  direct block[0] = 1063 (0x427)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 45:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 52 (0x34)
+  direct block[0] = 1064 (0x428)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 46:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 52 (0x34)
+  direct block[0] = 1065 (0x429)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 47:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 52 (0x34)
+  direct block[0] = 1066 (0x42A)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 48:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 172 (0xAC)
+  direct block[0] = 1067 (0x42B)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 49:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 44 (0x2C)
+  direct block[0] = 1068 (0x42C)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 50:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 68 (0x44)
+  direct block[0] = 1069 (0x42D)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 51:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 120 (0x78)
+  direct block[0] = 1071 (0x42F)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 52:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 52 (0x34)
+  direct block[0] = 1072 (0x430)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 53:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 52 (0x34)
+  direct block[0] = 1073 (0x431)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 54:  type/mode = 0x000031ED = drwxr-xr-x
+  nlnk = 2 (0x00000002)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 640 (0x280)
+  direct block[0] = 1074 (0x432)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 55:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 100 (0x64)
+  direct block[0] = 1075 (0x433)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 56:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 88 (0x58)
+  direct block[0] = 1076 (0x434)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 57:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 88 (0x58)
+  direct block[0] = 1077 (0x435)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 58:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 92 (0x5C)
+  direct block[0] = 1078 (0x436)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 59:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 100 (0x64)
+  direct block[0] = 1079 (0x437)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 60:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 100 (0x64)
+  direct block[0] = 1080 (0x438)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 61:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 88 (0x58)
+  direct block[0] = 1081 (0x439)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 62:  type/mode = 0x000041ED = -rwxr-xr-x
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 100 (0x64)
+  direct block[0] = 1082 (0x43A)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 63:  type/mode = 0x000031ED = drwxr-xr-x
+  nlnk = 2 (0x00000002)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last modified = 1511430491 (Thu Nov 23 10:48:11 2017)
+  time last accessed = 1511430491 (Thu Nov 23 10:48:11 2017)
+  size = 128 (0x80)
+  direct block[0] = 1083 (0x43B)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 0:  type/mode = 0x000041B6 = -rw-rw-rw-
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430913 (Thu Nov 23 10:55:13 2017)
+  time last modified = 1511430913 (Thu Nov 23 10:55:13 2017)
+  time last accessed = 1511430615 (Thu Nov 23 10:50:15 2017)
+  size = 40 (0x28)
+  direct block[0] = 1085 (0x43D)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 1:  type/mode = 0x000041A4 = -rw-r--r--
+  nlnk = 1 (0x00000001)
+  uid  = 0 (0x00000000)
+  gid  = 0 (0x00000000)
+  time inode created = 1511430886 (Thu Nov 23 10:54:46 2017)
+  time last modified = 1511430886 (Thu Nov 23 10:54:46 2017)
+  time last accessed = 1511430886 (Thu Nov 23 10:54:46 2017)
+  size = 128 (0x80)
+  direct block[0] = 1084 (0x43C)
+  direct block[1] = 0 (0x0)
+  direct block[2] = 0 (0x0)
+  direct block[3] = 0 (0x0)
+  direct block[4] = 0 (0x0)
+  direct block[5] = 0 (0x0)
+  single indirect = 0 (0x0)
+  double indirect = 0 (0x0)
+inode 2:  <free>
+inode 3:  <free>
+inode 4:  <free>
+inode 5:  <free>
+inode 6:  <free>
+inode 7:  <free>
+inode 8:  <free>
+inode 9:  <free>
+inode 10:  <free>
+inode 11:  <free>
+inode 12:  <free>
+inode 13:  <free>
+inode 14:  <free>
+inode 15:  <free>
+inode 16:  <free>
+inode 17:  <free>
+inode 18:  <free>
+inode 19:  <free>
+inode 20:  <free>
+inode 21:  <free>
+inode 22:  <free>
+inode 23:  <free>
+inode 24:  <free>
+inode 25:  <free>
+inode 26:  <free>
+inode 27:  <free>
+inode 28:  <free>
+inode 29:  <free>
+inode 30:  <free>
+inode 31:  <free>
+inode 32:  <free>
+inode 33:  <free>
+inode 34:  <free>
+inode 35:  <free>
+inode 36:  <free>
+inode 37:  <free>
+inode 38:  <free>
+inode 39:  <free>
+inode 40:  <free>
+inode 41:  <free>
+inode 42:  <free>
+inode 43:  <free>
+inode 44:  <free>
+inode 45:  <free>
+inode 46:  <free>
+inode 47:  <free>
+inode 48:  <free>
+inode 49:  <free>
+inode 50:  <free>
+inode 51:  <free>
+inode 52:  <free>
+inode 53:  <free>
+inode 54:  <free>
+inode 55:  <free>
+inode 56:  <free>
+inode 57:  <free>
+inode 58:  <free>
+inode 59:  <free>
+inode 60:  <free>
+inode 61:  <free>
+inode 62:  <free>
+inode 63:  <free>
+inode 0:  <free>
+inode 1:  <free>
+inode 2:  <free>
+inode 3:  <free>
+inode 4:  <free>
+inode 5:  <free>
+inode 6:  <free>
+inode 7:  <free>
+inode 8:  <free>
+inode 9:  <free>
+inode 10:  <free>
+inode 11:  <free>
+inode 12:  <free>
+inode 13:  <free>
+inode 14:  <free>
+inode 15:  <free>
+inode 16:  <free>
+inode 17:  <free>
+inode 18:  <free>
+inode 19:  <free>
+inode 20:  <free>
+inode 21:  <free>
+inode 22:  <free>
+inode 23:  <free>
+inode 24:  <free>
+inode 25:  <free>
+inode 26:  <free>
+inode 27:  <free>
+inode 28:  <free>
+inode 29:  <free>
+inode 30:  <free>
+inode 31:  <free>
+inode 32:  <free>
+inode 33:  <free>
+inode 34:  <free>
+inode 35:  <free>
+inode 36:  <free>
+inode 37:  <free>
+inode 38:  <free>
+inode 39:  <free>
+inode 40:  <free>
+inode 41:  <free>
+inode 42:  <free>
+inode 43:  <free>
+inode 44:  <free>
+inode 45:  <free>
+inode 46:  <free>
+inode 47:  <free>
+inode 48:  <free>
+inode 49:  <free>
+inode 50:  <free>
+inode 51:  <free>
+inode 52:  <free>
+inode 53:  <free>
+inode 54:  <free>
+inode 55:  <free>
+inode 56:  <free>
+inode 57:  <free>
+inode 58:  <free>
+inode 59:  <free>
+inode 60:  <free>
+inode 61:  <free>
+inode 62:  <free>
+inode 63:  <free>
+inode 0:  <free>
+inode 1:  <free>
+inode 2:  <free>
+inode 3:  <free>
+inode 4:  <free>
+inode 5:  <free>
+inode 6:  <free>
+inode 7:  <free>
+inode 8:  <free>
+inode 9:  <free>
+inode 10:  <free>
+inode 11:  <free>
+inode 12:  <free>
+inode 13:  <free>
+inode 14:  <free>
+inode 15:  <free>
+inode 16:  <free>
+inode 17:  <free>
+inode 18:  <free>
+inode 19:  <free>
+inode 20:  <free>
+inode 21:  <free>
+inode 22:  <free>
+inode 23:  <free>
+inode 24:  <free>
+inode 25:  <free>
+inode 26:  <free>
+inode 27:  <free>
+inode 28:  <free>
+inode 29:  <free>
+inode 30:  <free>
+inode 31:  <free>
+inode 32:  <free>
+inode 33:  <free>
+inode 34:  <free>
+inode 35:  <free>
+inode 36:  <free>
+inode 37:  <free>
+inode 38:  <free>
+inode 39:  <free>
+inode 40:  <free>
+inode 41:  <free>
+inode 42:  <free>
+inode 43:  <free>
+inode 44:  <free>
+inode 45:  <free>
+inode 46:  <free>
+inode 47:  <free>
+inode 48:  <free>
+inode 49:  <free>
+inode 50:  <free>
+inode 51:  <free>
+inode 52:  <free>
+inode 53:  <free>
+inode 54:  <free>
+inode 55:  <free>
+inode 56:  <free>
+inode 57:  <free>
+inode 58:  <free>
+inode 59:  <free>
+inode 60:  <free>
+inode 61:  <free>
+inode 62:  <free>
+inode 63:  <free>
+inode 0:  <free>
+inode 1:  <free>
+inode 2:  <free>
+inode 3:  <free>
+inode 4:  <free>
+inode 5:  <free>
+inode 6:  <free>
+inode 7:  <free>
+inode 8:  <free>
+inode 9:  <free>
+inode 10:  <free>
+inode 11:  <free>
+inode 12:  <free>
+inode 13:  <free>
+inode 14:  <free>
+inode 15:  <free>
+inode 16:  <free>
+inode 17:  <free>
+inode 18:  <free>
+inode 19:  <free>
+inode 20:  <free>
+inode 21:  <free>
+inode 22:  <free>
+inode 23:  <free>
+inode 24:  <free>
+inode 25:  <free>
+inode 26:  <free>
+inode 27:  <free>
+inode 28:  <free>
+inode 29:  <free>
+inode 30:  <free>
+inode 31:  <free>
+inode 32:  <free>
+inode 33:  <free>
+inode 34:  <free>
+inode 35:  <free>
+inode 36:  <free>
+inode 37:  <free>
+inode 38:  <free>
+inode 39:  <free>
+inode 40:  <free>
+inode 41:  <free>
+inode 42:  <free>
+inode 43:  <free>
+inode 44:  <free>
+inode 45:  <free>
+inode 46:  <free>
+inode 47:  <free>
+inode 48:  <free>
+inode 49:  <free>
+inode 50:  <free>
+inode 51:  <free>
+inode 52:  <free>
+inode 53:  <free>
+inode 54:  <free>
+inode 55:  <free>
+inode 56:  <free>
+inode 57:  <free>
+inode 58:  <free>
+inode 59:  <free>
+inode 60:  <free>
+inode 61:  <free>
+inode 62:  <free>
+inode 63:  <free>
+inode 0:  <free>
+inode 1:  <free>
+inode 2:  <free>
+inode 3:  <free>
+inode 4:  <free>
+inode 5:  <free>
+inode 6:  <free>
+inode 7:  <free>
+inode 8:  <free>
+inode 9:  <free>
+inode 10:  <free>
+inode 11:  <free>
+inode 12:  <free>
+inode 13:  <free>
+inode 14:  <free>
+inode 15:  <free>
+inode 16:  <free>
+inode 17:  <free>
+inode 18:  <free>
+inode 19:  <free>
+inode 20:  <free>
+inode 21:  <free>
+inode 22:  <free>
+inode 23:  <free>
+inode 24:  <free>
+inode 25:  <free>
+inode 26:  <free>
+inode 27:  <free>
+inode 28:  <free>
+inode 29:  <free>
+inode 30:  <free>
+inode 31:  <free>
+inode 32:  <free>
+inode 33:  <free>
+inode 34:  <free>
+inode 35:  <free>
+inode 36:  <free>
+inode 37:  <free>
+inode 38:  <free>
+inode 39:  <free>
+inode 40:  <free>
+inode 41:  <free>
+inode 42:  <free>
+inode 43:  <free>
+inode 44:  <free>
+inode 45:  <free>
+inode 46:  <free>
+inode 47:  <free>
+inode 48:  <free>
+inode 49:  <free>
+inode 50:  <free>
+inode 51:  <free>
+inode 52:  <free>
+inode 53:  <free>
+inode 54:  <free>
+inode 55:  <free>
+inode 56:  <free>
+inode 57:  <free>
+inode 58:  <free>
+inode 59:  <free>
+inode 60:  <free>
+inode 61:  <free>
+inode 62:  <free>
+inode 63:  <free>
+inode 0:  <free>
+inode 1:  <free>
+inode 2:  <free>
+inode 3:  <free>
+inode 4:  <free>
+inode 5:  <free>
+inode 6:  <free>
+inode 7:  <free>
+inode 8:  <free>
+inode 9:  <free>
+inode 10:  <free>
+inode 11:  <free>
+inode 12:  <free>
+inode 13:  <free>
+inode 14:  <free>
+inode 15:  <free>
+inode 16:  <free>
+inode 17:  <free>
+inode 18:  <free>
+inode 19:  <free>
+inode 20:  <free>
+inode 21:  <free>
+inode 22:  <free>
+inode 23:  <free>
+inode 24:  <free>
+inode 25:  <free>
+inode 26:  <free>
+inode 27:  <free>
+inode 28:  <free>
+inode 29:  <free>
+inode 30:  <free>
+inode 31:  <free>
+inode 32:  <free>
+inode 33:  <free>
+inode 34:  <free>
+inode 35:  <free>
+inode 36:  <free>
+inode 37:  <free>
+inode 38:  <free>
+inode 39:  <free>
+inode 40:  <free>
+inode 41:  <free>
+inode 42:  <free>
+inode 43:  <free>
+inode 44:  <free>
+inode 45:  <free>
+inode 46:  <free>
+inode 47:  <free>
+inode 48:  <free>
+inode 49:  <free>
+inode 50:  <free>
+inode 51:  <free>
+inode 52:  <free>
+inode 53:  <free>
+inode 54:  <free>
+inode 55:  <free>
+inode 56:  <free>
+inode 57:  <free>
+inode 58:  <free>
+inode 59:  <free>
+inode 60:  <free>
+inode 61:  <free>
+inode 62:  <free>
+inode 63:  <free>
+inode 0:  <free>
+inode 1:  <free>
+inode 2:  <free>
+inode 3:  <free>
+inode 4:  <free>
+inode 5:  <free>
+inode 6:  <free>
+inode 7:  <free>
+inode 8:  <free>
+inode 9:  <free>
+inode 10:  <free>
+inode 11:  <free>
+inode 12:  <free>
+inode 13:  <free>
+inode 14:  <free>
+inode 15:  <free>
+inode 16:  <free>
+inode 17:  <free>
+inode 18:  <free>
+inode 19:  <free>
+inode 20:  <free>
+inode 21:  <free>
+inode 22:  <free>
+inode 23:  <free>
+inode 24:  <free>
+inode 25:  <free>
+inode 26:  <free>
+inode 27:  <free>
+inode 28:  <free>
+inode 29:  <free>
+inode 30:  <free>
+inode 31:  <free>
+inode 32:  <free>
+inode 33:  <free>
+inode 34:  <free>
+inode 35:  <free>
+inode 36:  <free>
+inode 37:  <free>
+inode 38:  <free>
+inode 39:  <free>
+inode 40:  <free>
+inode 41:  <free>
+inode 42:  <free>
+inode 43:  <free>
+inode 44:  <free>
+inode 45:  <free>
+inode 46:  <free>
+inode 47:  <free>
+inode 48:  <free>
+inode 49:  <free>
+inode 50:  <free>
+inode 51:  <free>
+inode 52:  <free>
+inode 53:  <free>
+inode 54:  <free>
+inode 55:  <free>
+inode 56:  <free>
+inode 57:  <free>
+inode 58:  <free>
+inode 59:  <free>
+inode 60:  <free>
+inode 61:  <free>
+inode 62:  <free>
+inode 63:  <free>
+inode 0:  <free>
+inode 1:  <free>
+inode 2:  <free>
+inode 3:  <free>
+inode 4:  <free>
+inode 5:  <free>
+inode 6:  <free>
+inode 7:  <free>
+inode 8:  <free>
+inode 9:  <free>
+inode 10:  <free>
+inode 11:  <free>
+inode 12:  <free>
+inode 13:  <free>
+inode 14:  <free>
+inode 15:  <free>
+inode 16:  <free>
+inode 17:  <free>
+inode 18:  <free>
+inode 19:  <free>
+inode 20:  <free>
+inode 21:  <free>
+inode 22:  <free>
+inode 23:  <free>
+inode 24:  <free>
+inode 25:  <free>
+inode 26:  <free>
+inode 27:  <free>
+inode 28:  <free>
+inode 29:  <free>
+inode 30:  <free>
+inode 31:  <free>
+inode 32:  <free>
+inode 33:  <free>
+inode 34:  <free>
+inode 35:  <free>
+inode 36:  <free>
+inode 37:  <free>
+inode 38:  <free>
+inode 39:  <free>
+inode 40:  <free>
+inode 41:  <free>
+inode 42:  <free>
+inode 43:  <free>
+inode 44:  <free>
+inode 45:  <free>
+inode 46:  <free>
+inode 47:  <free>
+inode 48:  <free>
+inode 49:  <free>
+inode 50:  <free>
+inode 51:  <free>
+inode 52:  <free>
+inode 53:  <free>
+inode 54:  <free>
+inode 55:  <free>
+inode 56:  <free>
+inode 57:  <free>
+inode 58:  <free>
+inode 59:  <free>
+inode 60:  <free>
+inode 61:  <free>
+inode 62:  <free>
+inode 63:  <free>
+inode 0:  <free>
+inode 1:  <free>
+inode 2:  <free>
+inode 3:  <free>
+inode 4:  <free>
+inode 5:  <free>
+inode 6:  <free>
+inode 7:  <free>
+inode 8:  <free>
+inode 9:  <free>
+inode 10:  <free>
+inode 11:  <free>
+inode 12:  <free>
+inode 13:  <free>
+inode 14:  <free>
+inode 15:  <free>
+inode 16:  <free>
+inode 17:  <free>
+inode 18:  <free>
+inode 19:  <free>
+inode 20:  <free>
+inode 21:  <free>
+inode 22:  <free>
+inode 23:  <free>
+inode 24:  <free>
+inode 25:  <free>
+inode 26:  <free>
+inode 27:  <free>
+inode 28:  <free>
+inode 29:  <free>
+inode 30:  <free>
+inode 31:  <free>
+inode 32:  <free>
+inode 33:  <free>
+inode 34:  <free>
+inode 35:  <free>
+inode 36:  <free>
+inode 37:  <free>
+inode 38:  <free>
+inode 39:  <free>
+inode 40:  <free>
+inode 41:  <free>
+inode 42:  <free>
+inode 43:  <free>
+inode 44:  <free>
+inode 45:  <free>
+inode 46:  <free>
+inode 47:  <free>
+inode 48:  <free>
+inode 49:  <free>
+inode 50:  <free>
+inode 51:  <free>
+inode 52:  <free>
+inode 53:  <free>
+inode 54:  <free>
+inode 55:  <free>
+inode 56:  <free>
+inode 57:  <free>
+inode 58:  <free>
+inode 59:  <free>
+inode 60:  <free>
+inode 61:  <free>
+inode 62:  <free>
+inode 63:  <free>
+inode 0:  <free>
+inode 1:  <free>
+inode 2:  <free>
+inode 3:  <free>
+inode 4:  <free>
+inode 5:  <free>
+inode 6:  <free>
+inode 7:  <free>
+inode 8:  <free>
+inode 9:  <free>
+inode 10:  <free>
+inode 11:  <free>
+inode 12:  <free>
+inode 13:  <free>
+inode 14:  <free>
+inode 15:  <free>
+inode 16:  <free>
+inode 17:  <free>
+inode 18:  <free>
+inode 19:  <free>
+inode 20:  <free>
+inode 21:  <free>
+inode 22:  <free>
+inode 23:  <free>
+inode 24:  <free>
+inode 25:  <free>
+inode 26:  <free>
+inode 27:  <free>
+inode 28:  <free>
+inode 29:  <free>
+inode 30:  <free>
+inode 31:  <free>
+inode 32:  <free>
+inode 33:  <free>
+inode 34:  <free>
+inode 35:  <free>
+inode 36:  <free>
+inode 37:  <free>
+inode 38:  <free>
+inode 39:  <free>
+inode 40:  <free>
+inode 41:  <free>
+inode 42:  <free>
+inode 43:  <free>
+inode 44:  <free>
+inode 45:  <free>
+inode 46:  <free>
+inode 47:  <free>
+inode 48:  <free>
+inode 49:  <free>
+inode 50:  <free>
+inode 51:  <free>
+inode 52:  <free>
+inode 53:  <free>
+inode 54:  <free>
+inode 55:  <free>
+inode 56:  <free>
+inode 57:  <free>
+inode 58:  <free>
+inode 59:  <free>
+inode 60:  <free>
+inode 61:  <free>
+inode 62:  <free>
+inode 63:  <free>
+inode 0:  <free>
+inode 1:  <free>
+inode 2:  <free>
+inode 3:  <free>
+inode 4:  <free>
+inode 5:  <free>
+inode 6:  <free>
+inode 7:  <free>
+inode 8:  <free>
+inode 9:  <free>
+inode 10:  <free>
+inode 11:  <free>
+inode 12:  <free>
+inode 13:  <free>
+inode 14:  <free>
+inode 15:  <free>
+inode 16:  <free>
+inode 17:  <free>
+inode 18:  <free>
+inode 19:  <free>
+inode 20:  <free>
+inode 21:  <free>
+inode 22:  <free>
+inode 23:  <free>
+inode 24:  <free>
+inode 25:  <free>
+inode 26:  <free>
+inode 27:  <free>
+inode 28:  <free>
+inode 29:  <free>
+inode 30:  <free>
+inode 31:  <free>
+inode 32:  <free>
+inode 33:  <free>
+inode 34:  <free>
+inode 35:  <free>
+inode 36:  <free>
+inode 37:  <free>
+inode 38:  <free>
+inode 39:  <free>
+inode 40:  <free>
+inode 41:  <free>
+inode 42:  <free>
+inode 43:  <free>
+inode 44:  <free>
+inode 45:  <free>
+inode 46:  <free>
+inode 47:  <free>
+inode 48:  <free>
+inode 49:  <free>
+inode 50:  <free>
+inode 51:  <free>
+inode 52:  <free>
+inode 53:  <free>
+inode 54:  <free>
+inode 55:  <free>
+inode 56:  <free>
+inode 57:  <free>
+inode 58:  <free>
+inode 59:  <free>
+inode 60:  <free>
+inode 61:  <free>
+inode 62:  <free>
+inode 63:  <free>
+inode 0:  <free>
+inode 1:  <free>
+inode 2:  <free>
+inode 3:  <free>
+inode 4:  <free>
+inode 5:  <free>
+inode 6:  <free>
+inode 7:  <free>
+inode 8:  <free>
+inode 9:  <free>
+inode 10:  <free>
+inode 11:  <free>
+inode 12:  <free>
+inode 13:  <free>
+inode 14:  <free>
+inode 15:  <free>
+inode 16:  <free>
+inode 17:  <free>
+inode 18:  <free>
+inode 19:  <free>
+inode 20:  <free>
+inode 21:  <free>
+inode 22:  <free>
+inode 23:  <free>
+inode 24:  <free>
+inode 25:  <free>
+inode 26:  <free>
+inode 27:  <free>
+inode 28:  <free>
+inode 29:  <free>
+inode 30:  <free>
+inode 31:  <free>
+inode 32:  <free>
+inode 33:  <free>
+inode 34:  <free>
+inode 35:  <free>
+inode 36:  <free>
+inode 37:  <free>
+inode 38:  <free>
+inode 39:  <free>
+inode 40:  <free>
+inode 41:  <free>
+inode 42:  <free>
+inode 43:  <free>
+inode 44:  <free>
+inode 45:  <free>
+inode 46:  <free>
+inode 47:  <free>
+inode 48:  <free>
+inode 49:  <free>
+inode 50:  <free>
+inode 51:  <free>
+inode 52:  <free>
+inode 53:  <free>
+inode 54:  <free>
+inode 55:  <free>
+inode 56:  <free>
+inode 57:  <free>
+inode 58:  <free>
+inode 59:  <free>
+inode 60:  <free>
+inode 61:  <free>
+inode 62:  <free>
+inode 63:  <free>
+inode 0:  <free>
+inode 1:  <free>
+inode 2:  <free>
+inode 3:  <free>
+inode 4:  <free>
+inode 5:  <free>
+inode 6:  <free>
+inode 7:  <free>
+inode 8:  <free>
+inode 9:  <free>
+inode 10:  <free>
+inode 11:  <free>
+inode 12:  <free>
+inode 13:  <free>
+inode 14:  <free>
+inode 15:  <free>
+inode 16:  <free>
+inode 17:  <free>
+inode 18:  <free>
+inode 19:  <free>
+inode 20:  <free>
+inode 21:  <free>
+inode 22:  <free>
+inode 23:  <free>
+inode 24:  <free>
+inode 25:  <free>
+inode 26:  <free>
+inode 27:  <free>
+inode 28:  <free>
+inode 29:  <free>
+inode 30:  <free>
+inode 31:  <free>
+inode 32:  <free>
+inode 33:  <free>
+inode 34:  <free>
+inode 35:  <free>
+inode 36:  <free>
+inode 37:  <free>
+inode 38:  <free>
+inode 39:  <free>
+inode 40:  <free>
+inode 41:  <free>
+inode 42:  <free>
+inode 43:  <free>
+inode 44:  <free>
+inode 45:  <free>
+inode 46:  <free>
+inode 47:  <free>
+inode 48:  <free>
+inode 49:  <free>
+inode 50:  <free>
+inode 51:  <free>
+inode 52:  <free>
+inode 53:  <free>
+inode 54:  <free>
+inode 55:  <free>
+inode 56:  <free>
+inode 57:  <free>
+inode 58:  <free>
+inode 59:  <free>
+inode 60:  <free>
+inode 61:  <free>
+inode 62:  <free>
+inode 63:  <free>
+inode 0:  <free>
+inode 1:  <free>
+inode 2:  <free>
+inode 3:  <free>
+inode 4:  <free>
+inode 5:  <free>
+inode 6:  <free>
+inode 7:  <free>
+inode 8:  <free>
+inode 9:  <free>
+inode 10:  <free>
+inode 11:  <free>
+inode 12:  <free>
+inode 13:  <free>
+inode 14:  <free>
+inode 15:  <free>
+inode 16:  <free>
+inode 17:  <free>
+inode 18:  <free>
+inode 19:  <free>
+inode 20:  <free>
+inode 21:  <free>
+inode 22:  <free>
+inode 23:  <free>
+inode 24:  <free>
+inode 25:  <free>
+inode 26:  <free>
+inode 27:  <free>
+inode 28:  <free>
+inode 29:  <free>
+inode 30:  <free>
+inode 31:  <free>
+inode 32:  <free>
+inode 33:  <free>
+inode 34:  <free>
+inode 35:  <free>
+inode 36:  <free>
+inode 37:  <free>
+inode 38:  <free>
+inode 39:  <free>
+inode 40:  <free>
+inode 41:  <free>
+inode 42:  <free>
+inode 43:  <free>
+inode 44:  <free>
+inode 45:  <free>
+inode 46:  <free>
+inode 47:  <free>
+inode 48:  <free>
+inode 49:  <free>
+inode 50:  <free>
+inode 51:  <free>
+inode 52:  <free>
+inode 53:  <free>
+inode 54:  <free>
+inode 55:  <free>
+inode 56:  <free>
+inode 57:  <free>
+inode 58:  <free>
+inode 59:  <free>
+inode 60:  <free>
+inode 61:  <free>
+inode 62:  <free>
+inode 63:  <free>
+inode 0:  <free>
+inode 1:  <free>
+inode 2:  <free>
+inode 3:  <free>
+inode 4:  <free>
+inode 5:  <free>
+inode 6:  <free>
+inode 7:  <free>
+inode 8:  <free>
+inode 9:  <free>
+inode 10:  <free>
+inode 11:  <free>
+inode 12:  <free>
+inode 13:  <free>
+inode 14:  <free>
+inode 15:  <free>
+inode 16:  <free>
+inode 17:  <free>
+inode 18:  <free>
+inode 19:  <free>
+inode 20:  <free>
+inode 21:  <free>
+inode 22:  <free>
+inode 23:  <free>
+inode 24:  <free>
+inode 25:  <free>
+inode 26:  <free>
+inode 27:  <free>
+inode 28:  <free>
+inode 29:  <free>
+inode 30:  <free>
+inode 31:  <free>
+inode 32:  <free>
+inode 33:  <free>
+inode 34:  <free>
+inode 35:  <free>
+inode 36:  <free>
+inode 37:  <free>
+inode 38:  <free>
+inode 39:  <free>
+inode 40:  <free>
+inode 41:  <free>
+inode 42:  <free>
+inode 43:  <free>
+inode 44:  <free>
+inode 45:  <free>
+inode 46:  <free>
+inode 47:  <free>
+inode 48:  <free>
+inode 49:  <free>
+inode 50:  <free>
+inode 51:  <free>
+inode 52:  <free>
+inode 53:  <free>
+inode 54:  <free>
+inode 55:  <free>
+inode 56:  <free>
+inode 57:  <free>
+inode 58:  <free>
+inode 59:  <free>
+inode 60:  <free>
+inode 61:  <free>
+inode 62:  <free>
+inode 63:  <free>
+inode 0:  <free>
+inode 1:  <free>
+inode 2:  <free>
+inode 3:  <free>
+inode 4:  <free>
+inode 5:  <free>
+inode 6:  <free>
+inode 7:  <free>
+inode 8:  <free>
+inode 9:  <free>
+inode 10:  <free>
+inode 11:  <free>
+inode 12:  <free>
+inode 13:  <free>
+inode 14:  <free>
+inode 15:  <free>
+inode 16:  <free>
+inode 17:  <free>
+inode 18:  <free>
+inode 19:  <free>
+inode 20:  <free>
+inode 21:  <free>
+inode 22:  <free>
+inode 23:  <free>
+inode 24:  <free>
+inode 25:  <free>
+inode 26:  <free>
+inode 27:  <free>
+inode 28:  <free>
+inode 29:  <free>
+inode 30:  <free>
+inode 31:  <free>
+inode 32:  <free>
+inode 33:  <free>
+inode 34:  <free>
+inode 35:  <free>
+inode 36:  <free>
+inode 37:  <free>
+inode 38:  <free>
+inode 39:  <free>
+inode 40:  <free>
+inode 41:  <free>
+inode 42:  <free>
+inode 43:  <free>
+inode 44:  <free>
+inode 45:  <free>
+inode 46:  <free>
+inode 47:  <free>
+inode 48:  <free>
+inode 49:  <free>
+inode 50:  <free>
+inode 51:  <free>
+inode 52:  <free>
+inode 53:  <free>
+inode 54:  <free>
+inode 55:  <free>
+inode 56:  <free>
+inode 57:  <free>
+inode 58:  <free>
+inode 59:  <free>
+inode 60:  <free>
+inode 61:  <free>
+inode 62:  <free>
+inode 63:  <free>
+inode 0:  <free>
+inode 1:  <free>
+inode 2:  <free>
+inode 3:  <free>
+inode 4:  <free>
+inode 5:  <free>
+inode 6:  <free>
+inode 7:  <free>
+inode 8:  <free>
+inode 9:  <free>
+inode 10:  <free>
+inode 11:  <free>
+inode 12:  <free>
+inode 13:  <free>
+inode 14:  <free>
+inode 15:  <free>
+inode 16:  <free>
+inode 17:  <free>
+inode 18:  <free>
+inode 19:  <free>
+inode 20:  <free>
+inode 21:  <free>
+inode 22:  <free>
+inode 23:  <free>
+inode 24:  <free>
+inode 25:  <free>
+inode 26:  <free>
+inode 27:  <free>
+inode 28:  <free>
+inode 29:  <free>
+inode 30:  <free>
+inode 31:  <free>
+inode 32:  <free>
+inode 33:  <free>
+inode 34:  <free>
+inode 35:  <free>
+inode 36:  <free>
+inode 37:  <free>
+inode 38:  <free>
+inode 39:  <free>
+inode 40:  <free>
+inode 41:  <free>
+inode 42:  <free>
+inode 43:  <free>
+inode 44:  <free>
+inode 45:  <free>
+inode 46:  <free>
+inode 47:  <free>
+inode 48:  <free>
+inode 49:  <free>
+inode 50:  <free>
+inode 51:  <free>
+inode 52:  <free>
+inode 53:  <free>
+inode 54:  <free>
+inode 55:  <free>
+inode 56:  <free>
+inode 57:  <free>
+inode 58:  <free>
+inode 59:  <free>
+inode 60:  <free>
+inode 61:  <free>
+inode 62:  <free>
+inode 63:  <free>
+inode 0:  <free>
+inode 1:  <free>
+inode 2:  <free>
+inode 3:  <free>
+inode 4:  <free>
+inode 5:  <free>
+inode 6:  <free>
+inode 7:  <free>
+inode 8:  <free>
+inode 9:  <free>
+inode 10:  <free>
+inode 11:  <free>
+inode 12:  <free>
+inode 13:  <free>
+inode 14:  <free>
+inode 15:  <free>
+inode 16:  <free>
+inode 17:  <free>
+inode 18:  <free>
+inode 19:  <free>
+inode 20:  <free>
+inode 21:  <free>
+inode 22:  <free>
+inode 23:  <free>
+inode 24:  <free>
+inode 25:  <free>
+inode 26:  <free>
+inode 27:  <free>
+inode 28:  <free>
+inode 29:  <free>
+inode 30:  <free>
+inode 31:  <free>
+inode 32:  <free>
+inode 33:  <free>
+inode 34:  <free>
+inode 35:  <free>
+inode 36:  <free>
+inode 37:  <free>
+inode 38:  <free>
+inode 39:  <free>
+inode 40:  <free>
+inode 41:  <free>
+inode 42:  <free>
+inode 43:  <free>
+inode 44:  <free>
+inode 45:  <free>
+inode 46:  <free>
+inode 47:  <free>
+inode 48:  <free>
+inode 49:  <free>
+inode 50:  <free>
+inode 51:  <free>
+inode 52:  <free>
+inode 53:  <free>
+inode 54:  <free>
+inode 55:  <free>
+inode 56:  <free>
+inode 57:  <free>
+inode 58:  <free>
+inode 59:  <free>
+inode 60:  <free>
+inode 61:  <free>
+inode 62:  <free>
+inode 63:  <free>
+inode 0:  <free>
+inode 1:  <free>
+inode 2:  <free>
+inode 3:  <free>
+inode 4:  <free>
+inode 5:  <free>
+inode 6:  <free>
+inode 7:  <free>
+inode 8:  <free>
+inode 9:  <free>
+inode 10:  <free>
+inode 11:  <free>
+inode 12:  <free>
+inode 13:  <free>
+inode 14:  <free>
+inode 15:  <free>
+inode 16:  <free>
+inode 17:  <free>
+inode 18:  <free>
+inode 19:  <free>
+inode 20:  <free>
+inode 21:  <free>
+inode 22:  <free>
+inode 23:  <free>
+inode 24:  <free>
+inode 25:  <free>
+inode 26:  <free>
+inode 27:  <free>
+inode 28:  <free>
+inode 29:  <free>
+inode 30:  <free>
+inode 31:  <free>
+inode 32:  <free>
+inode 33:  <free>
+inode 34:  <free>
+inode 35:  <free>
+inode 36:  <free>
+inode 37:  <free>
+inode 38:  <free>
+inode 39:  <free>
+inode 40:  <free>
+inode 41:  <free>
+inode 42:  <free>
+inode 43:  <free>
+inode 44:  <free>
+inode 45:  <free>
+inode 46:  <free>
+inode 47:  <free>
+inode 48:  <free>
+inode 49:  <free>
+inode 50:  <free>
+inode 51:  <free>
+inode 52:  <free>
+inode 53:  <free>
+inode 54:  <free>
+inode 55:  <free>
+inode 56:  <free>
+inode 57:  <free>
+inode 58:  <free>
+inode 59:  <free>
+inode 60:  <free>
+inode 61:  <free>
+inode 62:  <free>
+inode 63:  <free>
+inode 0:  <free>
+inode 1:  <free>
+inode 2:  <free>
+inode 3:  <free>
+inode 4:  <free>
+inode 5:  <free>
+inode 6:  <free>
+inode 7:  <free>
+inode 8:  <free>
+inode 9:  <free>
+inode 10:  <free>
+inode 11:  <free>
+inode 12:  <free>
+inode 13:  <free>
+inode 14:  <free>
+inode 15:  <free>
+inode 16:  <free>
+inode 17:  <free>
+inode 18:  <free>
+inode 19:  <free>
+inode 20:  <free>
+inode 21:  <free>
+inode 22:  <free>
+inode 23:  <free>
+inode 24:  <free>
+inode 25:  <free>
+inode 26:  <free>
+inode 27:  <free>
+inode 28:  <free>
+inode 29:  <free>
+inode 30:  <free>
+inode 31:  <free>
+inode 32:  <free>
+inode 33:  <free>
+inode 34:  <free>
+inode 35:  <free>
+inode 36:  <free>
+inode 37:  <free>
+inode 38:  <free>
+inode 39:  <free>
+inode 40:  <free>
+inode 41:  <free>
+inode 42:  <free>
+inode 43:  <free>
+inode 44:  <free>
+inode 45:  <free>
+inode 46:  <free>
+inode 47:  <free>
+inode 48:  <free>
+inode 49:  <free>
+inode 50:  <free>
+inode 51:  <free>
+inode 52:  <free>
+inode 53:  <free>
+inode 54:  <free>
+inode 55:  <free>
+inode 56:  <free>
+inode 57:  <free>
+inode 58:  <free>
+inode 59:  <free>
+inode 60:  <free>
+inode 61:  <free>
+inode 62:  <free>
+inode 63:  <free>
+inode 0:  <free>
+inode 1:  <free>
+inode 2:  <free>
+inode 3:  <free>
+inode 4:  <free>
+inode 5:  <free>
+inode 6:  <free>
+inode 7:  <free>
+inode 8:  <free>
+inode 9:  <free>
+inode 10:  <free>
+inode 11:  <free>
+inode 12:  <free>
+inode 13:  <free>
+inode 14:  <free>
+inode 15:  <free>
+inode 16:  <free>
+inode 17:  <free>
+inode 18:  <free>
+inode 19:  <free>
+inode 20:  <free>
+inode 21:  <free>
+inode 22:  <free>
+inode 23:  <free>
+inode 24:  <free>
+inode 25:  <free>
+inode 26:  <free>
+inode 27:  <free>
+inode 28:  <free>
+inode 29:  <free>
+inode 30:  <free>
+inode 31:  <free>
+inode 32:  <free>
+inode 33:  <free>
+inode 34:  <free>
+inode 35:  <free>
+inode 36:  <free>
+inode 37:  <free>
+inode 38:  <free>
+inode 39:  <free>
+inode 40:  <free>
+inode 41:  <free>
+inode 42:  <free>
+inode 43:  <free>
+inode 44:  <free>
+inode 45:  <free>
+inode 46:  <free>
+inode 47:  <free>
+inode 48:  <free>
+inode 49:  <free>
+inode 50:  <free>
+inode 51:  <free>
+inode 52:  <free>
+inode 53:  <free>
+inode 54:  <free>
+inode 55:  <free>
+inode 56:  <free>
+inode 57:  <free>
+inode 58:  <free>
+inode 59:  <free>
+inode 60:  <free>
+inode 61:  <free>
+inode 62:  <free>
+inode 63:  <free>

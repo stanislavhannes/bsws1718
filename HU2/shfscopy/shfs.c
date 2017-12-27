@@ -50,6 +50,10 @@ typedef int EOS32_time_t;
 
 FILE *freelist;
 FILE *inodelist;
+FILE *datablockslist;
+FILE *singleindirectlist;
+FILE *doubleindirectlist;
+
 EOS32_daddr_t linkblock;
 // gcc -Wall -o shfs shfs.c
 
@@ -308,6 +312,43 @@ void inodeBlock(unsigned char *p) {
   }
 }
 
+void datablocks(unsigned char *p) {
+  unsigned int mode;
+  EOS32_daddr_t addr;
+  int i, j;
+
+  for (i = 0; i < INOPB; i++) {
+
+    mode = get4Bytes(p);
+    p += 32;
+
+    for (j = 0; j < 6; j++) {
+      addr = get4Bytes(p);
+      p += 4;
+      if (mode != 0 && addr != 0) {
+        fprintf(datablockslist, "%u\n", addr);
+      }
+    }
+    addr = get4Bytes(p);
+    p += 4;
+    if (mode != 0) {
+
+      if (addr != 0) {
+        fprintf(datablockslist, "%u\n", addr);
+        fprintf(singleindirectlist, "%u\n", addr);
+      }
+    }
+    addr = get4Bytes(p);
+    p += 4;
+    if (mode != 0) {
+
+      if (addr != 0) {
+        fprintf(datablockslist, "%u\n", addr);
+        fprintf(doubleindirectlist, "%u\n", addr);
+      }
+    }
+  }
+}
 
 void directoryBlock(unsigned char *p) {
   EOS32_ino_t ino;
@@ -351,7 +392,6 @@ void freeBlock(unsigned char *p) {
 
   nfree = get4Bytes(p);
   p += 4;
-  // fprintf(freelist, "nfree = %u (0x%X)\n", nfree, nfree);
   for (i = 0; i < NICFREE; i++) {
     addr = get4Bytes(p);
     p += 4;
@@ -366,16 +406,27 @@ void freeBlock(unsigned char *p) {
 }
 
 
-void indirectBlock(unsigned char *p) {
+void singleIndirectBlock(unsigned char *p) {
   EOS32_daddr_t addr;
   int i;
 
-  checkBatch(0);
   for (i = 0; i < BLOCK_SIZE / sizeof(EOS32_daddr_t); i++) {
     addr = get4Bytes(p);
     p += 4;
-    printf("block[%4d] = %u (0x%X)\n", i, addr, addr);
-    if (checkBatch(1)) return;
+    if (addr != 0) {
+      fprintf(datablockslist, "%u\n", addr);
+    }
+  }
+}
+
+void doubleIndirectBlock(unsigned char *p) {
+  EOS32_daddr_t addr;
+  int i;
+
+  for (i = 0; i < BLOCK_SIZE / sizeof(EOS32_daddr_t); i++) {
+    addr = get4Bytes(p);
+    p += 4;
+    fprintf(singleindirectlist, "%u\n", addr);
   }
 }
 
@@ -536,6 +587,7 @@ int main(int argc, char *argv[]) {
 
   // end of file (EOF == -1)
   fprintf(freelist, "-1");
+  fclose(freelist);
 
 
   //create inodelist.txt
@@ -547,7 +599,48 @@ int main(int argc, char *argv[]) {
     inodeBlock(blockBuffer);
   }
 
+  fclose(inodelist);
 
+  // create datablockslist.txt
+  openDatablocksTXT();
+
+  for (i=2; i < 26; i++) {
+    currBlock = i;
+    readBlock(disk, currBlock, blockBuffer);
+    datablocks(blockBuffer);
+  }
+
+  // all double indirect blocks to the singleindirectlist
+  char * line = NULL;
+  size_t len = 0;
+  ssize_t read;
+  int num;
+
+  fseek(doubleindirectlist, 0, SEEK_SET);
+
+  while ((read = getline(&line, &len, singleindirectlist)) != -1) {
+    num = atoi(line);
+    currBlock = num;
+    readBlock(disk, currBlock, blockBuffer);
+    doubleIndirectBlock(blockBuffer);
+  }
+
+  // get all datablocks from singleIndirectBlocks
+  line = NULL;
+  len = 0;
+
+  fseek(singleindirectlist, 0, SEEK_SET);
+
+  while ((read = getline(&line, &len, singleindirectlist)) != -1) {
+    num = atoi(line);
+    currBlock = num;
+    readBlock(disk, currBlock, blockBuffer);
+    singleIndirectBlock(blockBuffer);
+  }
+
+  fclose(datablockslist);
+  fclose(singleindirectlist);
+  fclose(doubleindirectlist);
 
   /*while (!quit) {
     printf("shfs [block %u (0x%X)] > ", currBlock, currBlock);
@@ -636,14 +729,14 @@ int main(int argc, char *argv[]) {
         break;
     }
   }*/
-  fclose(freelist);
+
   fclose(disk);
   return 0;
 }
 
 void openFreelistTXT() {
 
-  freelist = fopen("freelist.txt", "w");
+  freelist = fopen("freelist.txt", "w+");
 
   if(freelist == NULL) {
   	printf("Datei konnte nicht geoeffnet werden.\n");
@@ -651,9 +744,29 @@ void openFreelistTXT() {
 }
 
 void openInodelistTXT() {
-  inodelist = fopen("inodelist.txt", "w");
+  inodelist = fopen("inodelist.txt", "w+");
 
   if(inodelist == NULL) {
+  	printf("Datei konnte nicht geoeffnet werden.\n");
+  }
+}
+
+void openDatablocksTXT() {
+  datablockslist = fopen("datablockslist.txt", "w+");
+
+  if(datablockslist == NULL) {
+  	printf("Datei konnte nicht geoeffnet werden.\n");
+  }
+
+  singleindirectlist = fopen("singleindirectlist.txt", "w+");
+
+  if(singleindirectlist == NULL) {
+  	printf("Datei konnte nicht geoeffnet werden.\n");
+  }
+
+  doubleindirectlist = fopen("doubleindirectlist.txt", "w+");
+
+  if(doubleindirectlist == NULL) {
   	printf("Datei konnte nicht geoeffnet werden.\n");
   }
 }

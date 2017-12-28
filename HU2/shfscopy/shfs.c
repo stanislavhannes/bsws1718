@@ -128,19 +128,21 @@ void inodesInDirectories(unsigned char *p, FILE *f) {
 
 void inodesDirectoryBlock(unsigned char *p) {
   EOS32_ino_t ino;
-  int i, j;
-  unsigned char c;
+  int i;
 
-  //checkBatch(0);
   for (i = 0; i < DIRPB; i++) {
-    fprintf(inodesindirectories, "%02d:  ", i);
+    // fprintf(inodesindirectories, "%02d:  ", i);
     ino = get4Bytes(p);
     p += 4;
-    fprintf(inodesindirectories, "inode = %u (0x%X)\n", ino, ino);
+    if (ino != 0) {
+      fprintf(inodesindirectories, "%u\n", ino);
+    }
+
+
     //if (checkBatch(1)) return;
-    fprintf(inodesindirectories, "     name  = ");
-    if (*p == '\0') {
-      fprintf(inodesindirectories, "<empty>");
+    // fprintf(inodesindirectories, "     name  = ");
+    /*if (*p == '\0') {
+      // fprintf(inodesindirectories, "<empty>");
     } else {
       for (j = 0; j < DIRSIZ; j++) {
         c = *(p + j);
@@ -148,14 +150,14 @@ void inodesDirectoryBlock(unsigned char *p) {
           break;
         }
         if (c < 0x20 || c >= 0x7F) {
-          fprintf(inodesindirectories, ".");
+          // fprintf(inodesindirectories, ".");
         } else {
-          fprintf(inodesindirectories, "%c", c);
+          // fprintf(inodesindirectories, "%c", c);
         }
       }
     }
-    fprintf(inodesindirectories, "\n");
-    //if (checkBatch(1)) return;
+    // fprintf(inodesindirectories, "\n");
+    //if (checkBatch(1)) return;*/
     p += DIRSIZ;
   }
 }
@@ -348,9 +350,9 @@ int main(int argc, char *argv[]) {
 
   fclose(inodeszerolc);
 
-  currBlock = 745;
+  /*currBlock = 745;
   readBlock(disk, currBlock, blockBuffer);
-  directoryBlock(blockBuffer);
+  directoryBlock(blockBuffer);*/
 
   fclose(inodesindirectories);
 

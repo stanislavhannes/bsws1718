@@ -53,9 +53,538 @@ FILE *inodelist;
 FILE *datablockslist;
 FILE *singleindirectlist;
 FILE *doubleindirectlist;
+FILE *inodesindirectories;
+FILE *inodeszerolc;
 
 EOS32_daddr_t linkblock;
+int id = -1;
 // gcc -Wall -o shfs shfs.c
+
+unsigned int fsStart;
+
+void inodesZeroLC(unsigned char *p) {
+  unsigned int nlink;
+  int i;
+
+  for (i = 0; i < INOPB; i++) {
+
+    p += 4;
+    id++;
+
+    nlink = get4Bytes(p);
+    if (nlink == 0 && id > 0) {
+      fprintf(inodeszerolc, "%d\n", id);
+    }
+
+    p += 60;
+  }
+}
+
+void inodesInDirectories(unsigned char *p, FILE *f) {
+  unsigned int mode;
+  EOS32_daddr_t addr;
+  int i, j;
+  unsigned char datablockBuffer[BLOCK_SIZE];
+
+  //checkBatch(0);
+  for (i = 0; i < INOPB; i++) {
+    mode = get4Bytes(p);
+    p += 32;
+    id++;
+    if (mode != 0 && (mode & IFMT) == IFDIR) {
+
+      for (j = 0; j < 6; j++) {
+        addr = get4Bytes(p);
+        p += 4;
+        if (mode != 0 && addr != 0) {
+          readBlock(f, addr, datablockBuffer);
+          inodesDirectoryBlock(datablockBuffer);
+          //if (checkBatch(1)) return;
+        }
+      }
+      addr = get4Bytes(p);
+      p += 4;
+      if (mode != 0) {
+
+        if (addr != 0) {
+          readBlock(f, addr, datablockBuffer);
+          singleInodesDirectoryBlock(datablockBuffer, f);
+        }
+      }
+      addr = get4Bytes(p);
+      p += 4;
+      if (mode != 0) {
+
+        if (addr != 0) {
+          readBlock(f, addr, datablockBuffer);
+          doubleInodesDirectoryBlock(datablockBuffer, f);
+        }
+      }
+    } else {
+      p += 32;
+    }
+  }
+}
+
+void inodesDirectoryBlock(unsigned char *p) {
+  EOS32_ino_t ino;
+  int i, j;
+  unsigned char c;
+
+  //checkBatch(0);
+  for (i = 0; i < DIRPB; i++) {
+    fprintf(inodesindirectories, "%02d:  ", i);
+    ino = get4Bytes(p);
+    p += 4;
+    fprintf(inodesindirectories, "inode = %u (0x%X)\n", ino, ino);
+    //if (checkBatch(1)) return;
+    fprintf(inodesindirectories, "     name  = ");
+    if (*p == '\0') {
+      fprintf(inodesindirectories, "<empty>");
+    } else {
+      for (j = 0; j < DIRSIZ; j++) {
+        c = *(p + j);
+        if (c == '\0') {
+          break;
+        }
+        if (c < 0x20 || c >= 0x7F) {
+          fprintf(inodesindirectories, ".");
+        } else {
+          fprintf(inodesindirectories, "%c", c);
+        }
+      }
+    }
+    fprintf(inodesindirectories, "\n");
+    //if (checkBatch(1)) return;
+    p += DIRSIZ;
+  }
+}
+
+void singleInodesDirectoryBlock(unsigned char *p, FILE *f) {
+  EOS32_daddr_t addr;
+  int i;
+  unsigned char datablockBuffer[BLOCK_SIZE];
+
+  for (i = 0; i < BLOCK_SIZE / sizeof(EOS32_daddr_t); i++) {
+    addr = get4Bytes(p);
+    p += 4;
+    if (addr != 0) {
+      readBlock(f, addr, datablockBuffer);
+      inodesDirectoryBlock(datablockBuffer);
+    }
+  }
+}
+
+void doubleInodesDirectoryBlock(unsigned char *p, FILE *f) {
+  EOS32_daddr_t addr;
+  int i;
+  unsigned char datablockBuffer[BLOCK_SIZE];
+
+  for (i = 0; i < BLOCK_SIZE / sizeof(EOS32_daddr_t); i++) {
+    addr = get4Bytes(p);
+    p += 4;
+    if (addr != 0) {
+      readBlock(f, addr, datablockBuffer);
+      singleInodesDirectoryBlock(datablockBuffer, f);
+    }
+  }
+}
+
+int main(int argc, char *argv[]) {
+  FILE *disk;
+  unsigned int fsSize;
+  int part;
+  char *endptr;
+  unsigned char partTable[SECTOR_SIZE];
+  unsigned char *ptptr;
+  unsigned int partType;
+  EOS32_daddr_t numBlocks;
+  EOS32_daddr_t currBlock;
+  unsigned char blockBuffer[BLOCK_SIZE];
+  //char line[LINE_SIZE];
+  int quit;
+  int i;
+  //char *p;
+  //unsigned int n;
+
+  if (argc != 3) {
+    printf("Usage: %s <disk> <partition>\n", argv[0]);
+    printf("       <disk> is a disk image file name\n");
+    printf("       <partition> is a partition number ");
+    printf("(or '*' for the whole disk)\n");
+    exit(1);
+  }
+  disk = fopen(argv[1], "rb");
+  if (disk == NULL) {
+    error("cannot open disk image file '%s'", argv[1]);
+  }
+  if (strcmp(argv[2], "*") == 0) {
+    /* whole disk contains one single file system */
+    fsStart = 0;
+    fseek(disk, 0, SEEK_END);
+    fsSize = ftell(disk) / SECTOR_SIZE;
+  } else {
+    /* argv[2] is partition number of file system */
+    part = strtoul(argv[2], &endptr, 10);
+    if (*endptr != '\0' || part < 0 || part > 15) {
+      error("illegal partition number '%s'", argv[2]);
+    }
+    fseek(disk, 1 * SECTOR_SIZE, SEEK_SET);
+    if (fread(partTable, 1, SECTOR_SIZE, disk) != SECTOR_SIZE) {
+      error("cannot read partition table of disk '%s'", argv[1]);
+    }
+    ptptr = partTable + part * 32;
+    partType = get4Bytes(ptptr + 0);
+    if ((partType & 0x7FFFFFFF) != 0x00000058) {
+      error("partition %d of disk '%s' does not contain an EOS32 file system",
+            part, argv[1]);
+    }
+    fsStart = get4Bytes(ptptr + 4);
+    fsSize = get4Bytes(ptptr + 8);
+  }
+  printf("File system has size %u (0x%X) sectors of %d bytes each.\n",
+         fsSize, fsSize, SECTOR_SIZE);
+  if (fsSize % SPB != 0) {
+    printf("File system size is not a multiple of block size.\n");
+  }
+  numBlocks = fsSize / SPB;
+  printf("This equals %u (0x%X) blocks of %d bytes each.\n",
+         numBlocks, numBlocks, BLOCK_SIZE);
+  if (numBlocks < 2) {
+    error("file system has less than 2 blocks");
+  }
+
+  // start
+  currBlock = 1;
+  readBlock(disk, currBlock, blockBuffer);
+  help();
+  quit = 0;
+
+  // create freelist.txt
+  openFreelistTXT();
+  superBlock(blockBuffer);
+
+  while (linkblock != 0) {
+    currBlock = linkblock;
+    readBlock(disk, currBlock, blockBuffer);
+    freeBlock(blockBuffer);
+  }
+
+  // end of file (EOF == -1)
+  // fprintf(freelist, "-1");
+  // fclose(freelist);
+
+
+  //create inodelist.txt
+  openInodelistTXT();
+
+  for (i=2; i < 26; i++) {
+    currBlock = i;
+    readBlock(disk, currBlock, blockBuffer);
+    inodeBlock(blockBuffer);
+  }
+
+  fclose(inodelist);
+
+  // create datablockslist.txt
+  openDatablocksTXT();
+
+  for (i=2; i < 26; i++) {
+    currBlock = i;
+    readBlock(disk, currBlock, blockBuffer);
+    datablocks(blockBuffer, disk);
+  }
+
+
+
+  // all double indirect blocks to the singleindirectlist
+  /*char * line = NULL;
+  size_t len = 0;
+  ssize_t read;
+  int num;
+
+  fseek(doubleindirectlist, 0, SEEK_SET);
+
+  while ((read = getline(&line, &len, singleindirectlist)) != -1) {
+    num = atoi(line);
+    currBlock = num;
+    readBlock(disk, currBlock, blockBuffer);
+    doubleIndirectBlock(blockBuffer);
+  }
+
+  // get all datablocks from singleIndirectBlocks
+  line = NULL;
+  len = 0;
+
+  fseek(singleindirectlist, 0, SEEK_SET);
+
+  while ((read = getline(&line, &len, singleindirectlist)) != -1) {
+    num = atoi(line);
+    currBlock = num;
+    readBlock(disk, currBlock, blockBuffer);
+    singleIndirectBlock(blockBuffer);
+  }*/
+
+  fclose(datablockslist);
+  // fclose(singleindirectlist);
+  // fclose(doubleindirectlist);
+
+  openinodesindirectoriesTXT();
+
+  for (i=2; i < 26; i++) {
+    currBlock = i;
+    readBlock(disk, currBlock, blockBuffer);
+    inodesInDirectories(blockBuffer, disk);
+  }
+
+  openInodeszerolcTXT();
+  id = -1;
+
+  for (i=2; i < 26; i++) {
+    currBlock = i;
+    readBlock(disk, currBlock, blockBuffer);
+    inodesZeroLC(blockBuffer);
+  }
+
+  fclose(inodeszerolc);
+
+  currBlock = 745;
+  readBlock(disk, currBlock, blockBuffer);
+  directoryBlock(blockBuffer);
+
+  fclose(inodesindirectories);
+
+  // e) Die Groesse einer Datei ist nicht konsistent mit den im
+  // Inode vermerkten Bloecken: Exit-Code 14.
+  // circa 4096 Bytes pro Block
+  //
+  // also Bloecke im Inode zählen und mit der Dateigroeße vergleichen
+  // dazu ist keine Datenstruktur nötig, Programm kann abgebrochen werden
+
+  // im inode erst die anzahl der Blöcke zählen, auch si und di mit Hilfe der
+  // Funktionen aus a-d, danach dann mal 4096 und Wert mit size
+  // vergleichen, danach beide in Datei schreiben
+  // neue Datei mit den entsprechenden Funktionen anlegen
+
+  /*while (!quit) {
+    printf("shfs [block %u (0x%X)] > ", currBlock, currBlock);
+    fflush(stdout);
+    if (fgets(line, LINE_SIZE, stdin) == NULL) {
+      printf("\n");
+      break;
+    }
+    if (line[0] == '\0' || line[0] == '\n') {
+      continue;
+    }
+    switch (line[0]) {
+      case 'h':
+      case '?':
+        help();
+        break;
+      case 'q':
+        quit = 1;
+        break;
+      case 'r':
+        rawBlock(blockBuffer);
+        break;
+      case 's':
+        superBlock(blockBuffer);
+        break;
+      case 'i':
+        inodeBlock(blockBuffer);
+        break;
+      case 'd':
+        directoryBlock(blockBuffer);
+        break;
+      case 'f':
+        freeBlock(blockBuffer);
+        break;
+      case '*':
+        indirectBlock(blockBuffer);
+        break;
+      case 'b':
+        p = line + 1;
+        if (!parseNumber(&p, &n)) {
+          break;
+        }
+        if (*p != '\0' && *p != '\n') {
+          printf("Error: cannot parse block number!\n");
+          break;
+        }
+        if (n >= numBlocks) {
+          printf("Error: block number too big for file system!\n");
+          break;
+        }
+        currBlock = n;
+        readBlock(disk, currBlock, blockBuffer);
+        break;
+      case '+':
+        n = currBlock + 1;
+        if (n >= numBlocks) {
+          printf("Error: block number too big for file system!\n");
+          break;
+        }
+        currBlock = n;
+        readBlock(disk, currBlock, blockBuffer);
+        break;
+      case '-':
+        n = currBlock - 1;
+        if (n >= numBlocks) {
+          printf("Error: block number too big for file system!\n");
+          break;
+        }
+        currBlock = n;
+        readBlock(disk, currBlock, blockBuffer);
+        break;
+      case 't':
+        p = line + 1;
+        if (!parseNumber(&p, &n)) {
+          break;
+        }
+        if (*p != '\0' && *p != '\n') {
+          printf("Error: cannot parse inode number!\n");
+          break;
+        }
+        printf("inode %u (0x%X) is in block %u (0x%X), inode %u\n",
+               n, n, n / INOPB + 2, n / INOPB + 2, n % INOPB);
+        break;
+      default:
+        printf("Unknown command, type 'h' for help!\n");
+        break;
+    }
+  }*/
+
+  fclose(disk);
+  return 0;
+}
+
+void openFreelistTXT() {
+
+  freelist = fopen("freelist.txt", "w+");
+
+  if(freelist == NULL) {
+  	printf("Datei konnte nicht geoeffnet werden.\n");
+  }
+}
+
+void openInodelistTXT() {
+  inodelist = fopen("inodelist.txt", "w+");
+
+  if(inodelist == NULL) {
+  	printf("Datei konnte nicht geoeffnet werden.\n");
+  }
+}
+
+void openDatablocksTXT() {
+  datablockslist = fopen("datablockslist.txt", "w+");
+
+  if(datablockslist == NULL) {
+  	printf("Datei konnte nicht geoeffnet werden.\n");
+  }
+}
+
+void openinodesindirectoriesTXT() {
+
+  inodesindirectories = fopen("inodesindirectories.txt", "w+");
+
+  if(inodesindirectories == NULL) {
+  	printf("Datei konnte nicht geoeffnet werden.\n");
+  }
+}
+
+void openInodeszerolcTXT() {
+
+  inodeszerolc = fopen("inodeszerolc.txt", "w+");
+
+  if(inodeszerolc == NULL) {
+  	printf("Datei konnte nicht geoeffnet werden.\n");
+  }
+}
+
+void datasize(unsigned char *p, FILE *f) {
+  unsigned int mode;
+  EOS32_daddr_t addr;
+  EOS32_off_t size;
+  EOS32_off_t calcSize;
+  int i, j;
+  int number;
+  unsigned char blockBufferDatasize[BLOCK_SIZE];
+
+  for (i = 0; i < INOPB; i++) {
+    number = 0;
+
+    mode = get4Bytes(p);
+    p += 28;
+
+    size = get4Bytes(p);
+    p += 4;
+
+    for (j = 0; j < 6; j++) {
+      addr = get4Bytes(p);
+      p += 4;
+      if (mode != 0 && addr != 0) {
+        number++;
+      }
+    }
+    addr = get4Bytes(p);
+    p += 4;
+    if (mode != 0) {
+
+      if (addr != 0) {
+        readBlock(f, addr, blockBufferDatasize);
+        number += singleIndirectBlockdata(blockBufferDatasize);
+      }
+    }
+    addr = get4Bytes(p);
+    p += 4;
+    if (mode != 0) {
+
+      if (addr != 0) {
+        readBlock(f, addr, blockBufferDatasize);
+        number += doubleIndirectBlockdata(blockBufferDatasize, f);
+      }
+    }
+
+    calcSize = number * BLOCK_SIZE;
+    if (size > calcSize || size < (calcSize-BLOCK_SIZE)) {
+      // TODO: error
+    }
+  }
+}
+
+int singleIndirectBlockdata(unsigned char *p) {
+  EOS32_daddr_t addr;
+  int i;
+  int number = 0;
+
+  for (i = 0; i < BLOCK_SIZE / sizeof(EOS32_daddr_t); i++) {
+    addr = get4Bytes(p);
+    p += 4;
+    if (addr != 0) {
+      number++;
+    }
+  }
+
+  return number;
+}
+
+int doubleIndirectBlockdata(unsigned char *p, FILE *f) {
+  EOS32_daddr_t addr;
+  int i;
+  unsigned char blockBufferDatasize[BLOCK_SIZE];
+  int number = 0;
+
+  for (i = 0; i < BLOCK_SIZE / sizeof(EOS32_daddr_t); i++) {
+    addr = get4Bytes(p);
+    p += 4;
+
+    if (addr != 0) {
+      readBlock(f, addr, blockBufferDatasize);
+      number += singleIndirectBlockdata(blockBufferDatasize);
+    }
+  }
+  return number;
+}
 
 void error(char *fmt, ...) {
   va_list ap;
@@ -68,8 +597,6 @@ void error(char *fmt, ...) {
   exit(1);
 }
 
-
-unsigned int fsStart;		/* file system start sector */
 
 
 void readBlock(FILE *disk, EOS32_daddr_t blockNum, unsigned char *blockBuffer) {
@@ -312,10 +839,11 @@ void inodeBlock(unsigned char *p) {
   }
 }
 
-void datablocks(unsigned char *p) {
+void datablocks(unsigned char *p, FILE *f) {
   unsigned int mode;
   EOS32_daddr_t addr;
   int i, j;
+  unsigned char datablockBuffer[BLOCK_SIZE];
 
   for (i = 0; i < INOPB; i++) {
 
@@ -335,7 +863,8 @@ void datablocks(unsigned char *p) {
 
       if (addr != 0) {
         fprintf(datablockslist, "%u\n", addr);
-        fprintf(singleindirectlist, "%u\n", addr);
+        readBlock(f, addr, datablockBuffer);
+        singleIndirectBlock(datablockBuffer);
       }
     }
     addr = get4Bytes(p);
@@ -344,7 +873,8 @@ void datablocks(unsigned char *p) {
 
       if (addr != 0) {
         fprintf(datablockslist, "%u\n", addr);
-        fprintf(doubleindirectlist, "%u\n", addr);
+        readBlock(f, addr, datablockBuffer);
+        doubleIndirectBlock(datablockBuffer, f);
       }
     }
   }
@@ -355,16 +885,16 @@ void directoryBlock(unsigned char *p) {
   int i, j;
   unsigned char c;
 
-  checkBatch(0);
+  //checkBatch(0);
   for (i = 0; i < DIRPB; i++) {
-    printf("%02d:  ", i);
+    fprintf(inodesindirectories, "%02d:  ", i);
     ino = get4Bytes(p);
     p += 4;
-    printf("inode = %u (0x%X)\n", ino, ino);
-    if (checkBatch(1)) return;
-    printf("     name  = ");
+    fprintf(inodesindirectories, "inode = %u (0x%X)\n", ino, ino);
+    //if (checkBatch(1)) return;
+    fprintf(inodesindirectories, "     name  = ");
     if (*p == '\0') {
-      printf("<empty>");
+      fprintf(inodesindirectories, "<empty>");
     } else {
       for (j = 0; j < DIRSIZ; j++) {
         c = *(p + j);
@@ -372,14 +902,14 @@ void directoryBlock(unsigned char *p) {
           break;
         }
         if (c < 0x20 || c >= 0x7F) {
-          printf(".");
+          fprintf(inodesindirectories, ".");
         } else {
-          printf("%c", c);
+          fprintf(inodesindirectories, "%c", c);
         }
       }
     }
-    printf("\n");
-    if (checkBatch(1)) return;
+    fprintf(inodesindirectories, "\n");
+    //if (checkBatch(1)) return;
     p += DIRSIZ;
   }
 }
@@ -419,14 +949,18 @@ void singleIndirectBlock(unsigned char *p) {
   }
 }
 
-void doubleIndirectBlock(unsigned char *p) {
+void doubleIndirectBlock(unsigned char *p, FILE *f) {
   EOS32_daddr_t addr;
   int i;
+  unsigned char datablockBuffer[BLOCK_SIZE];
 
   for (i = 0; i < BLOCK_SIZE / sizeof(EOS32_daddr_t); i++) {
     addr = get4Bytes(p);
     p += 4;
-    fprintf(singleindirectlist, "%u\n", addr);
+    if (addr != 0) {
+      readBlock(f, addr, datablockBuffer);
+      singleIndirectBlock(datablockBuffer);
+    }
   }
 }
 
@@ -502,271 +1036,4 @@ int parseNumber(char **pc, unsigned int *pi) {
   *pc = p;
   *pi = n;
   return 1;
-}
-
-
-int main(int argc, char *argv[]) {
-  FILE *disk;
-  unsigned int fsSize;
-  int part;
-  char *endptr;
-  unsigned char partTable[SECTOR_SIZE];
-  unsigned char *ptptr;
-  unsigned int partType;
-  EOS32_daddr_t numBlocks;
-  EOS32_daddr_t currBlock;
-  unsigned char blockBuffer[BLOCK_SIZE];
-  //char line[LINE_SIZE];
-  int quit;
-  int i;
-  //char *p;
-  //unsigned int n;
-
-  if (argc != 3) {
-    printf("Usage: %s <disk> <partition>\n", argv[0]);
-    printf("       <disk> is a disk image file name\n");
-    printf("       <partition> is a partition number ");
-    printf("(or '*' for the whole disk)\n");
-    exit(1);
-  }
-  disk = fopen(argv[1], "rb");
-  if (disk == NULL) {
-    error("cannot open disk image file '%s'", argv[1]);
-  }
-  if (strcmp(argv[2], "*") == 0) {
-    /* whole disk contains one single file system */
-    fsStart = 0;
-    fseek(disk, 0, SEEK_END);
-    fsSize = ftell(disk) / SECTOR_SIZE;
-  } else {
-    /* argv[2] is partition number of file system */
-    part = strtoul(argv[2], &endptr, 10);
-    if (*endptr != '\0' || part < 0 || part > 15) {
-      error("illegal partition number '%s'", argv[2]);
-    }
-    fseek(disk, 1 * SECTOR_SIZE, SEEK_SET);
-    if (fread(partTable, 1, SECTOR_SIZE, disk) != SECTOR_SIZE) {
-      error("cannot read partition table of disk '%s'", argv[1]);
-    }
-    ptptr = partTable + part * 32;
-    partType = get4Bytes(ptptr + 0);
-    if ((partType & 0x7FFFFFFF) != 0x00000058) {
-      error("partition %d of disk '%s' does not contain an EOS32 file system",
-            part, argv[1]);
-    }
-    fsStart = get4Bytes(ptptr + 4);
-    fsSize = get4Bytes(ptptr + 8);
-  }
-  printf("File system has size %u (0x%X) sectors of %d bytes each.\n",
-         fsSize, fsSize, SECTOR_SIZE);
-  if (fsSize % SPB != 0) {
-    printf("File system size is not a multiple of block size.\n");
-  }
-  numBlocks = fsSize / SPB;
-  printf("This equals %u (0x%X) blocks of %d bytes each.\n",
-         numBlocks, numBlocks, BLOCK_SIZE);
-  if (numBlocks < 2) {
-    error("file system has less than 2 blocks");
-  }
-
-  // start
-  currBlock = 1;
-  readBlock(disk, currBlock, blockBuffer);
-  help();
-  quit = 0;
-
-  // create freelist.txt
-  openFreelistTXT();
-  superBlock(blockBuffer);
-
-  while (linkblock != 0) {
-    currBlock = linkblock;
-    readBlock(disk, currBlock, blockBuffer);
-    freeBlock(blockBuffer);
-  }
-
-  // end of file (EOF == -1)
-  fprintf(freelist, "-1");
-  fclose(freelist);
-
-
-  //create inodelist.txt
-  openInodelistTXT();
-
-  for (i=2; i < 26; i++) {
-    currBlock = i;
-    readBlock(disk, currBlock, blockBuffer);
-    inodeBlock(blockBuffer);
-  }
-
-  fclose(inodelist);
-
-  // create datablockslist.txt
-  openDatablocksTXT();
-
-  for (i=2; i < 26; i++) {
-    currBlock = i;
-    readBlock(disk, currBlock, blockBuffer);
-    datablocks(blockBuffer);
-  }
-
-  // all double indirect blocks to the singleindirectlist
-  char * line = NULL;
-  size_t len = 0;
-  ssize_t read;
-  int num;
-
-  fseek(doubleindirectlist, 0, SEEK_SET);
-
-  while ((read = getline(&line, &len, singleindirectlist)) != -1) {
-    num = atoi(line);
-    currBlock = num;
-    readBlock(disk, currBlock, blockBuffer);
-    doubleIndirectBlock(blockBuffer);
-  }
-
-  // get all datablocks from singleIndirectBlocks
-  line = NULL;
-  len = 0;
-
-  fseek(singleindirectlist, 0, SEEK_SET);
-
-  while ((read = getline(&line, &len, singleindirectlist)) != -1) {
-    num = atoi(line);
-    currBlock = num;
-    readBlock(disk, currBlock, blockBuffer);
-    singleIndirectBlock(blockBuffer);
-  }
-
-  fclose(datablockslist);
-  fclose(singleindirectlist);
-  fclose(doubleindirectlist);
-
-  /*while (!quit) {
-    printf("shfs [block %u (0x%X)] > ", currBlock, currBlock);
-    fflush(stdout);
-    if (fgets(line, LINE_SIZE, stdin) == NULL) {
-      printf("\n");
-      break;
-    }
-    if (line[0] == '\0' || line[0] == '\n') {
-      continue;
-    }
-    switch (line[0]) {
-      case 'h':
-      case '?':
-        help();
-        break;
-      case 'q':
-        quit = 1;
-        break;
-      case 'r':
-        rawBlock(blockBuffer);
-        break;
-      case 's':
-        superBlock(blockBuffer);
-        break;
-      case 'i':
-        inodeBlock(blockBuffer);
-        break;
-      case 'd':
-        directoryBlock(blockBuffer);
-        break;
-      case 'f':
-        freeBlock(blockBuffer);
-        break;
-      case '*':
-        indirectBlock(blockBuffer);
-        break;
-      case 'b':
-        p = line + 1;
-        if (!parseNumber(&p, &n)) {
-          break;
-        }
-        if (*p != '\0' && *p != '\n') {
-          printf("Error: cannot parse block number!\n");
-          break;
-        }
-        if (n >= numBlocks) {
-          printf("Error: block number too big for file system!\n");
-          break;
-        }
-        currBlock = n;
-        readBlock(disk, currBlock, blockBuffer);
-        break;
-      case '+':
-        n = currBlock + 1;
-        if (n >= numBlocks) {
-          printf("Error: block number too big for file system!\n");
-          break;
-        }
-        currBlock = n;
-        readBlock(disk, currBlock, blockBuffer);
-        break;
-      case '-':
-        n = currBlock - 1;
-        if (n >= numBlocks) {
-          printf("Error: block number too big for file system!\n");
-          break;
-        }
-        currBlock = n;
-        readBlock(disk, currBlock, blockBuffer);
-        break;
-      case 't':
-        p = line + 1;
-        if (!parseNumber(&p, &n)) {
-          break;
-        }
-        if (*p != '\0' && *p != '\n') {
-          printf("Error: cannot parse inode number!\n");
-          break;
-        }
-        printf("inode %u (0x%X) is in block %u (0x%X), inode %u\n",
-               n, n, n / INOPB + 2, n / INOPB + 2, n % INOPB);
-        break;
-      default:
-        printf("Unknown command, type 'h' for help!\n");
-        break;
-    }
-  }*/
-
-  fclose(disk);
-  return 0;
-}
-
-void openFreelistTXT() {
-
-  freelist = fopen("freelist.txt", "w+");
-
-  if(freelist == NULL) {
-  	printf("Datei konnte nicht geoeffnet werden.\n");
-  }
-}
-
-void openInodelistTXT() {
-  inodelist = fopen("inodelist.txt", "w+");
-
-  if(inodelist == NULL) {
-  	printf("Datei konnte nicht geoeffnet werden.\n");
-  }
-}
-
-void openDatablocksTXT() {
-  datablockslist = fopen("datablockslist.txt", "w+");
-
-  if(datablockslist == NULL) {
-  	printf("Datei konnte nicht geoeffnet werden.\n");
-  }
-
-  singleindirectlist = fopen("singleindirectlist.txt", "w+");
-
-  if(singleindirectlist == NULL) {
-  	printf("Datei konnte nicht geoeffnet werden.\n");
-  }
-
-  doubleindirectlist = fopen("doubleindirectlist.txt", "w+");
-
-  if(doubleindirectlist == NULL) {
-  	printf("Datei konnte nicht geoeffnet werden.\n");
-  }
 }

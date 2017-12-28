@@ -1,0 +1,348 @@
+1
+1
+2
+3
+54
+57
+74
+82
+83
+84
+85
+191
+3
+1
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+1
+55
+56
+57
+1
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+1
+75
+76
+77
+78
+79
+80
+81
+192
+193
+82
+1
+83
+1
+84
+1
+85
+1
+86
+104
+116
+182
+86
+85
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+85
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+85
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+85
+183
+184
+185
+186
+187
+188
+189
+190
+191
+1
+00:  inode = 54 (0x36)
+     name  = .
+01:  inode = 1 (0x1)
+     name  = ..
+02:  inode = 55 (0x37)
+     name  = eos32.bin
+03:  inode = 56 (0x38)
+     name  = eos32.map
+04:  inode = 0 (0x0)
+     name  = <empty>
+05:  inode = 0 (0x0)
+     name  = <empty>
+06:  inode = 0 (0x0)
+     name  = <empty>
+07:  inode = 0 (0x0)
+     name  = <empty>
+08:  inode = 0 (0x0)
+     name  = <empty>
+09:  inode = 0 (0x0)
+     name  = <empty>
+10:  inode = 0 (0x0)
+     name  = <empty>
+11:  inode = 0 (0x0)
+     name  = <empty>
+12:  inode = 0 (0x0)
+     name  = <empty>
+13:  inode = 0 (0x0)
+     name  = <empty>
+14:  inode = 0 (0x0)
+     name  = <empty>
+15:  inode = 0 (0x0)
+     name  = <empty>
+16:  inode = 0 (0x0)
+     name  = <empty>
+17:  inode = 0 (0x0)
+     name  = <empty>
+18:  inode = 0 (0x0)
+     name  = <empty>
+19:  inode = 0 (0x0)
+     name  = <empty>
+20:  inode = 0 (0x0)
+     name  = <empty>
+21:  inode = 0 (0x0)
+     name  = <empty>
+22:  inode = 0 (0x0)
+     name  = <empty>
+23:  inode = 0 (0x0)
+     name  = <empty>
+24:  inode = 0 (0x0)
+     name  = <empty>
+25:  inode = 0 (0x0)
+     name  = <empty>
+26:  inode = 0 (0x0)
+     name  = <empty>
+27:  inode = 0 (0x0)
+     name  = <empty>
+28:  inode = 0 (0x0)
+     name  = <empty>
+29:  inode = 0 (0x0)
+     name  = <empty>
+30:  inode = 0 (0x0)
+     name  = <empty>
+31:  inode = 0 (0x0)
+     name  = <empty>
+32:  inode = 0 (0x0)
+     name  = <empty>
+33:  inode = 0 (0x0)
+     name  = <empty>
+34:  inode = 0 (0x0)
+     name  = <empty>
+35:  inode = 0 (0x0)
+     name  = <empty>
+36:  inode = 0 (0x0)
+     name  = <empty>
+37:  inode = 0 (0x0)
+     name  = <empty>
+38:  inode = 0 (0x0)
+     name  = <empty>
+39:  inode = 0 (0x0)
+     name  = <empty>
+40:  inode = 0 (0x0)
+     name  = <empty>
+41:  inode = 0 (0x0)
+     name  = <empty>
+42:  inode = 0 (0x0)
+     name  = <empty>
+43:  inode = 0 (0x0)
+     name  = <empty>
+44:  inode = 0 (0x0)
+     name  = <empty>
+45:  inode = 0 (0x0)
+     name  = <empty>
+46:  inode = 0 (0x0)
+     name  = <empty>
+47:  inode = 0 (0x0)
+     name  = <empty>
+48:  inode = 0 (0x0)
+     name  = <empty>
+49:  inode = 0 (0x0)
+     name  = <empty>
+50:  inode = 0 (0x0)
+     name  = <empty>
+51:  inode = 0 (0x0)
+     name  = <empty>
+52:  inode = 0 (0x0)
+     name  = <empty>
+53:  inode = 0 (0x0)
+     name  = <empty>
+54:  inode = 0 (0x0)
+     name  = <empty>
+55:  inode = 0 (0x0)
+     name  = <empty>
+56:  inode = 0 (0x0)
+     name  = <empty>
+57:  inode = 0 (0x0)
+     name  = <empty>
+58:  inode = 0 (0x0)
+     name  = <empty>
+59:  inode = 0 (0x0)
+     name  = <empty>
+60:  inode = 0 (0x0)
+     name  = <empty>
+61:  inode = 0 (0x0)
+     name  = <empty>
+62:  inode = 0 (0x0)
+     name  = <empty>
+63:  inode = 0 (0x0)
+     name  = <empty>

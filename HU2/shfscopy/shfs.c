@@ -48,21 +48,36 @@ typedef unsigned int EOS32_daddr_t;
 typedef unsigned int EOS32_off_t;
 typedef int EOS32_time_t;
 
-FILE *freelist;
-FILE *inodelist;
-FILE *datablockslist;
-FILE *singleindirectlist;
-FILE *doubleindirectlist;
-FILE *inodesindirectories;
-FILE *inodeszerolc;
+FILE *freeBlocksTXT;
+FILE *allInodesTXT;
+FILE *dataBlocksTXT;
+FILE *allInodesInDirectoriesTXT;
+FILE *inodesWithLinkcountZeroTXT;
 
-EOS32_daddr_t linkblock;
+EOS32_daddr_t linkBlock;
 int id = -1;
 // gcc -Wall -o shfs shfs.c
 
 unsigned int fsStart;
 
-void inodesZeroLC(unsigned char *p) {
+void inodeIsFree(unsigned char *p) {
+  int i;
+  unsigned int mode;
+  unsigned int nlink;
+
+  for (i = 0; i < INOPB; i++) {
+
+    mode = get4Bytes(p);
+    p += 4;
+    nlink = get4Bytes(p);
+    if (nlink == 0 && mode != 0) {
+      // TODO: Exit-Code 16
+    }
+    p += 60;
+  }
+}
+
+void inodesWithLinkcountZero(unsigned char *p) {
   unsigned int nlink;
   int i;
 
@@ -73,20 +88,20 @@ void inodesZeroLC(unsigned char *p) {
 
     nlink = get4Bytes(p);
     if (nlink == 0 && id > 0) {
-      fprintf(inodeszerolc, "%d\n", id);
+      fprintf(inodesWithLinkcountZeroTXT, "%d\n", id);
     }
 
     p += 60;
   }
 }
 
-void inodesInDirectories(unsigned char *p, FILE *f) {
+
+void allInodesInDirectories(unsigned char *p, FILE *f) {
   unsigned int mode;
   EOS32_daddr_t addr;
   int i, j;
-  unsigned char datablockBuffer[BLOCK_SIZE];
+  unsigned char tempBlockBuffer[BLOCK_SIZE];
 
-  //checkBatch(0);
   for (i = 0; i < INOPB; i++) {
     mode = get4Bytes(p);
     p += 32;
@@ -97,9 +112,8 @@ void inodesInDirectories(unsigned char *p, FILE *f) {
         addr = get4Bytes(p);
         p += 4;
         if (mode != 0 && addr != 0) {
-          readBlock(f, addr, datablockBuffer);
-          inodesDirectoryBlock(datablockBuffer);
-          //if (checkBatch(1)) return;
+          readBlock(f, addr, tempBlockBuffer);
+          inodesDirectoryBlock(tempBlockBuffer);
         }
       }
       addr = get4Bytes(p);
@@ -107,8 +121,8 @@ void inodesInDirectories(unsigned char *p, FILE *f) {
       if (mode != 0) {
 
         if (addr != 0) {
-          readBlock(f, addr, datablockBuffer);
-          singleInodesDirectoryBlock(datablockBuffer, f);
+          readBlock(f, addr, tempBlockBuffer);
+          singleInodesDirectoryBlock(tempBlockBuffer, f);
         }
       }
       addr = get4Bytes(p);
@@ -116,8 +130,8 @@ void inodesInDirectories(unsigned char *p, FILE *f) {
       if (mode != 0) {
 
         if (addr != 0) {
-          readBlock(f, addr, datablockBuffer);
-          doubleInodesDirectoryBlock(datablockBuffer, f);
+          readBlock(f, addr, tempBlockBuffer);
+          doubleInodesDirectoryBlock(tempBlockBuffer, f);
         }
       }
     } else {
@@ -131,33 +145,12 @@ void inodesDirectoryBlock(unsigned char *p) {
   int i;
 
   for (i = 0; i < DIRPB; i++) {
-    // fprintf(inodesindirectories, "%02d:  ", i);
     ino = get4Bytes(p);
     p += 4;
     if (ino != 0) {
-      fprintf(inodesindirectories, "%u\n", ino);
+      fprintf(allInodesInDirectoriesTXT, "%u\n", ino);
     }
 
-
-    //if (checkBatch(1)) return;
-    // fprintf(inodesindirectories, "     name  = ");
-    /*if (*p == '\0') {
-      // fprintf(inodesindirectories, "<empty>");
-    } else {
-      for (j = 0; j < DIRSIZ; j++) {
-        c = *(p + j);
-        if (c == '\0') {
-          break;
-        }
-        if (c < 0x20 || c >= 0x7F) {
-          // fprintf(inodesindirectories, ".");
-        } else {
-          // fprintf(inodesindirectories, "%c", c);
-        }
-      }
-    }
-    // fprintf(inodesindirectories, "\n");
-    //if (checkBatch(1)) return;*/
     p += DIRSIZ;
   }
 }
@@ -165,14 +158,14 @@ void inodesDirectoryBlock(unsigned char *p) {
 void singleInodesDirectoryBlock(unsigned char *p, FILE *f) {
   EOS32_daddr_t addr;
   int i;
-  unsigned char datablockBuffer[BLOCK_SIZE];
+  unsigned char tempBlockBuffer[BLOCK_SIZE];
 
   for (i = 0; i < BLOCK_SIZE / sizeof(EOS32_daddr_t); i++) {
     addr = get4Bytes(p);
     p += 4;
     if (addr != 0) {
-      readBlock(f, addr, datablockBuffer);
-      inodesDirectoryBlock(datablockBuffer);
+      readBlock(f, addr, tempBlockBuffer);
+      inodesDirectoryBlock(tempBlockBuffer);
     }
   }
 }
@@ -180,14 +173,14 @@ void singleInodesDirectoryBlock(unsigned char *p, FILE *f) {
 void doubleInodesDirectoryBlock(unsigned char *p, FILE *f) {
   EOS32_daddr_t addr;
   int i;
-  unsigned char datablockBuffer[BLOCK_SIZE];
+  unsigned char tempBlockBuffer[BLOCK_SIZE];
 
   for (i = 0; i < BLOCK_SIZE / sizeof(EOS32_daddr_t); i++) {
     addr = get4Bytes(p);
     p += 4;
     if (addr != 0) {
-      readBlock(f, addr, datablockBuffer);
-      singleInodesDirectoryBlock(datablockBuffer, f);
+      readBlock(f, addr, tempBlockBuffer);
+      singleInodesDirectoryBlock(tempBlockBuffer, f);
     }
   }
 }
@@ -203,11 +196,7 @@ int main(int argc, char *argv[]) {
   EOS32_daddr_t numBlocks;
   EOS32_daddr_t currBlock;
   unsigned char blockBuffer[BLOCK_SIZE];
-  //char line[LINE_SIZE];
-  int quit;
   int i;
-  //char *p;
-  //unsigned int n;
 
   if (argc != 3) {
     printf("Usage: %s <disk> <partition>\n", argv[0]);
@@ -259,26 +248,22 @@ int main(int argc, char *argv[]) {
   // start
   currBlock = 1;
   readBlock(disk, currBlock, blockBuffer);
-  help();
-  quit = 0;
 
-  // create freelist.txt
-  openFreelistTXT();
+  // create freeBlocksTXT.txt
+  openFreeBlocksTXT();
   superBlock(blockBuffer);
 
-  while (linkblock != 0) {
-    currBlock = linkblock;
+  while (linkBlock != 0) {
+    currBlock = linkBlock;
     readBlock(disk, currBlock, blockBuffer);
     freeBlock(blockBuffer);
   }
 
-  // end of file (EOF == -1)
-  // fprintf(freelist, "-1");
-  // fclose(freelist);
+  fclose(freeBlocksTXT);
 
 
-  //create inodelist.txt
-  openInodelistTXT();
+  // create allInodes.txt
+  openAllInodesTXT();
 
   for (i=2; i < 26; i++) {
     currBlock = i;
@@ -286,10 +271,11 @@ int main(int argc, char *argv[]) {
     inodeBlock(blockBuffer);
   }
 
-  fclose(inodelist);
+  fclose(allInodesTXT);
 
-  // create datablockslist.txt
-  openDatablocksTXT();
+
+  // create dataBlocks.txt
+  openDataBlocksTXT();
 
   for (i=2; i < 26; i++) {
     currBlock = i;
@@ -297,9 +283,11 @@ int main(int argc, char *argv[]) {
     datablocks(blockBuffer, disk);
   }
 
+  fclose(dataBlocksTXT);
 
 
-  // all double indirect blocks to the singleindirectlist
+  // code to read a line from txt
+
   /*char * line = NULL;
   size_t len = 0;
   ssize_t read;
@@ -312,196 +300,84 @@ int main(int argc, char *argv[]) {
     currBlock = num;
     readBlock(disk, currBlock, blockBuffer);
     doubleIndirectBlock(blockBuffer);
-  }
-
-  // get all datablocks from singleIndirectBlocks
-  line = NULL;
-  len = 0;
-
-  fseek(singleindirectlist, 0, SEEK_SET);
-
-  while ((read = getline(&line, &len, singleindirectlist)) != -1) {
-    num = atoi(line);
-    currBlock = num;
-    readBlock(disk, currBlock, blockBuffer);
-    singleIndirectBlock(blockBuffer);
   }*/
 
-  fclose(datablockslist);
-  // fclose(singleindirectlist);
-  // fclose(doubleindirectlist);
 
-  openinodesindirectoriesTXT();
+  // get all Inodes which are directories
+  openAllInodesInDirectoriesTXT();
 
   for (i=2; i < 26; i++) {
     currBlock = i;
     readBlock(disk, currBlock, blockBuffer);
-    inodesInDirectories(blockBuffer, disk);
+    allInodesInDirectories(blockBuffer, disk);
   }
 
-  openInodeszerolcTXT();
+  /*currBlock = 690;
+  readBlock(disk, currBlock, blockBuffer);
+  directoryBlock(blockBuffer);*/
+
+  fclose(allInodesInDirectoriesTXT);
+
+
+  // get all Inodes where linkcount is zero
+  openInodesWithLinkcountZeroTXT();
   id = -1;
 
   for (i=2; i < 26; i++) {
     currBlock = i;
     readBlock(disk, currBlock, blockBuffer);
-    inodesZeroLC(blockBuffer);
+    inodesWithLinkcountZero(blockBuffer);
   }
 
-  fclose(inodeszerolc);
-
-  /*currBlock = 745;
-  readBlock(disk, currBlock, blockBuffer);
-  directoryBlock(blockBuffer);*/
-
-  fclose(inodesindirectories);
-
-  // e) Die Groesse einer Datei ist nicht konsistent mit den im
-  // Inode vermerkten Bloecken: Exit-Code 14.
-  // circa 4096 Bytes pro Block
-  //
-  // also Bloecke im Inode zählen und mit der Dateigroeße vergleichen
-  // dazu ist keine Datenstruktur nötig, Programm kann abgebrochen werden
-
-  // im inode erst die anzahl der Blöcke zählen, auch si und di mit Hilfe der
-  // Funktionen aus a-d, danach dann mal 4096 und Wert mit size
-  // vergleichen, danach beide in Datei schreiben
-  // neue Datei mit den entsprechenden Funktionen anlegen
-
-  /*while (!quit) {
-    printf("shfs [block %u (0x%X)] > ", currBlock, currBlock);
-    fflush(stdout);
-    if (fgets(line, LINE_SIZE, stdin) == NULL) {
-      printf("\n");
-      break;
-    }
-    if (line[0] == '\0' || line[0] == '\n') {
-      continue;
-    }
-    switch (line[0]) {
-      case 'h':
-      case '?':
-        help();
-        break;
-      case 'q':
-        quit = 1;
-        break;
-      case 'r':
-        rawBlock(blockBuffer);
-        break;
-      case 's':
-        superBlock(blockBuffer);
-        break;
-      case 'i':
-        inodeBlock(blockBuffer);
-        break;
-      case 'd':
-        directoryBlock(blockBuffer);
-        break;
-      case 'f':
-        freeBlock(blockBuffer);
-        break;
-      case '*':
-        indirectBlock(blockBuffer);
-        break;
-      case 'b':
-        p = line + 1;
-        if (!parseNumber(&p, &n)) {
-          break;
-        }
-        if (*p != '\0' && *p != '\n') {
-          printf("Error: cannot parse block number!\n");
-          break;
-        }
-        if (n >= numBlocks) {
-          printf("Error: block number too big for file system!\n");
-          break;
-        }
-        currBlock = n;
-        readBlock(disk, currBlock, blockBuffer);
-        break;
-      case '+':
-        n = currBlock + 1;
-        if (n >= numBlocks) {
-          printf("Error: block number too big for file system!\n");
-          break;
-        }
-        currBlock = n;
-        readBlock(disk, currBlock, blockBuffer);
-        break;
-      case '-':
-        n = currBlock - 1;
-        if (n >= numBlocks) {
-          printf("Error: block number too big for file system!\n");
-          break;
-        }
-        currBlock = n;
-        readBlock(disk, currBlock, blockBuffer);
-        break;
-      case 't':
-        p = line + 1;
-        if (!parseNumber(&p, &n)) {
-          break;
-        }
-        if (*p != '\0' && *p != '\n') {
-          printf("Error: cannot parse inode number!\n");
-          break;
-        }
-        printf("inode %u (0x%X) is in block %u (0x%X), inode %u\n",
-               n, n, n / INOPB + 2, n / INOPB + 2, n % INOPB);
-        break;
-      default:
-        printf("Unknown command, type 'h' for help!\n");
-        break;
-    }
-  }*/
+  fclose(inodesWithLinkcountZeroTXT);
 
   fclose(disk);
   return 0;
 }
 
-void openFreelistTXT() {
+void openFreeBlocksTXT() {
 
-  freelist = fopen("freelist.txt", "w+");
+  freeBlocksTXT = fopen("freeBlocks.txt", "w+");
 
-  if(freelist == NULL) {
+  if(freeBlocksTXT == NULL) {
   	printf("Datei konnte nicht geoeffnet werden.\n");
   }
 }
 
-void openInodelistTXT() {
-  inodelist = fopen("inodelist.txt", "w+");
+void openAllInodesTXT() {
+  allInodesTXT = fopen("allInodes.txt", "w+");
 
-  if(inodelist == NULL) {
+  if(allInodesTXT == NULL) {
   	printf("Datei konnte nicht geoeffnet werden.\n");
   }
 }
 
-void openDatablocksTXT() {
-  datablockslist = fopen("datablockslist.txt", "w+");
+void openDataBlocksTXT() {
+  dataBlocksTXT = fopen("dataBlocks.txt", "w+");
 
-  if(datablockslist == NULL) {
+  if(dataBlocksTXT == NULL) {
   	printf("Datei konnte nicht geoeffnet werden.\n");
   }
 }
 
-void openinodesindirectoriesTXT() {
+void openAllInodesInDirectoriesTXT() {
 
-  inodesindirectories = fopen("inodesindirectories.txt", "w+");
+  allInodesInDirectoriesTXT = fopen("allInodesInDirectories.txt", "w+");
 
-  if(inodesindirectories == NULL) {
+  if(allInodesInDirectoriesTXT == NULL) {
   	printf("Datei konnte nicht geoeffnet werden.\n");
   }
 }
 
-void openInodeszerolcTXT() {
+void openInodesWithLinkcountZeroTXT() {
 
-  inodeszerolc = fopen("inodeszerolc.txt", "w+");
+  inodesWithLinkcountZeroTXT = fopen("inodesWithLinkcountZero.txt", "w+");
 
-  if(inodeszerolc == NULL) {
+  if(inodesWithLinkcountZeroTXT == NULL) {
   	printf("Datei konnte nicht geoeffnet werden.\n");
   }
 }
+
 
 void datasize(unsigned char *p, FILE *f) {
   unsigned int mode;
@@ -548,7 +424,7 @@ void datasize(unsigned char *p, FILE *f) {
     }
 
     calcSize = number * BLOCK_SIZE;
-    if (size > calcSize || size < (calcSize-BLOCK_SIZE)) {
+    if (size > calcSize || size <= (calcSize-BLOCK_SIZE)) {
       // TODO: error
     }
   }
@@ -598,7 +474,6 @@ void error(char *fmt, ...) {
   va_end(ap);
   exit(1);
 }
-
 
 
 void readBlock(FILE *disk, EOS32_daddr_t blockNum, unsigned char *blockBuffer) {
@@ -688,12 +563,7 @@ void superBlock(unsigned char *p) {
   EOS32_daddr_t free;
   int i;
 
-  p += 4;
-  p += 4;
-  p += 4;
-  p += 4;
-  p += 4;
-  p += 4;
+  p += 24;
 
   // for (i = 0; i < NICINOD; i++) { p += 4; }
   p = p + (NICINOD * 4);
@@ -705,10 +575,10 @@ void superBlock(unsigned char *p) {
     free = get4Bytes(p);
     p += 4;
     if (i == 0) {
-      linkblock = free;
+      linkBlock = free;
     } else {
         if (i < nfree) {
-          fprintf(freelist, "%u\n", free);
+          fprintf(freeBlocksTXT, "%u\n", free);
         }
       }
   }
@@ -726,117 +596,105 @@ void inodeBlock(unsigned char *p) {
   EOS32_daddr_t addr;
   int i, j;
 
-  //checkBatch(0);
   for (i = 0; i < INOPB; i++) {
-    fprintf(inodelist, "inode %d:", i);
+    fprintf(allInodesTXT, "inode %d:", i);
     mode = get4Bytes(p);
     p += 4;
     if (mode != 0) {
-      fprintf(inodelist, "  type/mode = 0x%08X = ", mode);
+      fprintf(allInodesTXT, "  type/mode = 0x%08X = ", mode);
       if ((mode & IFMT) == IFREG) {
-        fprintf(inodelist, "-");
+        fprintf(allInodesTXT, "-");
       } else
       if ((mode & IFMT) == IFDIR) {
-        fprintf(inodelist, "d");
+        fprintf(allInodesTXT, "d");
       } else
       if ((mode & IFMT) == IFCHR) {
-        fprintf(inodelist, "c");
+        fprintf(allInodesTXT, "c");
       } else
       if ((mode & IFMT) == IFBLK) {
-        fprintf(inodelist, "b");
+        fprintf(allInodesTXT, "b");
       } else {
-        fprintf(inodelist, "?");
+        fprintf(allInodesTXT, "?");
       }
-      fprintf(inodelist, "%c", mode & IUREAD  ? 'r' : '-');
-      fprintf(inodelist, "%c", mode & IUWRITE ? 'w' : '-');
-      fprintf(inodelist, "%c", mode & IUEXEC  ? 'x' : '-');
-      fprintf(inodelist, "%c", mode & IGREAD  ? 'r' : '-');
-      fprintf(inodelist, "%c", mode & IGWRITE ? 'w' : '-');
-      fprintf(inodelist, "%c", mode & IGEXEC  ? 'x' : '-');
-      fprintf(inodelist, "%c", mode & IOREAD  ? 'r' : '-');
-      fprintf(inodelist, "%c", mode & IOWRITE ? 'w' : '-');
-      fprintf(inodelist, "%c", mode & IOEXEC  ? 'x' : '-');
+      fprintf(allInodesTXT, "%c", mode & IUREAD  ? 'r' : '-');
+      fprintf(allInodesTXT, "%c", mode & IUWRITE ? 'w' : '-');
+      fprintf(allInodesTXT, "%c", mode & IUEXEC  ? 'x' : '-');
+      fprintf(allInodesTXT, "%c", mode & IGREAD  ? 'r' : '-');
+      fprintf(allInodesTXT, "%c", mode & IGWRITE ? 'w' : '-');
+      fprintf(allInodesTXT, "%c", mode & IGEXEC  ? 'x' : '-');
+      fprintf(allInodesTXT, "%c", mode & IOREAD  ? 'r' : '-');
+      fprintf(allInodesTXT, "%c", mode & IOWRITE ? 'w' : '-');
+      fprintf(allInodesTXT, "%c", mode & IOEXEC  ? 'x' : '-');
       if (mode & ISUID) {
-        fprintf(inodelist, ", set uid");
+        fprintf(allInodesTXT, ", set uid");
       }
       if (mode & ISGID) {
-        fprintf(inodelist, ", set gid");
+        fprintf(allInodesTXT, ", set gid");
       }
       if (mode & ISVTX) {
-        fprintf(inodelist, ", save text");
+        fprintf(allInodesTXT, ", save text");
       }
     } else {
-      fprintf(inodelist, "  <free>");
+      fprintf(allInodesTXT, "  <free>");
     }
-    fprintf(inodelist, "\n");
-    // if (checkBatch(1)) return;
+    fprintf(allInodesTXT, "\n");
     nlink = get4Bytes(p);
     p += 4;
     if (mode != 0) {
-      fprintf(inodelist, "  nlnk = %u (0x%08X)\n", nlink, nlink);
-      //if (checkBatch(1)) return;
+      fprintf(allInodesTXT, "  nlnk = %u (0x%08X)\n", nlink, nlink);
     }
     uid = get4Bytes(p);
     p += 4;
     if (mode != 0) {
-      fprintf(inodelist, "  uid  = %u (0x%08X)\n", uid, uid);
-      //if (checkBatch(1)) return;
+      fprintf(allInodesTXT, "  uid  = %u (0x%08X)\n", uid, uid);
     }
     gid = get4Bytes(p);
     p += 4;
     if (mode != 0) {
-      fprintf(inodelist, "  gid  = %u (0x%08X)\n", gid, gid);
-      //if (checkBatch(1)) return;
+      fprintf(allInodesTXT, "  gid  = %u (0x%08X)\n", gid, gid);
     }
     tim = get4Bytes(p);
     p += 4;
     dat = ctime((time_t *) &tim);
     dat[strlen(dat) - 1] = '\0';
     if (mode != 0) {
-      fprintf(inodelist, "  time inode created = %d (%s)\n", tim, dat);
-      //if (checkBatch(1)) return;
+      fprintf(allInodesTXT, "  time inode created = %d (%s)\n", tim, dat);
     }
     tim = get4Bytes(p);
     p += 4;
     dat = ctime((time_t *) &tim);
     dat[strlen(dat) - 1] = '\0';
     if (mode != 0) {
-      fprintf(inodelist, "  time last modified = %d (%s)\n", tim, dat);
-      //if (checkBatch(1)) return;
+      fprintf(allInodesTXT, "  time last modified = %d (%s)\n", tim, dat);
     }
     tim = get4Bytes(p);
     p += 4;
     dat = ctime((time_t *) &tim);
     dat[strlen(dat) - 1] = '\0';
     if (mode != 0) {
-      fprintf(inodelist, "  time last accessed = %d (%s)\n", tim, dat);
-      //if (checkBatch(1)) return;
+      fprintf(allInodesTXT, "  time last accessed = %d (%s)\n", tim, dat);
     }
     size = get4Bytes(p);
     p += 4;
     if (mode != 0) {
-      fprintf(inodelist, "  size = %u (0x%X)\n", size, size);
-      //if (checkBatch(1)) return;
+      fprintf(allInodesTXT, "  size = %u (0x%X)\n", size, size);
     }
     for (j = 0; j < 6; j++) {
       addr = get4Bytes(p);
       p += 4;
       if (mode != 0) {
-        fprintf(inodelist, "  direct block[%1d] = %u (0x%X)\n", j, addr, addr);
-        //if (checkBatch(1)) return;
+        fprintf(allInodesTXT, "  direct block[%1d] = %u (0x%X)\n", j, addr, addr);
       }
     }
     addr = get4Bytes(p);
     p += 4;
     if (mode != 0) {
-      fprintf(inodelist, "  single indirect = %u (0x%X)\n", addr, addr);
-      //if (checkBatch(1)) return;
+      fprintf(allInodesTXT, "  single indirect = %u (0x%X)\n", addr, addr);
     }
     addr = get4Bytes(p);
     p += 4;
     if (mode != 0) {
-      fprintf(inodelist, "  double indirect = %u (0x%X)\n", addr, addr);
-      //if (checkBatch(1)) return;
+      fprintf(allInodesTXT, "  double indirect = %u (0x%X)\n", addr, addr);
     }
   }
 }
@@ -845,7 +703,7 @@ void datablocks(unsigned char *p, FILE *f) {
   unsigned int mode;
   EOS32_daddr_t addr;
   int i, j;
-  unsigned char datablockBuffer[BLOCK_SIZE];
+  unsigned char tempBlockBuffer[BLOCK_SIZE];
 
   for (i = 0; i < INOPB; i++) {
 
@@ -856,7 +714,7 @@ void datablocks(unsigned char *p, FILE *f) {
       addr = get4Bytes(p);
       p += 4;
       if (mode != 0 && addr != 0) {
-        fprintf(datablockslist, "%u\n", addr);
+        fprintf(dataBlocksTXT, "%u\n", addr);
       }
     }
     addr = get4Bytes(p);
@@ -864,9 +722,9 @@ void datablocks(unsigned char *p, FILE *f) {
     if (mode != 0) {
 
       if (addr != 0) {
-        fprintf(datablockslist, "%u\n", addr);
-        readBlock(f, addr, datablockBuffer);
-        singleIndirectBlock(datablockBuffer);
+        fprintf(dataBlocksTXT, "%u\n", addr);
+        readBlock(f, addr, tempBlockBuffer);
+        singleIndirectBlock(tempBlockBuffer);
       }
     }
     addr = get4Bytes(p);
@@ -874,9 +732,9 @@ void datablocks(unsigned char *p, FILE *f) {
     if (mode != 0) {
 
       if (addr != 0) {
-        fprintf(datablockslist, "%u\n", addr);
-        readBlock(f, addr, datablockBuffer);
-        doubleIndirectBlock(datablockBuffer, f);
+        fprintf(dataBlocksTXT, "%u\n", addr);
+        readBlock(f, addr, tempBlockBuffer);
+        doubleIndirectBlock(tempBlockBuffer, f);
       }
     }
   }
@@ -887,16 +745,14 @@ void directoryBlock(unsigned char *p) {
   int i, j;
   unsigned char c;
 
-  //checkBatch(0);
   for (i = 0; i < DIRPB; i++) {
-    fprintf(inodesindirectories, "%02d:  ", i);
+    fprintf(allInodesInDirectoriesTXT, "%02d:  ", i);
     ino = get4Bytes(p);
     p += 4;
-    fprintf(inodesindirectories, "inode = %u (0x%X)\n", ino, ino);
-    //if (checkBatch(1)) return;
-    fprintf(inodesindirectories, "     name  = ");
+    fprintf(allInodesInDirectoriesTXT, "inode = %u (0x%X)\n", ino, ino);
+    fprintf(allInodesInDirectoriesTXT, "     name  = ");
     if (*p == '\0') {
-      fprintf(inodesindirectories, "<empty>");
+      fprintf(allInodesInDirectoriesTXT, "<empty>");
     } else {
       for (j = 0; j < DIRSIZ; j++) {
         c = *(p + j);
@@ -904,14 +760,13 @@ void directoryBlock(unsigned char *p) {
           break;
         }
         if (c < 0x20 || c >= 0x7F) {
-          fprintf(inodesindirectories, ".");
+          fprintf(allInodesInDirectoriesTXT, ".");
         } else {
-          fprintf(inodesindirectories, "%c", c);
+          fprintf(allInodesInDirectoriesTXT, "%c", c);
         }
       }
     }
-    fprintf(inodesindirectories, "\n");
-    //if (checkBatch(1)) return;
+    fprintf(allInodesInDirectoriesTXT, "\n");
     p += DIRSIZ;
   }
 }
@@ -928,10 +783,10 @@ void freeBlock(unsigned char *p) {
     addr = get4Bytes(p);
     p += 4;
     if (i == 0) {
-      linkblock = addr;
+      linkBlock = addr;
     } else {
         if (i < nfree) {
-          fprintf(freelist, "%u\n", addr);
+          fprintf(freeBlocksTXT, "%u\n", addr);
         }
       }
   }
@@ -946,7 +801,7 @@ void singleIndirectBlock(unsigned char *p) {
     addr = get4Bytes(p);
     p += 4;
     if (addr != 0) {
-      fprintf(datablockslist, "%u\n", addr);
+      fprintf(dataBlocksTXT, "%u\n", addr);
     }
   }
 }
@@ -954,14 +809,14 @@ void singleIndirectBlock(unsigned char *p) {
 void doubleIndirectBlock(unsigned char *p, FILE *f) {
   EOS32_daddr_t addr;
   int i;
-  unsigned char datablockBuffer[BLOCK_SIZE];
+  unsigned char tempBlockBuffer[BLOCK_SIZE];
 
   for (i = 0; i < BLOCK_SIZE / sizeof(EOS32_daddr_t); i++) {
     addr = get4Bytes(p);
     p += 4;
     if (addr != 0) {
-      readBlock(f, addr, datablockBuffer);
-      singleIndirectBlock(datablockBuffer);
+      readBlock(f, addr, tempBlockBuffer);
+      singleIndirectBlock(tempBlockBuffer);
     }
   }
 }

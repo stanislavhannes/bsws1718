@@ -49,11 +49,10 @@ typedef unsigned int EOS32_off_t;
 typedef int EOS32_time_t;
 
 FILE *allInodesTXT;
-FILE *allInodesInDirectoriesTXT;
-FILE *inodesWithLinkcountZeroTXT;
 
 EOS32_daddr_t linkBlock;
 EOS32_daddr_t fsize;
+EOS32_daddr_t isize;
 int id = -1;
 
 typedef struct {
@@ -63,8 +62,65 @@ typedef struct {
 // gcc -Wall -o shfs shfs.c
 
 Block *blocks;
+short *refs;
 
 unsigned int fsStart;
+
+void blockCheck() {
+  for (int i = 26; i < fsize; i++) {
+    //printf("%d - %d - %d \n", i, blocks[i].freeList, blocks[i].dataList);
+    if ((blocks[i].dataList == 1 && blocks[i].freeList == 0) ||
+        (blocks[i].dataList == 0 && blocks[i].freeList == 1)) {
+      continue;
+    } else {
+
+      if (blocks[i].dataList == 0 && blocks[i].freeList == 0) {
+        // TODO: Fehler A
+      }
+
+      if (blocks[i].dataList > 0 && blocks[i].freeList > 0) {
+        // TODO: Fehler B
+      }
+
+      if (blocks[i].freeList > 1) {
+        // TODO: Fehler C
+      }
+
+      if (blocks[i].dataList > 1) {
+        // TODO: Fehler D
+      }
+    }
+  }
+}
+
+void checkLinkcount(unsigned char *p) {
+  unsigned int mode;
+  unsigned int nlink;
+  int i;
+
+  for (i = 0; i < INOPB; i++) {
+    id++;
+    mode = get4Bytes(p);
+    p += 4;
+    nlink = get4Bytes(p);
+    printf("%d - %d - %d\n", id, nlink, refs[id]);
+    if (mode != 0) {
+      if (nlink != refs[id]) {
+        // TODO: Error H
+      }
+
+      if (nlink == 0 && refs[id] != 0) {
+        // TODO: Error F
+      }
+    } else {
+      if (refs[id] != 0) {
+        // TODO: Error J
+      }
+    }
+
+    p += 60;
+  }
+}
 
 void inodeIsFree(unsigned char *p) {
   int i;
@@ -77,29 +133,12 @@ void inodeIsFree(unsigned char *p) {
     p += 4;
     nlink = get4Bytes(p);
     if (nlink == 0 && mode != 0) {
-      // TODO: Exit-Code 16
+      // TODO: Error G
     }
     p += 60;
   }
 }
 
-void inodesWithLinkcountZero(unsigned char *p) {
-  unsigned int nlink;
-  int i;
-
-  for (i = 0; i < INOPB; i++) {
-
-    p += 4;
-    id++;
-
-    nlink = get4Bytes(p);
-    if (nlink == 0 && id > 0) {
-      fprintf(inodesWithLinkcountZeroTXT, "%d\n", id);
-    }
-
-    p += 60;
-  }
-}
 
 
 void allInodesInDirectories(unsigned char *p, FILE *f) {
@@ -112,7 +151,7 @@ void allInodesInDirectories(unsigned char *p, FILE *f) {
     mode = get4Bytes(p);
     p += 32;
     id++;
-    if (mode != 0 && (mode & IFMT) == IFDIR) {
+    if (mode != 0 && ((mode & IFMT) == IFDIR)) {
 
       for (j = 0; j < 6; j++) {
         addr = get4Bytes(p);
@@ -154,7 +193,7 @@ void inodesDirectoryBlock(unsigned char *p) {
     ino = get4Bytes(p);
     p += 4;
     if (ino != 0) {
-      fprintf(allInodesInDirectoriesTXT, "%u\n", ino);
+      refs[ino] += 1;
     }
 
     p += DIRSIZ;
@@ -260,7 +299,6 @@ int main(int argc, char *argv[]) {
 
   readBlock(disk, currBlock, blockBuffer);
 
-  // create freeBlocksTXT.txt
   superBlock(blockBuffer);
 
   while (linkBlock != 0) {
@@ -269,7 +307,15 @@ int main(int argc, char *argv[]) {
     freeBlock(blockBuffer);
   }
 
+  for (i=2; i < 26; i++) {
+    currBlock = i;
+    readBlock(disk, currBlock, blockBuffer);
+    datablocks(blockBuffer, disk);
+  }
 
+  blockCheck();
+
+  free(blocks);
 
   // create allInodes.txt
   openAllInodesTXT();
@@ -282,35 +328,7 @@ int main(int argc, char *argv[]) {
 
   fclose(allInodesTXT);
 
-
-  // create dataBlocks.txt
-
-  for (i=2; i < 26; i++) {
-    currBlock = i;
-    readBlock(disk, currBlock, blockBuffer);
-    datablocks(blockBuffer, disk);
-  }
-
-
-  // code to read a line from txt
-
-  /*char * line = NULL;
-  size_t len = 0;
-  ssize_t read;
-  int num;
-
-  fseek(doubleindirectlist, 0, SEEK_SET);
-
-  while ((read = getline(&line, &len, singleindirectlist)) != -1) {
-    num = atoi(line);
-    currBlock = num;
-    readBlock(disk, currBlock, blockBuffer);
-    doubleIndirectBlock(blockBuffer);
-  }*/
-
-
-  // get all Inodes which are directories
-  openAllInodesInDirectoriesTXT();
+  refs = malloc((isize * sizeof(short)) + sizeof(short));
 
   for (i=2; i < 26; i++) {
     currBlock = i;
@@ -318,26 +336,15 @@ int main(int argc, char *argv[]) {
     allInodesInDirectories(blockBuffer, disk);
   }
 
-  /*currBlock = 26;
-  readBlock(disk, currBlock, blockBuffer);
-  directoryBlock(blockBuffer);*/
-
-
-
-  fclose(allInodesInDirectoriesTXT);
-
-
-  // get all Inodes where linkcount is zero
-  openInodesWithLinkcountZeroTXT();
   id = -1;
 
   for (i=2; i < 26; i++) {
     currBlock = i;
     readBlock(disk, currBlock, blockBuffer);
-    inodesWithLinkcountZero(blockBuffer);
+    checkLinkcount(blockBuffer);
   }
 
-  fclose(inodesWithLinkcountZeroTXT);
+  free(refs);
 
   fclose(disk);
   return 0;
@@ -352,24 +359,6 @@ void openAllInodesTXT() {
   }
 }
 
-
-void openAllInodesInDirectoriesTXT() {
-
-  allInodesInDirectoriesTXT = fopen("allInodesInDirectories.txt", "w+");
-
-  if(allInodesInDirectoriesTXT == NULL) {
-  	printf("Datei konnte nicht geoeffnet werden.\n");
-  }
-}
-
-void openInodesWithLinkcountZeroTXT() {
-
-  inodesWithLinkcountZeroTXT = fopen("inodesWithLinkcountZero.txt", "w+");
-
-  if(inodesWithLinkcountZeroTXT == NULL) {
-  	printf("Datei konnte nicht geoeffnet werden.\n");
-  }
-}
 
 
 void datasize(unsigned char *p, FILE *f) {
@@ -418,7 +407,7 @@ void datasize(unsigned char *p, FILE *f) {
 
     calcSize = number * BLOCK_SIZE;
     if (size > calcSize || size <= (calcSize-BLOCK_SIZE)) {
-      // TODO: error
+      // TODO: Error E
     }
   }
 }
@@ -457,17 +446,6 @@ int doubleIndirectBlockdata(unsigned char *p, FILE *f) {
   return number;
 }
 
-void error(char *fmt, ...) {
-  va_list ap;
-
-  va_start(ap, fmt);
-  printf("Error: ");
-  vprintf(fmt, ap);
-  printf("\n");
-  va_end(ap);
-  exit(1);
-}
-
 
 void readBlock(FILE *disk, EOS32_daddr_t blockNum, unsigned char *blockBuffer) {
   fseek(disk, fsStart * SECTOR_SIZE + blockNum * BLOCK_SIZE, SEEK_SET);
@@ -482,71 +460,6 @@ unsigned int get4Bytes(unsigned char *addr) {
          (unsigned int) addr[1] << 16 |
          (unsigned int) addr[2] <<  8 |
          (unsigned int) addr[3] <<  0;
-}
-
-
-int waitForReturn(void) {
-  char line[LINE_SIZE];
-
-  printf("press <enter> to continue, <esc> to break, q to quit: ");
-  fflush(stdout);
-  if (fgets(line, LINE_SIZE, stdin) == NULL) {
-    printf("\n");
-    exit(0);
-  }
-  if (line[0] == 'q') {
-    exit(0);
-  }
-  if (line[0] == 0x1B) {
-    return 1;
-  }
-  return 0;
-}
-
-
-int checkBatch(int numLines) {
-  static int lines;
-  int r;
-
-  r = 0;
-  if (numLines == 0) {
-    /* initialize */
-    lines = 0;
-  } else {
-    /* output numLines lines */
-    lines += numLines;
-    if (lines >= LINES_PER_BATCH) {
-      r = waitForReturn();
-      lines = 0;
-    }
-  }
-  return r;
-}
-
-
-void rawBlock(unsigned char *p) {
-  int i, j;
-  unsigned char c;
-
-  checkBatch(0);
-  for (i = 0; i < BLOCK_SIZE / 16; i++) {
-    printf("%04X   ", i * 16);
-    for (j = 0; j < 16; j++) {
-      c = p[i * 16 + j];
-      printf("%02X ", c);
-    }
-    printf("   ");
-    for (j = 0; j < 16; j++) {
-      c = p[i * 16 + j];
-      if (c < 0x20 || c >= 0x7F) {
-        printf(".");
-      } else {
-        printf("%c", c);
-      }
-    }
-    printf("\n");
-    if (checkBatch(1)) return;
-  }
 }
 
 
@@ -569,10 +482,10 @@ void superBlock(unsigned char *p) {
     p += 4;
     if (i == 0) {
       linkBlock = free;
-      if (free != 0) { blocks[free].freeList = 1; }
+      if (free != 0) { blocks[free].freeList += 1; }
     } else {
         if (i < nfree) {
-          blocks[free].freeList = 1;
+          blocks[free].freeList += 1;
         }
       }
   }
@@ -581,6 +494,8 @@ void superBlock(unsigned char *p) {
 void filesystemSize(unsigned char *p) {
   p += 4;
   fsize = get4Bytes(p);
+  p += 4;
+  isize = get4Bytes(p);
 }
 
 
@@ -718,7 +633,7 @@ void datablocks(unsigned char *p, FILE *f) {
       addr = get4Bytes(p);
       p += 4;
       if (mode != 0 && addr != 0) {
-        blocks[addr].dataList = 1;
+        blocks[addr].dataList += 1;
       }
     }
     addr = get4Bytes(p);
@@ -726,7 +641,7 @@ void datablocks(unsigned char *p, FILE *f) {
     if (mode != 0) {
 
       if (addr != 0) {
-        blocks[addr].dataList = 1;
+        blocks[addr].dataList += 1;
         readBlock(f, addr, tempBlockBuffer);
         singleIndirectBlock(tempBlockBuffer);
       }
@@ -736,42 +651,11 @@ void datablocks(unsigned char *p, FILE *f) {
     if (mode != 0) {
 
       if (addr != 0) {
-        blocks[addr].dataList = 1;
+        blocks[addr].dataList += 1;
         readBlock(f, addr, tempBlockBuffer);
         doubleIndirectBlock(tempBlockBuffer, f);
       }
     }
-  }
-}
-
-void directoryBlock(unsigned char *p) {
-  EOS32_ino_t ino;
-  int i, j;
-  unsigned char c;
-
-  for (i = 0; i < DIRPB; i++) {
-    fprintf(allInodesInDirectoriesTXT, "%02d:  ", i);
-    ino = get4Bytes(p);
-    p += 4;
-    fprintf(allInodesInDirectoriesTXT, "inode = %u (0x%X)\n", ino, ino);
-    fprintf(allInodesInDirectoriesTXT, "     name  = ");
-    if (*p == '\0') {
-      fprintf(allInodesInDirectoriesTXT, "<empty>");
-    } else {
-      for (j = 0; j < DIRSIZ; j++) {
-        c = *(p + j);
-        if (c == '\0') {
-          break;
-        }
-        if (c < 0x20 || c >= 0x7F) {
-          fprintf(allInodesInDirectoriesTXT, ".");
-        } else {
-          fprintf(allInodesInDirectoriesTXT, "%c", c);
-        }
-      }
-    }
-    fprintf(allInodesInDirectoriesTXT, "\n");
-    p += DIRSIZ;
   }
 }
 
@@ -788,10 +672,10 @@ void freeBlock(unsigned char *p) {
     p += 4;
     if (i == 0) {
       linkBlock = addr;
-      if (addr != 0) { blocks[addr].freeList = 1; }
+      if (addr != 0) { blocks[addr].freeList += 1; }
     } else {
         if (i < nfree) {
-          blocks[addr].freeList = 1;
+          blocks[addr].freeList += 1;
         }
       }
   }
@@ -806,7 +690,7 @@ void singleIndirectBlock(unsigned char *p) {
     addr = get4Bytes(p);
     p += 4;
     if (addr != 0) {
-      blocks[addr].dataList = 1;
+      blocks[addr].dataList += 1;
     }
   }
 }
@@ -820,83 +704,20 @@ void doubleIndirectBlock(unsigned char *p, FILE *f) {
     addr = get4Bytes(p);
     p += 4;
     if (addr != 0) {
-      blocks[addr].dataList = 1;
+      blocks[addr].dataList += 1;
       readBlock(f, addr, tempBlockBuffer);
       singleIndirectBlock(tempBlockBuffer);
     }
   }
 }
 
+void error(char *fmt, ...) {
+  va_list ap;
 
-void help(void) {
-  printf("Commands are:\n");
-  printf("  h        help\n");
-  printf("  q        quit\n");
-  printf("  r        show block as raw data\n");
-  printf("  s        show block as super block\n");
-  printf("  i        show block as inode block\n");
-  printf("  d        show block as directory block\n");
-  printf("  f        show block as block on the free list\n");
-  printf("  *        show block as indirect block\n");
-  printf("  b <num>  set current block to <num>\n");
-  printf("  +        increment current block\n");
-  printf("  -        decrement current block\n");
-  printf("  t <num>  translate inode <num> to block number\n");
-  printf("           and relative inode number within block\n");
-}
-
-
-int parseNumber(char **pc, unsigned int *pi) {
-  char *p;
-  unsigned int base, dval;
-  unsigned int n;
-
-  p = *pc;
-  while (*p == ' ' || *p == '\t') {
-    p++;
-  }
-  if (*p == '\0' || *p == '\n') {
-    printf("Error: number is missing!\n");
-    return 0;
-  }
-  base = 10;
-  if (*p == '0') {
-    p++;
-    if (*p != '\0' && *p != '\n') {
-      if (*p == 'x' || *p == 'X') {
-        base = 16;
-        p++;
-      } else {
-        base = 8;
-      }
-    }
-  }
-  n = 0;
-  while ((*p >= '0' && *p <= '9') ||
-         (*p >= 'a' && *p <= 'f') ||
-         (*p >= 'A' && *p <= 'F')) {
-    if (*p >= '0' && *p <= '9') {
-      dval = (*p - '0');
-    } else
-    if (*p >= 'a' && *p <= 'f') {
-      dval = (*p - 'a' + 10);
-    } else
-    if (*p >= 'A' && *p <= 'F') {
-      dval = (*p - 'A' + 10);
-    }
-    if (dval >= base) {
-      printf("Error: digit value %d is illegal in number base %d\n",
-             dval, base);
-      return 0;
-    }
-    n *= base;
-    n += dval;
-    p++;
-  }
-  while (*p == ' ' || *p == '\t') {
-    p++;
-  }
-  *pc = p;
-  *pi = n;
-  return 1;
+  va_start(ap, fmt);
+  printf("Error: ");
+  vprintf(fmt, ap);
+  printf("\n");
+  va_end(ap);
+  exit(1);
 }

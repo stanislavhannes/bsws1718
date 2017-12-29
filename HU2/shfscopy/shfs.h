@@ -1,5 +1,6 @@
 typedef unsigned int EOS32_daddr_t;
 
+
 // others
 void error(char *fmt, ...);
 void readBlock(FILE *disk, EOS32_daddr_t blockNum, unsigned char *blockBuffer);
@@ -14,6 +15,7 @@ void directoryBlock(unsigned char *p);
 // freeBlocksTXT
 void superBlock(unsigned char *p);
 void freeBlock(unsigned char *p);
+void filesystemSize(unsigned char *p);
 
 // allInodesTXT
 void inodeBlock(unsigned char *p);
@@ -34,9 +36,7 @@ void doubleInodesDirectoryBlock(unsigned char *p, FILE *f);
 
 // open TXT + main
 int main(int argc, char *argv[]);
-void openFreeBlocksTXT();
 void openAllInodesTXT();
-void openDataBlocksTXT();
 void openAllInodesInDirectoriesTXT();
 void openInodesWithLinkcountZeroTXT();
 

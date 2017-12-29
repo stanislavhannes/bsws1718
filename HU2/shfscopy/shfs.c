@@ -52,7 +52,7 @@ FILE *allInodesTXT;
 
 EOS32_daddr_t linkBlock;
 EOS32_daddr_t fsize;
-EOS32_daddr_t isize;
+int iSize;
 int id = -1;
 
 typedef struct {
@@ -68,7 +68,7 @@ unsigned int fsStart;
 
 void blockCheck() {
   for (int i = 26; i < fsize; i++) {
-    //printf("%d - %d - %d \n", i, blocks[i].freeList, blocks[i].dataList);
+    printf("%d - %d - %d \n", i, blocks[i].freeList, blocks[i].dataList);
     if ((blocks[i].dataList == 1 && blocks[i].freeList == 0) ||
         (blocks[i].dataList == 0 && blocks[i].freeList == 1)) {
       continue;
@@ -328,7 +328,7 @@ int main(int argc, char *argv[]) {
 
   fclose(allInodesTXT);
 
-  refs = malloc((isize * sizeof(short)) + sizeof(short));
+  refs = malloc(iSize * sizeof(short));
 
   for (i=2; i < 26; i++) {
     currBlock = i;
@@ -343,6 +343,8 @@ int main(int argc, char *argv[]) {
     readBlock(disk, currBlock, blockBuffer);
     checkLinkcount(blockBuffer);
   }
+
+  printf("%d %d\n", iSize, fsize);
 
   free(refs);
 
@@ -494,8 +496,7 @@ void superBlock(unsigned char *p) {
 void filesystemSize(unsigned char *p) {
   p += 4;
   fsize = get4Bytes(p);
-  p += 4;
-  isize = get4Bytes(p);
+  iSize = 24*64;
 }
 
 

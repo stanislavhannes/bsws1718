@@ -52,6 +52,7 @@ Mkfile.old
 dkms.conf
 
 hu1
+hu2
 depend.maks
 disk.img
 shfs

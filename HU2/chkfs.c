@@ -35,13 +35,12 @@ int main(int argc, char *argv[]) {
   if (argc != 3) {
     printf("Usage: %s <disk> <partition>\n", argv[0]);
     printf("       <disk> is a disk image file name\n");
-    printf("       <partition> is a partition number ");
-    printf("(or '*' for the whole disk)\n");
+    printf("       <partition> is a partition number \n");
     exit(1);
   }
   disk = fopen(argv[1], "rb");
   if (disk == NULL) {
-    error("cannot open disk image file '%s'", argv[1]);
+    error("cannot open disk image file '%s'", 2, argv[1]);
   }
   if (strcmp(argv[2], "*") == 0) {
     /* whole disk contains one single file system */
@@ -52,16 +51,16 @@ int main(int argc, char *argv[]) {
     /* argv[2] is partition number of file system */
     part = strtoul(argv[2], &endptr, 10);
     if (*endptr != '\0' || part < 0 || part > 15) {
-      error("illegal partition number '%s'", argv[2]);
+      error("illegal partition number '%s'", 4,  argv[2]);
     }
     fseek(disk, 1 * SECTOR_SIZE, SEEK_SET);
     if (fread(partTable, 1, SECTOR_SIZE, disk) != SECTOR_SIZE) {
-      error("cannot read partition table of disk '%s'", argv[1]);
+      error("cannot read partition table of disk '%s'", 9, argv[1]);
     }
     ptptr = partTable + part * 32;
     partType = get4Bytes(ptptr + 0);
     if ((partType & 0x7FFFFFFF) != 0x00000058) {
-      error("partition %d of disk '%s' does not contain an EOS32 file system",
+      error("partition %d of disk '%s' does not contain an EOS32 file system", 5,
             part, argv[1]);
     }
     fsStart = get4Bytes(ptptr + 4);
@@ -76,7 +75,7 @@ int main(int argc, char *argv[]) {
   printf("This equals %u (0x%X) blocks of %d bytes each.\n",
          numBlocks, numBlocks, BLOCK_SIZE);
   if (numBlocks < 2) {
-    error("file system has less than 2 blocks");
+    error("file system has less than 2 blocks", 3);
   }
 
   // start

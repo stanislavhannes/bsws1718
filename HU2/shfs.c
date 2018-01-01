@@ -13,7 +13,7 @@ unsigned int fsStart;
 void readBlock(FILE *disk, EOS32_daddr_t blockNum, unsigned char *blockBuffer) {
   fseek(disk, fsStart * SECTOR_SIZE + blockNum * BLOCK_SIZE, SEEK_SET);
   if (fread(blockBuffer, BLOCK_SIZE, 1, disk) != 1) {
-    error("cannot read block %lu (0x%lX)", blockNum, blockNum);
+    error("cannot read block %lu (0x%lX)", 9, blockNum, blockNum);
   }
 }
 
@@ -146,13 +146,13 @@ void inodeBlock(unsigned char *p) {
   }
 }
 
-void error(char *fmt, ...) {
+void error(char *fmt, int exitcode, ...) {
   va_list ap;
 
-  va_start(ap, fmt);
+  va_start(ap, exitcode);
   printf("Error: ");
   vprintf(fmt, ap);
   printf("\n");
   va_end(ap);
-  exit(1);
+  exit(exitcode);
 }

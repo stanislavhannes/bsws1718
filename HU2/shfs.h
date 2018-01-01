@@ -62,7 +62,7 @@ void readBlock(FILE *disk, EOS32_daddr_t blockNum, unsigned char *blockBuffer);
 unsigned int get4Bytes(unsigned char *addr);
 void filesystemSize(unsigned char *p);
 void inodeBlock(unsigned char *p);
-void error(char *fmt, ...);
+void error(char *fmt, int exitcode, ...);
 
 #endif
 

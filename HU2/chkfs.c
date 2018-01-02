@@ -83,6 +83,9 @@ int main(int argc, char *argv[]) {
   readBlock(disk, currBlock, blockBuffer);
   filesystemSize(blockBuffer);
   blocks = malloc(fsize * (sizeof(Block)));
+  if (blocks == NULL){
+    error("out of memory", 6);
+  }
 
   readBlock(disk, currBlock, blockBuffer);
 
@@ -116,6 +119,10 @@ int main(int argc, char *argv[]) {
   fclose(allInodesTXT);
 
   refs = malloc(iSize * sizeof(short));
+  if (refs == NULL){
+    error("out of memory", 6);
+  }
+
 
   for (i=2; i < 26; i++) {
     currBlock = i;
@@ -131,11 +138,12 @@ int main(int argc, char *argv[]) {
     checkLinkcount(blockBuffer);
   }
 
-  printf("%d %d\n", iSize, fsize);
+  //printf("%d %d\n", iSize, fsize);
 
   free(refs);
 
   fclose(disk);
+  printf("File system check was successfully!\n");
   return 0;
 }
 
@@ -143,7 +151,7 @@ void openAllInodesTXT() {
   allInodesTXT = fopen("allInodes.txt", "w+");
 
   if(allInodesTXT == NULL) {
-  	printf("Datei konnte nicht geoeffnet werden.\n");
+    error("couldn't open allInodes.txt", 9);
   }
 }
 

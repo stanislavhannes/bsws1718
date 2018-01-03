@@ -78,7 +78,8 @@ int main(int argc, char *argv[]) {
     error("file system has less than 2 blocks", 3);
   }
 
-  // start
+  // start: Superblock wird eingelesen, filesystemSize wird bestimmt, blocks
+  // wird mit diesen Variablen initialisiert
   currBlock = 1;
   readBlock(disk, currBlock, blockBuffer);
   filesystemSize(blockBuffer);
@@ -87,27 +88,40 @@ int main(int argc, char *argv[]) {
     error("out of memory", 6);
   }
 
+  // der Superblock wird erneut von Beginn an eingelesen
   readBlock(disk, currBlock, blockBuffer);
 
+  // und die erste Freiliste aus dem Superblock wird in der DS gespeichert
   superBlock(blockBuffer);
 
+  // die Verlinkung wird so lange über die Funktion freeBlock() verfolgt, bis
+  // der linkBlock 0 ist. currBlock wird = linkBlock gesetzt und dieser Block
+  // wird über die Funktion readBlock in den blockBuffer gelesen
+  //  => die Freiliste wird in der Datenstruktur blocks gespeichert
   while (linkBlock != 0) {
     currBlock = linkBlock;
     readBlock(disk, currBlock, blockBuffer);
     freeBlock(blockBuffer);
   }
 
+
+  // die Datenblöcke werden aus den Inodes gelesen, und in der Datenstruktur
+  // blocks gespeichert
   for (i=2; i < 26; i++) {
     currBlock = i;
     readBlock(disk, currBlock, blockBuffer);
     datablocks(blockBuffer, disk);
   }
 
+  // stimmt die Datenstruktur oder gibt es Fehler?
+  // siehe Aufgabenstellung, in jedem block steht genau eine "1"
+  // der Index der Datenstruktur blocks ist die Blocknummer
+  // glaube der Anfang muss noch ausgelassen werden, also die Blöcke 0 - 25
   blockCheck();
 
   free(blocks);
 
-  // create allInodes.txt
+  // create allInodes.txt – visuelle Hilfe
   openAllInodesTXT();
 
   for (i=2; i < 26; i++) {
@@ -118,27 +132,30 @@ int main(int argc, char *argv[]) {
 
   fclose(allInodesTXT);
 
+
+  // refs wird angelegt mit der Anzahl der Inodes, berechnet in filesystemSize()
   refs = malloc(iSize * sizeof(short));
   if (refs == NULL){
     error("out of memory", 6);
   }
 
-
+  // Inode-Liste wird durchgegangen, siehe inodesInDir.c
   for (i=2; i < 26; i++) {
     currBlock = i;
     readBlock(disk, currBlock, blockBuffer);
     allInodesInDirectories(blockBuffer, disk);
   }
 
+  // id wird auf -1 gesetzt
   id = -1;
 
+  // checkLinkcount überprüft, ob der Linkcount im inode mit der Anzahl der gefunden
+  // Verweisen von allInodesInDirectories() übereinstimmt
   for (i=2; i < 26; i++) {
     currBlock = i;
     readBlock(disk, currBlock, blockBuffer);
     checkLinkcount(blockBuffer);
   }
-
-  //printf("%d %d\n", iSize, fsize);
 
   free(refs);
 
@@ -147,6 +164,11 @@ int main(int argc, char *argv[]) {
   return 0;
 }
 
+/*
+
+Dient zur Hilfe, um visuell alle Inodes zu checken
+
+*/
 void openAllInodesTXT() {
   allInodesTXT = fopen("allInodes.txt", "w+");
 
@@ -154,6 +176,3 @@ void openAllInodesTXT() {
     error("couldn't open allInodes.txt", 9);
   }
 }
-
-
-

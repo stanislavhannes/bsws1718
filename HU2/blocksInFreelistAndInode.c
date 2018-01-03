@@ -4,6 +4,16 @@
 EOS32_daddr_t linkBlock;
 Block *blocks;
 
+/*
+
+blocks[free], free gleicht der Blocknummer, über den Index wird der Block
+identifiziert. Im SuperBlock ist die erste Freiliste, wo verlinkt wird auf die
+nächste Freiliste, die über die Funktion freeBlock() gelesen wird.
+
+Die Funktion datablocks() findet alle Datenblöcke, die in einem Inode stehen und
+verlinkt diese über den Index in die Datenstruktur blocks.
+
+*/
 void superBlock(unsigned char *p) {
 
   unsigned int nfree;
@@ -127,4 +137,3 @@ void doubleIndirectBlock(unsigned char *p, FILE *f) {
     }
   }
 }
-

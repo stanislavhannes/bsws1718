@@ -9,7 +9,12 @@ EOS32_daddr_t fsize;
 int iSize;
 unsigned int fsStart;
 
+/*
 
+Funktion von Geisse, ein kompletter Block (blockNum)
+wird in blockBuffer geladen
+
+*/
 void readBlock(FILE *disk, EOS32_daddr_t blockNum, unsigned char *blockBuffer) {
   fseek(disk, fsStart * SECTOR_SIZE + blockNum * BLOCK_SIZE, SEEK_SET);
   if (fread(blockBuffer, BLOCK_SIZE, 1, disk) != 1) {
@@ -17,7 +22,13 @@ void readBlock(FILE *disk, EOS32_daddr_t blockNum, unsigned char *blockBuffer) {
   }
 }
 
+/*
 
+Funktion von Geisse, gibt die nächsten 4 Bytes zurück, die Variable Blockbuffer
+wird immer in 4 Byte Schritten gelesen, die ersten 4 Bytes sind zB in der Funktion
+inodeBlock() die Variable mode, die nächsten 4 der linkcount usw...
+
+*/
 unsigned int get4Bytes(unsigned char *addr) {
   return (unsigned int) addr[0] << 24 |
          (unsigned int) addr[1] << 16 |
@@ -25,13 +36,26 @@ unsigned int get4Bytes(unsigned char *addr) {
          (unsigned int) addr[3] <<  0;
 }
 
+
+/*
+
+fsize = Anzahl der Blocks des kompletten FS, steht im Superblock,
+iSize = Anzahl der Inodes eines EOS32-Diskimage
+
+*/
 void filesystemSize(unsigned char *p) {
   p += 4;
   fsize = get4Bytes(p);
   iSize = 24*64;
 }
 
+/*
 
+Funktion von Geisse, so angepasst, dass die Ausgabe anstatt auf die Konsole
+in die Datei allInodes.txt geschrieben wird. (quasi der Aufruf i für einen
+Inode-Block)
+
+*/
 void inodeBlock(unsigned char *p) {
   unsigned int mode;
   unsigned int nlink;
@@ -146,6 +170,12 @@ void inodeBlock(unsigned char *p) {
   }
 }
 
+
+/*
+
+Funktion von Geisse
+
+*/
 void error(char *fmt, int exitcode, ...) {
   va_list ap;
 

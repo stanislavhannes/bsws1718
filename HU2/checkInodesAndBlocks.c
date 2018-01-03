@@ -5,6 +5,11 @@ EOS32_daddr_t fsize;
 Block *blocks;
 short *refs;
 
+/*
+
+geht die Datenstruktur blocks durch und überprüft auf Fehler
+
+*/
 void blockCheck() {
   for (int i = 26; i < fsize; i++) {
     printf("%d - %d - %d \n", i, blocks[i].freeList, blocks[i].dataList);
@@ -32,6 +37,12 @@ void blockCheck() {
   }
 }
 
+
+/*
+
+überprüft die Datensturktur refs auf Fehler
+
+*/
 void checkLinkcount(unsigned char *p) {
   unsigned int mode;
   unsigned int nlink;
@@ -78,6 +89,15 @@ void inodeIsFree(unsigned char *p) {
   }
 }
 
+/*
+
+datasize, angegeben im Inode, wird überprüft. Alle Datenblöcke werden gezählt
+und über die Anzahl die Dateigröße berechnet. Single und Double indirect Block
+wird analog zu inodesInDir.c durchgegangen
+
+TODO: block special und character special Inodes eventuell auslassen
+
+*/
 void datasize(unsigned char *p, FILE *f) {
   unsigned int mode;
   EOS32_daddr_t addr;

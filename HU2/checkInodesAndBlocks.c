@@ -4,6 +4,7 @@
 EOS32_daddr_t fsize;
 Block *blocks;
 short *refs;
+int id;
 
 /*
 
@@ -12,26 +13,25 @@ geht die Datenstruktur blocks durch und überprüft auf Fehler
 */
 void blockCheck() {
   for (int i = 26; i < fsize; i++) {
-    printf("%d - %d - %d \n", i, blocks[i].freeList, blocks[i].dataList);
     if ((blocks[i].dataList == 1 && blocks[i].freeList == 0) ||
         (blocks[i].dataList == 0 && blocks[i].freeList == 1)) {
       continue;
     } else {
 
       if (blocks[i].dataList == 0 && blocks[i].freeList == 0) {
-        // TODO: Fehler A
+        error("A block is neither in a file nor on the free list", 10);
       }
 
       if (blocks[i].dataList > 0 && blocks[i].freeList > 0) {
-        // TODO: Fehler B
+        error("A block is both, in a file and on the free list", 11);
       }
 
       if (blocks[i].freeList > 1) {
-        // TODO: Fehler C
+        error("A block is more then once on the free list", 12);
       }
 
       if (blocks[i].dataList > 1) {
-        // TODO: Fehler D
+        error("A block is more then once in a file", 13);
       }
     }
   }
@@ -56,15 +56,18 @@ void checkLinkcount(unsigned char *p) {
     printf("%d - %d - %d\n", id, nlink, refs[id]);
     if (mode != 0) {
       if (nlink != refs[id]) {
-        // TODO: Error H
+        printf("nlink : %d\n", nlink);
+        printf("refs[id] %d\n", refs[id]);
+        printf("id %d\n", id);
+        error("An inode with linkcount n! = 0 does not appear in exactly n directories", 17);
       }
 
       if (nlink == 0 && refs[id] != 0) {
-        // TODO: Error F
+        error("An inode with linkcount 0 appears in a directory", 15);
       }
     } else {
       if (refs[id] != 0) {
-        // TODO: Error J
+        error("An inode appears in a directory but is free", 19);
       }
     }
 
@@ -83,7 +86,7 @@ void inodeIsFree(unsigned char *p) {
     p += 4;
     nlink = get4Bytes(p);
     if (nlink == 0 && mode != 0) {
-      // TODO: Error G
+      error("An inode with linkcount 0 is not free", 16);
     }
     p += 60;
   }
@@ -144,7 +147,7 @@ void datasize(unsigned char *p, FILE *f) {
 
     calcSize = number * BLOCK_SIZE;
     if (size > calcSize || size <= (calcSize-BLOCK_SIZE)) {
-      // TODO: Error E
+      error("The size of a file is not consistent with the blocks noted in the inode", 14);
     }
   }
 }

@@ -3,6 +3,7 @@
 
 // 2 mal die Variable refs? in chkfs.c ist sie bereits angelegt
 short *refs;
+int iSize;
 
 /*
 
@@ -81,7 +82,7 @@ void inodesDirectoryBlock(unsigned char *p) {
   for (i = 0; i < DIRPB; i++) {
     ino = get4Bytes(p);
     p += 4;
-    if (ino != 0) {
+    if (ino != 0 && ino < iSize) {
       refs[ino] += 1;
     }
 

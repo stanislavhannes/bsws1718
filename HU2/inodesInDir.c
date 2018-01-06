@@ -71,7 +71,7 @@ void allInodesInDirectories(unsigned char *p, FILE *f) {
 /*
 
 ino ist die ID der Datei (= die ID des Inodes der Datei)
-refs[ino] += 1 => der Inode ist n mal in einem Directory 
+refs[ino] += 1 => der Inode ist n mal in einem Directory
 
 */
 void inodesDirectoryBlock(unsigned char *p) {
@@ -81,7 +81,7 @@ void inodesDirectoryBlock(unsigned char *p) {
   for (i = 0; i < DIRPB; i++) {
     ino = get4Bytes(p);
     p += 4;
-    if (ino != 0) {
+    if (ino != 0 && ino < iSize) {
       refs[ino] += 1;
     }
 

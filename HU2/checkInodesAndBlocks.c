@@ -182,3 +182,42 @@ int doubleIndirectBlockdata(unsigned char *p, FILE *f) {
   }
   return number;
 }
+
+void checkInodeMode(unsigned char *p) {
+  unsigned int mode;
+  int i;
+
+  for (i = 0; i < INOPB; i++) {
+    mode = get4Bytes(p);
+    if (mode != 0) {
+      if ((mode & IFMT) == IFREG) {
+        p += 64;
+        continue;
+      } else
+      if ((mode & IFMT) == IFDIR) {
+        p += 64;
+        continue;
+      } else
+      if ((mode & IFMT) == IFCHR) {
+        p += 64;
+        continue;
+      } else
+      if ((mode & IFMT) == IFBLK) {
+        p += 64;
+        continue;
+      } else {
+        // TODO: Error I
+      }
+    }
+  }
+}
+
+void checkRootInode(unsigned char *p) {
+  unsigned int mode;
+
+  p += 64;
+  mode = get4Bytes(p);
+  if (!((mode & IFMT) == IFDIR)) {
+    // TODO: Error K
+  }
+}

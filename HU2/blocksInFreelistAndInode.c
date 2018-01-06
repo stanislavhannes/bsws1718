@@ -33,9 +33,9 @@ void superBlock(unsigned char *p) {
     p += 4;
     if (i == 0) {
       linkBlock = free;
-      if (free != 0) { blocks[free].freeList += 1; }
+      if (free != 0 && free < fsize) { blocks[free].freeList += 1; }
     } else {
-        if (i < nfree) {
+        if (i < nfree && free < fsize) {
           blocks[free].freeList += 1;
         }
       }
@@ -53,37 +53,39 @@ void datablocks(unsigned char *p, FILE *f) {
     mode = get4Bytes(p);
     p += 32;
 
-    if ((mode & IFMT) == IFCHR || (mode & IFMT) == IFBLK) {
-      p += 32;
-      continue;
-    }
-
-    for (j = 0; j < 6; j++) {
-      addr = get4Bytes(p);
-      p += 4;
-      if (mode != 0 && addr != 0) {
-        blocks[addr].dataList += 1;
-      }
-    }
-    addr = get4Bytes(p);
-    p += 4;
     if (mode != 0) {
 
-      if (addr != 0) {
+      if ((mode & IFMT) == IFCHR || (mode & IFMT) == IFBLK) {
+        p += 32;
+        continue;
+      }
+
+      for (j = 0; j < 6; j++) {
+        addr = get4Bytes(p);
+        p += 4;
+        if (addr != 0 && addr < fsize) {
+          blocks[addr].dataList += 1;
+        }
+      }
+      addr = get4Bytes(p);
+      p += 4;
+
+      if (addr != 0 && addr < fsize) {
         blocks[addr].dataList += 1;
         readBlock(f, addr, tempBlockBuffer);
         singleIndirectBlock(tempBlockBuffer);
       }
-    }
-    addr = get4Bytes(p);
-    p += 4;
-    if (mode != 0) {
 
-      if (addr != 0) {
+      addr = get4Bytes(p);
+      p += 4;
+
+      if (addr != 0 && addr < fsize) {
         blocks[addr].dataList += 1;
         readBlock(f, addr, tempBlockBuffer);
         doubleIndirectBlock(tempBlockBuffer, f);
       }
+    } else {
+      p += 32;
     }
   }
 }
@@ -100,9 +102,9 @@ void freeBlock(unsigned char *p) {
     p += 4;
     if (i == 0) {
       linkBlock = addr;
-      if (addr != 0) { blocks[addr].freeList += 1; }
+      if (addr != 0 && addr < fsize) { blocks[addr].freeList += 1; }
     } else {
-        if (i < nfree) {
+        if (i < nfree && addr < fsize) {
           blocks[addr].freeList += 1;
         }
       }
@@ -116,7 +118,7 @@ void singleIndirectBlock(unsigned char *p) {
   for (i = 0; i < BLOCK_SIZE / sizeof(EOS32_daddr_t); i++) {
     addr = get4Bytes(p);
     p += 4;
-    if (addr != 0) {
+    if (addr != 0 && addr < fsize) {
       blocks[addr].dataList += 1;
     }
   }
@@ -130,7 +132,7 @@ void doubleIndirectBlock(unsigned char *p, FILE *f) {
   for (i = 0; i < BLOCK_SIZE / sizeof(EOS32_daddr_t); i++) {
     addr = get4Bytes(p);
     p += 4;
-    if (addr != 0) {
+    if (addr != 0 && addr < fsize) {
       blocks[addr].dataList += 1;
       readBlock(f, addr, tempBlockBuffer);
       singleIndirectBlock(tempBlockBuffer);

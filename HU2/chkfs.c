@@ -139,6 +139,8 @@ int main(int argc, char *argv[]) {
     error("out of memory", 6);
   }
 
+  printf("%d\n", iSize);
+
   // Inode-Liste wird durchgegangen, siehe inodesInDir.c
   for (i=2; i < 26; i++) {
     currBlock = i;
@@ -158,6 +160,16 @@ int main(int argc, char *argv[]) {
   }
 
   free(refs);
+
+  for (i=2; i < 26; i++) {
+    currBlock = i;
+    readBlock(disk, currBlock, blockBuffer);
+    checkInodeMode(blockBuffer);
+  }
+
+  currBlock = 2;
+  readBlock(disk, currBlock, blockBuffer);
+  checkRootInode(blockBuffer);
 
   fclose(disk);
   printf("File system check was successfully!\n");

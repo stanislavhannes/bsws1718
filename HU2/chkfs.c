@@ -71,18 +71,22 @@ int main(int argc, char *argv[]) {
   if (fsSize % SPB != 0) {
     printf("File system size is not a multiple of block size.\n");
   }
+
   numBlocks = fsSize / SPB;
   printf("This equals %u (0x%X) blocks of %d bytes each.\n",
          numBlocks, numBlocks, BLOCK_SIZE);
+
   if (numBlocks < 2) {
     error("file system has less than 2 blocks", 3);
   }
+
 
   // start: Superblock wird eingelesen, filesystemSize wird bestimmt, blocks
   // wird mit diesen Variablen initialisiert
   currBlock = 1;
   readBlock(disk, currBlock, blockBuffer);
   filesystemSize(blockBuffer);
+
   blocks = malloc(fsize * (sizeof(Block)));
   if (blocks == NULL){
     error("out of memory", 6);
@@ -91,8 +95,10 @@ int main(int argc, char *argv[]) {
   // der Superblock wird erneut von Beginn an eingelesen
   readBlock(disk, currBlock, blockBuffer);
 
+
   // und die erste Freiliste aus dem Superblock wird in der DS gespeichert
   superBlock(blockBuffer);
+
 
   // die Verlinkung wird so lange über die Funktion freeBlock() verfolgt, bis
   // der linkBlock 0 ist. currBlock wird = linkBlock gesetzt und dieser Block
@@ -103,7 +109,7 @@ int main(int argc, char *argv[]) {
     readBlock(disk, currBlock, blockBuffer);
     freeBlock(blockBuffer);
   }
-
+     
 
   // die Datenblöcke werden aus den Inodes gelesen, und in der Datenstruktur
   // blocks gespeichert
@@ -118,6 +124,7 @@ int main(int argc, char *argv[]) {
   // der Index der Datenstruktur blocks ist die Blocknummer
   // glaube der Anfang muss noch ausgelassen werden, also die Blöcke 0 - 25
   blockCheck();
+
 
   free(blocks);
 
@@ -134,6 +141,7 @@ int main(int argc, char *argv[]) {
 
 
   // refs wird angelegt mit der Anzahl der Inodes, berechnet in filesystemSize()
+  printf("iSIze = %d\n", iSize);
   refs = malloc(iSize * sizeof(short));
   if (refs == NULL){
     error("out of memory", 6);

@@ -3,6 +3,7 @@
 
 // 2 mal die Variable refs? in chkfs.c ist sie bereits angelegt
 short *refs;
+int iSize;
 
 /*
 

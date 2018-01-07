@@ -139,9 +139,15 @@ int main(int argc, char *argv[]) {
     checkInodeMode(blockBuffer);
   }
 
+  for (i=2; i < 26; i++) {
+    currBlock = i;
+    readBlock(disk, currBlock, blockBuffer);
+    datasize(blockBuffer, disk);
+  }
+
   currBlock = 2;
   readBlock(disk, currBlock, blockBuffer);
-  inodeIsFreeWithoutRoot(blockBuffer);
+  inodeIsFreeWithoutInodeZero(blockBuffer);
 
   for (i=3; i < 26; i++) {
     currBlock = i;

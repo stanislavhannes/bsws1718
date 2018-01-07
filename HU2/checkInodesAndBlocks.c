@@ -80,7 +80,7 @@ void inodeIsFree(unsigned char *p) {
   }
 }
 
-void inodeIsFreeWithoutRoot(unsigned char *p) {
+void inodeIsFreeWithoutInodeZero(unsigned char *p) {
   int i;
   unsigned int mode;
   unsigned int nlink;
@@ -152,7 +152,7 @@ void datasize(unsigned char *p, FILE *f) {
       }
 
       calcSize = number * BLOCK_SIZE;
-      if (size > calcSize || size <= (calcSize-BLOCK_SIZE)) {
+      if (size != 0 && (size > calcSize || size <= (calcSize-BLOCK_SIZE))) {
         error("The size of a file is not consistent with the blocks noted in the inode", 14);
       }
     } else {

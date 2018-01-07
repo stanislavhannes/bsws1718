@@ -80,6 +80,25 @@ void inodeIsFree(unsigned char *p) {
   }
 }
 
+void inodeIsFreeWithoutRoot(unsigned char *p) {
+  int i;
+  unsigned int mode;
+  unsigned int nlink;
+
+  for (i = 0; i < INOPB; i++) {
+    if (i == 0) {
+      p += 64;
+      continue;
+    }
+    mode = get4Bytes(p);
+    p += 4;
+    nlink = get4Bytes(p);
+    if (nlink == 0 && mode != 0) {
+      error("An inode with linkcount 0 is not free", 16);
+    }
+    p += 60;
+  }
+}
 
 void datasize(unsigned char *p, FILE *f) {
   unsigned int mode;
@@ -199,7 +218,7 @@ void checkInodeMode(unsigned char *p) {
         p += 64;
         continue;
       } else {
-        // TODO: Error I
+        error("The inode has a type field with an illegal value!", 18);
       }
     }
   }
@@ -211,6 +230,6 @@ void checkRootInode(unsigned char *p) {
   p += 64;
   mode = get4Bytes(p);
   if (!((mode & IFMT) == IFDIR)) {
-    // TODO: Error K
+    error("The root inode is not a directory!", 20);
   }
 }

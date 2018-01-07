@@ -11,5 +11,6 @@ int singleIndirectBlockdata(unsigned char *p);
 int doubleIndirectBlockdata(unsigned char *p, FILE *f);
 void checkInodeMode(unsigned char *p);
 void checkRootInode(unsigned char *p);
+void inodeIsFreeWithoutRoot(unsigned char *p);
 
 #endif

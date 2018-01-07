@@ -141,6 +141,16 @@ int main(int argc, char *argv[]) {
 
   currBlock = 2;
   readBlock(disk, currBlock, blockBuffer);
+  inodeIsFreeWithoutRoot(blockBuffer);
+
+  for (i=3; i < 26; i++) {
+    currBlock = i;
+    readBlock(disk, currBlock, blockBuffer);
+    inodeIsFree(blockBuffer);
+  }
+
+  currBlock = 2;
+  readBlock(disk, currBlock, blockBuffer);
   checkRootInode(blockBuffer);
 
   fclose(disk);

@@ -1,92 +1,176 @@
 
 #include "inodesInDir.h"
 
-// 2 mal die Variable refs? in chkfs.c ist sie bereits angelegt
 short *refs;
 int iSize;
 
 /*
-
-allInodesInDirectories() findet alle Inodes, die ein Directory sind. Der mode
-muss != 0 sein und mode & IFMT == IFDIR. IFDIR sagt, dass es ein Directory ist.
-
-Wenn der Inode ein Directory ist, wird für jeden dataBlock die Funktion
-inodesDirectoryBlock() aufgerufen, um quasi die InodeDatei zu lesen und deren
-Inhalt in die Datenstruktur refs zu speichern. Wenn es bis zu einem singleIndirectBlock
-geht, wird die Funktion inodesDirectoryBlock() über die Funktion
-singleInodesDirectoryBlock aufgerufen, damit die "Weiche" richtig gestellt werden
-kann. Am besten einmal aufmalen... Das gleiche gilt für den doubleIndirectBlock,
-allerdings mit einer Verzweigung mehr. Es ist unwahrscheinlich, dass ein Ver-
-zeichnis so groß wird, aber für den Fall der Fälle ist es implementiert
-
-=> if (mode != 0 && ((mode & IFMT) == IFDIR)) { ... } else { p += 32; }
-
-else: der Zeiger p wird um 32 erhöht, wenn der Inode kein Directory ist, um den
-nächsten Inode zu checken
-
+  TODO: eventuell die Verzeichnisse rekursiv durchlaufen
 */
-void allInodesInDirectories(unsigned char *p, FILE *f) {
+
+void recursive(unsigned char *p, FILE *f) {
+  // man bekommt eine Directory-Tabelle durch die Blocknummer
+  // in der Tabelle werden Inode-Nummern angegeben
+
+  // wie komme ich von der Inode-Nummer zu den Datenblöcken
+  // durch eine Funktion, die einen int (die Inode Nummer bekommt)
+  // und solange eine for-Schleife laufen lässt, bis der Inode gefunden wird
+}
+
+void getInode(int ino) {
   unsigned int mode;
   EOS32_daddr_t addr;
   int i, j;
   unsigned char tempBlockBuffer[BLOCK_SIZE];
+  unsigned int currBlock;
 
-  for (i = 0; i < INOPB; i++) {
-    mode = get4Bytes(p);
-    p += 32;
-    id++;
-    if (mode != 0 && ((mode & IFMT) == IFDIR)) {
+  currBlock = 2;
+  readBlock(f, currBlock, tempBlockBuffer);
 
-      for (j = 0; j < 6; j++) {
-        addr = get4Bytes(p);
-        p += 4;
-        if (mode != 0 && addr != 0) {
-          readBlock(f, addr, tempBlockBuffer);
-          inodesDirectoryBlock(tempBlockBuffer);
-        }
-      }
-      addr = get4Bytes(p);
-      p += 4;
-      if (mode != 0) {
+  for (i = 0; i < iSize; i++) {
+    if (i == ino) {
 
-        if (addr != 0) {
-          readBlock(f, addr, tempBlockBuffer);
-          singleInodesDirectoryBlock(tempBlockBuffer, f);
-        }
-      }
-      addr = get4Bytes(p);
-      p += 4;
-      if (mode != 0) {
-
-        if (addr != 0) {
-          readBlock(f, addr, tempBlockBuffer);
-          doubleInodesDirectoryBlock(tempBlockBuffer, f);
-        }
-      }
-    } else {
-      p += 32;
+    }
+    tempBlockBuffer += 64;
+    // wenn i = 63 muss der Block erhöht werden
+    if (i % 63 == 0) {
+      currBlock++;
+      if (currBlock == 26) { break; }
+      readBlock(f, currBlock, tempBlockBuffer);
     }
   }
 }
 
-/*
+// void allInodesInDirectories(unsigned char *p, FILE *f) {
+//   unsigned int mode;
+//   EOS32_daddr_t addr;
+//   int i, j;
+//   unsigned char tempBlockBuffer[BLOCK_SIZE];
+//
+//   for (i = 0; i < INOPB; i++) {
+//     mode = get4Bytes(p);
+//     p += 32;
+//     if (mode != 0 && (mode & IFMT) == IFDIR) {
+//
+//       for (j = 0; j < 6; j++) {
+//         addr = get4Bytes(p);
+//         p += 4;
+//         if (mode != 0 && addr != 0) {
+//           readBlock(f, addr, tempBlockBuffer);
+//           inodesDirectoryBlock(tempBlockBuffer);
+//         }
+//       }
+//       addr = get4Bytes(p);
+//       p += 4;
+//
+//       if (addr != 0) {
+//         readBlock(f, addr, tempBlockBuffer);
+//         singleInodesDirectoryBlock(tempBlockBuffer, f);
+//       }
+//
+//       addr = get4Bytes(p);
+//       p += 4;
+//
+//       if (addr != 0) {
+//         readBlock(f, addr, tempBlockBuffer);
+//         doubleInodesDirectoryBlock(tempBlockBuffer, f);
+//       }
+//     } else {
+//       p += 32;
+//     }
+//   }
+// }
 
-ino ist die ID der Datei (= die ID des Inodes der Datei)
-refs[ino] += 1 => der Inode ist n mal in einem Directory
+void setToRootInode(unsigned char *p, FILE *f) {
+  p += 64;
+  int root = directoryInodesRecursive(p, f);
+}
 
-*/
-void inodesDirectoryBlock(unsigned char *p) {
-  EOS32_ino_t ino;
-  int i;
+int directoryInodesRecursive(unsigned char *p, FILE *f) {
+  unsigned int mode;
+  EOS32_daddr_t addr;
+  int j;
+  unsigned char tempBlockBuffer[BLOCK_SIZE];
 
-  for (i = 0; i < DIRPB; i++) {
-    ino = get4Bytes(p);
+  // es wird vom root-Inode ausgehend jedes Verzeichnis durchlaufen
+  // wenn der nächste Inode ein Directory ist, +1 und dieses Directory öffnen
+  // ansonsten für einen Daten-Inode +1
+  // muss in der main gemacht werden: initial den root mit += 64
+  mode = get4Bytes(p);
+  p += 32;
+
+  for (j = 0; j < 6; j++) {
+    addr = get4Bytes(p);
     p += 4;
-    if (ino != 0 && ino < iSize) {
-      refs[ino] += 1;
+    if (addr != 0) {
+      readBlock(f, addr, tempBlockBuffer);
+      inodesDirectoryBlock(tempBlockBuffer, f);
     }
 
-    p += DIRSIZ;
+    addr = get4Bytes(p);
+    p += 4;
+
+    if (addr != 0) {
+      readBlock(f, addr, tempBlockBuffer);
+      singleInodesDirectoryBlock(tempBlockBuffer, f);
+    }
+
+    addr = get4Bytes(p);
+    p += 4;
+
+    if (addr != 0) {
+      readBlock(f, addr, tempBlockBuffer);
+      doubleInodesDirectoryBlock(tempBlockBuffer, f);
+    }
+  }
+
+  return 1;
+}
+
+
+void inodesDirectoryBlock(unsigned char *p, FILE *f) {
+  EOS32_ino_t ino;
+  unsigned int mode;
+  int i;
+  unsigned char tempBlockBuffer[BLOCK_SIZE];
+
+  ino = get4Bytes(p);
+  refs[ino] += 1;
+  p += 64;
+
+  ino = get4Bytes(p);
+  refs[ino] += 1;
+  p += 64;
+
+  for (i = 2; i < DIRPB; i++) {
+    ino = get4Bytes(p);
+    refs[ino] += 1;
+    // jetzt muss hier dieser inode gelesen werden, indem für diesen Inode
+    // gecheckt wird, ob es ein directory ist und falls das der Fall ist,
+    // dieses Dir wieder mit inodesDirectoryBlock aufgerufen werden
+    //
+    // allerdings muss hierfür auf die Datenblöcke des Inodes zugegriffen werden
+    //
+    // neue DS, die sagt, ob es ein Dir ist?
+    // ODER
+    // diesen Inode mit directoryInodesRecursive lesen
+    // inode 2, wie komme
+
+
+    // 1 wird gelesen, es sollte aber 27 sein
+    readBlock(f, ino, tempBlockBuffer);
+    mode = get4Bytes(tempBlockBuffer);
+
+    if (mode != 0 && (mode & IFMT) == IFDIR && ino != 0 && ino < iSize) {
+      refs[ino] += 1;
+      inodesDirectoryBlock(tempBlockBuffer, f);
+    } else {
+      if (ino != 0 && ino < iSize) {
+        refs[ino] += 1;
+      }
+    }
+
+    p += 64;
   }
 }
 
@@ -100,7 +184,7 @@ void singleInodesDirectoryBlock(unsigned char *p, FILE *f) {
     p += 4;
     if (addr != 0) {
       readBlock(f, addr, tempBlockBuffer);
-      inodesDirectoryBlock(tempBlockBuffer);
+      inodesDirectoryBlock(tempBlockBuffer, f);
     }
   }
 }

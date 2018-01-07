@@ -6,11 +6,7 @@ Block *blocks;
 short *refs;
 int id;
 
-/*
 
-geht die Datenstruktur blocks durch und überprüft auf Fehler
-
-*/
 void blockCheck() {
   for (int i = 26; i < fsize; i++) {
     if ((blocks[i].dataList == 1 && blocks[i].freeList == 0) ||
@@ -37,12 +33,7 @@ void blockCheck() {
   }
 }
 
-
-/*
-
-überprüft die Datensturktur refs auf Fehler
-
-*/
+// TODO: alle Inodes hier durchlaufen, id wird damit überflüssig
 void checkLinkcount(unsigned char *p) {
   unsigned int mode;
   unsigned int nlink;
@@ -56,10 +47,7 @@ void checkLinkcount(unsigned char *p) {
     printf("%d - %d - %d\n", id, nlink, refs[id]);
     if (mode != 0) {
       if (nlink != refs[id]) {
-        printf("nlink : %d\n", nlink);
-        printf("refs[id] %d\n", refs[id]);
-        printf("id %d\n", id);
-        error("An inode with linkcount n! = 0 does not appear in exactly n directories", 17);
+        error("An inode with linkcount n != 0 does not appear in exactly n directories", 17);
       }
 
       if (nlink == 0 && refs[id] != 0) {
@@ -92,15 +80,7 @@ void inodeIsFree(unsigned char *p) {
   }
 }
 
-/*
 
-datasize, angegeben im Inode, wird überprüft. Alle Datenblöcke werden gezählt
-und über die Anzahl die Dateigröße berechnet. Single und Double indirect Block
-wird analog zu inodesInDir.c durchgegangen
-
-TODO: block special und character special Inodes eventuell auslassen
-
-*/
 void datasize(unsigned char *p, FILE *f) {
   unsigned int mode;
   EOS32_daddr_t addr;
@@ -112,8 +92,13 @@ void datasize(unsigned char *p, FILE *f) {
 
   for (i = 0; i < INOPB; i++) {
     number = 0;
-
     mode = get4Bytes(p);
+
+    if (mode == 0 || (mode != 0 && (mode & IFMT) == IFCHR && (mode & IFMT) == IFBLK)) {
+      p += 64;
+      continue;
+    }
+
     p += 28;
 
     size = get4Bytes(p);
@@ -128,21 +113,18 @@ void datasize(unsigned char *p, FILE *f) {
     }
     addr = get4Bytes(p);
     p += 4;
-    if (mode != 0) {
 
-      if (addr != 0) {
-        readBlock(f, addr, blockBufferDatasize);
-        number += singleIndirectBlockdata(blockBufferDatasize);
-      }
+    if (addr != 0) {
+      readBlock(f, addr, blockBufferDatasize);
+      number += singleIndirectBlockdata(blockBufferDatasize);
     }
+
     addr = get4Bytes(p);
     p += 4;
-    if (mode != 0) {
 
-      if (addr != 0) {
-        readBlock(f, addr, blockBufferDatasize);
-        number += doubleIndirectBlockdata(blockBufferDatasize, f);
-      }
+    if (addr != 0) {
+      readBlock(f, addr, blockBufferDatasize);
+      number += doubleIndirectBlockdata(blockBufferDatasize, f);
     }
 
     calcSize = number * BLOCK_SIZE;

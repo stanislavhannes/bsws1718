@@ -65,6 +65,3 @@ void inodeBlock(unsigned char *p);
 void error(char *fmt, int exitcode, ...);
 
 #endif
-
-
-

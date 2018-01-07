@@ -15,7 +15,7 @@ EOS32_daddr_t fsize;
 int iSize;
 int id=-1;
 Block *blocks;
-short *refs;
+Refs *refs;
 unsigned int fsStart;
 
 int main(int argc, char *argv[]) {
@@ -110,7 +110,7 @@ int main(int argc, char *argv[]) {
 
   free(blocks);
 
-  refs = (short *) calloc(iSize, sizeof(short));
+  refs = (Refs *) calloc(iSize, sizeof(Refs));
   if (refs == NULL){
     error("out of memory", 6);
   }
@@ -121,9 +121,7 @@ int main(int argc, char *argv[]) {
     allInodesInDirectories(blockBuffer, disk);
   }*/
 
-  currBlock = 2;
-  readBlock(disk, currBlock, blockBuffer);
-  setToRootInode(blockBuffer, disk);
+  recursiveDirectory(1, disk);
 
   id = -1;
 

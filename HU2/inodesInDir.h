@@ -10,5 +10,6 @@ void singleInodesDirectoryBlock(unsigned char *p, FILE *f);
 void doubleInodesDirectoryBlock(unsigned char *p, FILE *f);
 void directoryInodesRecursive(unsigned char *p, FILE *f);
 void setToRootInode(unsigned char *p, FILE *f);
+void recursiveDirectory(int ino, FILE *f);
 
 #endif

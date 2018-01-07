@@ -48,13 +48,18 @@ typedef struct {
 	short freeList;
 } Block;
 
+typedef struct {
+	short linkcount;
+	short flag;
+} Refs;
+
 extern FILE *allInodesTXT;
 extern EOS32_daddr_t linkBlock;
 extern EOS32_daddr_t fsize;
 extern int iSize;
 extern int id;
 extern Block *blocks;
-extern short *refs;
+extern Refs *refs;
 extern unsigned int fsStart;
 
 

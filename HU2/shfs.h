@@ -48,7 +48,6 @@ typedef struct {
 	short freeList;
 } Block;
 
-extern FILE *allInodesTXT;
 extern EOS32_daddr_t linkBlock;
 extern EOS32_daddr_t fsize;
 extern int iSize;
@@ -65,6 +64,3 @@ void inodeBlock(unsigned char *p);
 void error(char *fmt, int exitcode, ...);
 
 #endif
-
-
-

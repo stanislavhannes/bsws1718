@@ -6,11 +6,7 @@ Block *blocks;
 short *refs;
 int id;
 
-/*
 
-geht die Datenstruktur blocks durch und überprüft auf Fehler
-
-*/
 void blockCheck() {
   for (int i = 26; i < fsize; i++) {
     if ((blocks[i].dataList == 1 && blocks[i].freeList == 0) ||
@@ -38,11 +34,6 @@ void blockCheck() {
 }
 
 
-/*
-
-überprüft die Datensturktur refs auf Fehler
-
-*/
 void checkLinkcount(unsigned char *p) {
   unsigned int mode;
   unsigned int nlink;
@@ -53,7 +44,7 @@ void checkLinkcount(unsigned char *p) {
     mode = get4Bytes(p);
     p += 4;
     nlink = get4Bytes(p);
-    printf("%d - %d - %d\n", id, nlink, refs[id]);
+    //printf("%d - %d - %d\n", id, nlink, refs[id]);
     if (mode != 0) {
       if (nlink != refs[id]) {
         printf("nlink : %d\n", nlink);
@@ -92,15 +83,7 @@ void inodeIsFree(unsigned char *p) {
   }
 }
 
-/*
 
-datasize, angegeben im Inode, wird überprüft. Alle Datenblöcke werden gezählt
-und über die Anzahl die Dateigröße berechnet. Single und Double indirect Block
-wird analog zu inodesInDir.c durchgegangen
-
-TODO: block special und character special Inodes eventuell auslassen
-
-*/
 void datasize(unsigned char *p, FILE *f) {
   unsigned int mode;
   EOS32_daddr_t addr;
@@ -114,40 +97,50 @@ void datasize(unsigned char *p, FILE *f) {
     number = 0;
 
     mode = get4Bytes(p);
-    p += 28;
 
-    size = get4Bytes(p);
-    p += 4;
+    if (mode != 0) {
 
-    for (j = 0; j < 6; j++) {
+      if ((mode & IFMT) == IFCHR || (mode & IFMT) == IFBLK) {
+        p += 64;
+        continue;
+      }
+
+      p += 28;
+      size = get4Bytes(p);
+      p += 4;
+
+      for (j = 0; j < 6; j++) {
+        addr = get4Bytes(p);
+        p += 4;
+        if (mode != 0 && addr != 0) {
+          number++;
+        }
+      }
       addr = get4Bytes(p);
       p += 4;
-      if (mode != 0 && addr != 0) {
-        number++;
-      }
-    }
-    addr = get4Bytes(p);
-    p += 4;
-    if (mode != 0) {
+      if (mode != 0) {
 
-      if (addr != 0) {
-        readBlock(f, addr, blockBufferDatasize);
-        number += singleIndirectBlockdata(blockBufferDatasize);
+        if (addr != 0) {
+          readBlock(f, addr, blockBufferDatasize);
+          number += singleIndirectBlockdata(blockBufferDatasize);
+        }
       }
-    }
-    addr = get4Bytes(p);
-    p += 4;
-    if (mode != 0) {
+      addr = get4Bytes(p);
+      p += 4;
+      if (mode != 0) {
 
-      if (addr != 0) {
-        readBlock(f, addr, blockBufferDatasize);
-        number += doubleIndirectBlockdata(blockBufferDatasize, f);
+        if (addr != 0) {
+          readBlock(f, addr, blockBufferDatasize);
+          number += doubleIndirectBlockdata(blockBufferDatasize, f);
+        }
       }
-    }
 
-    calcSize = number * BLOCK_SIZE;
-    if (size > calcSize || size <= (calcSize-BLOCK_SIZE)) {
-      error("The size of a file is not consistent with the blocks noted in the inode", 14);
+      calcSize = number * BLOCK_SIZE;
+      if (size > calcSize || size <= (calcSize-BLOCK_SIZE)) {
+        error("The size of a file is not consistent with the blocks noted in the inode", 14);
+      }
+    } else {
+      p += 64;
     }
   }
 }

@@ -47,9 +47,6 @@ void checkLinkcount(unsigned char *p) {
     //printf("%d - %d - %d\n", id, nlink, refs[id]);
     if (mode != 0) {
       if (nlink != refs[id]) {
-        printf("nlink : %d\n", nlink);
-        printf("refs[id] %d\n", refs[id]);
-        printf("id %d\n", id);
         error("An inode with linkcount n! = 0 does not appear in exactly n directories", 17);
       }
 

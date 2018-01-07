@@ -15,6 +15,7 @@ void recursive(unsigned char *p, FILE *f) {
   // wie komme ich von der Inode-Nummer zu den Datenblöcken
   // durch eine Funktion, die einen int (die Inode Nummer bekommt)
   // und solange eine for-Schleife laufen lässt, bis der Inode gefunden wird
+  // und danach was tut? und danach wenn es ein dir ist
 }
 
 void getInode(int ino) {
@@ -29,10 +30,39 @@ void getInode(int ino) {
 
   for (i = 0; i < iSize; i++) {
     if (i == ino) {
+      mode = get4Bytes(p);
+      p += 32;
+      if (mode != 0 && (mode & IFMT) == IFDIR) {
 
+        for (j = 0; j < 6; j++) {
+          addr = get4Bytes(p);
+          p += 4;
+          if (mode != 0 && addr != 0) {
+            readBlock(f, addr, tempBlockBuffer);
+            inodesDirectoryBlock(tempBlockBuffer);
+          }
+        }
+        addr = get4Bytes(p);
+        p += 4;
+
+        if (addr != 0) {
+          readBlock(f, addr, tempBlockBuffer);
+          singleInodesDirectoryBlock(tempBlockBuffer, f);
+        }
+
+        addr = get4Bytes(p);
+        p += 4;
+
+        if (addr != 0) {
+          readBlock(f, addr, tempBlockBuffer);
+          doubleInodesDirectoryBlock(tempBlockBuffer, f);
+        }
+      } else {
+        p += 32;
+      }
     }
     tempBlockBuffer += 64;
-    // wenn i = 63 muss der Block erhöht werden
+
     if (i % 63 == 0) {
       currBlock++;
       if (currBlock == 26) { break; }

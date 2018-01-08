@@ -44,7 +44,7 @@ void checkLinkcount(unsigned char *p) {
     mode = get4Bytes(p);
     p += 4;
     nlink = get4Bytes(p);
-    printf("%d - %d - %d\n", id, nlink, refs[id]);
+    //printf("%d - %d - %d\n", id, nlink, refs[id]);
     if (mode != 0) {
 
       if (nlink == 0) {

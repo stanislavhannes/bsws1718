@@ -123,6 +123,10 @@ int main(int argc, char *argv[]) {
     allInodesInDirectories(blockBuffer, disk);
   }
 
+  currBlock = 2;
+  readBlock(disk, currBlock, blockBuffer);
+  checkRootInode(blockBuffer);
+
   id = -1;
 
   for (i=2; i < 26; i++) {
@@ -155,9 +159,7 @@ int main(int argc, char *argv[]) {
     inodeIsFree(blockBuffer);
   }
 
-  currBlock = 2;
-  readBlock(disk, currBlock, blockBuffer);
-  checkRootInode(blockBuffer);
+  
 
   fclose(disk);
   printf("File system check was successfully!\n");

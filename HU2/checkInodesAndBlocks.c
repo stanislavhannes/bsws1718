@@ -44,15 +44,17 @@ void checkLinkcount(unsigned char *p) {
     mode = get4Bytes(p);
     p += 4;
     nlink = get4Bytes(p);
-    //printf("%d - %d - %d\n", id, nlink, refs[id]);
+    printf("%d - %d - %d\n", id, nlink, refs[id]);
     if (mode != 0) {
-      if (nlink != refs[id]) {
+
+      if (nlink == 0) {
+        if (refs[id] != 0) {
+          error("An inode with linkcount 0 appears in a directory", 15);
+        }
+      } else if (nlink != refs[id]) {
         error("An inode with linkcount n! = 0 does not appear in exactly n directories", 17);
       }
 
-      if (nlink == 0 && refs[id] != 0) {
-        error("An inode with linkcount 0 appears in a directory", 15);
-      }
     } else {
       if (refs[id] != 0) {
         error("An inode appears in a directory but is free", 19);

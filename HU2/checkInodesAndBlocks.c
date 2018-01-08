@@ -51,8 +51,10 @@ void checkLinkcount(unsigned char *p) {
         if (refs[id] != 0) {
           error("An inode with linkcount 0 appears in a directory", 15);
         }
-      } else if (nlink != refs[id]) {
-        error("An inode with linkcount n! = 0 does not appear in exactly n directories", 17);
+      } else {
+        if (nlink != refs[id]) {
+          error("An inode with linkcount n! = 0 does not appear in exactly n directories", 17);
+        }
       }
 
     } else {
